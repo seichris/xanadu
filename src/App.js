@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import Box from "3box";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-//import "bootstrap/dist/css/bootstrap.min.css";
 import { BounceLoader } from "react-spinners";
 
-import Home from "./pages/Home";
+import HeroSection from "./components/2HeroSection";
+import FlowSection from "./components/6FlowSection";
+import BenefitsSection from "./components/3BenefitsSection";
+import ProductSection from "./components/8ProductSection";
+import FooterSection from "./components/10FooterSection";
+
+import PublicFeed from "./pages/PublicFeed";
 import AddApp from "./pages/AddApp";
 import Profile from "./pages/Profile";
+import Nav from "./components/Nav";
 
 const getThreeBox = async address => {
   const profile = await Box.getProfile(address);
@@ -100,15 +106,27 @@ export default class App extends Component {
               {!this.state.accounts && <h1>Login with metamask</h1>}
             </Route>
             <Route path="/">
-              <Home
-                posts={this.state.posts}
-                space={this.state.space}
-                box={this.state.box}
-                getAppsThread={this.getAppsThread}
-                usersAddress={
-                  this.state.accounts ? this.state.accounts[0] : null
-                }
-              />
+              <div className="container mx-auto px-4">
+                <HeroSection />
+                <FlowSection />
+                <BenefitsSection />
+                <ProductSection />
+                <FooterSection />
+                <Nav />
+              </div>
+            </Route>
+            <Route path="/public-feed">
+              <div className="container mx-auto px-4">
+                <PublicFeed
+                  posts={this.state.posts}
+                  space={this.state.space}
+                  box={this.state.box}
+                  getAppsThread={this.getAppsThread}
+                  usersAddress={
+                    this.state.accounts ? this.state.accounts[0] : null
+                  }
+                />
+              </div>
             </Route>
           </Switch>
         </div>

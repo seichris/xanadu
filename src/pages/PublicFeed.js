@@ -57,7 +57,7 @@ class AppCard extends Component {
 
 }
 
-export default class Home extends Component {
+export default class PublicFeed extends Component {
   render() {
     return (
       <div className="container" style={{ textAlign: "center" }}>
