@@ -1,0 +1,21 @@
+.hover-trigger .hover-target {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.hover-trigger:hover .hover-target {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+
+.hover-trigger:hover .hover-background {
+    filter: blur(10px) grayscale(60%);
+    -webkit-filter: blur(10px) grayscale(60%);
+    -moz-filter: blur(10px) grayscale(60%);
+    -o-filter: blur(10px) grayscale(60%);
+    -ms-filter: blur(10px) grayscale(60%);
+
+    transition: 0.1s -webkit-filter linear;
+}
