@@ -76,12 +76,15 @@ export default class App extends Component {
           <Switch>
             <Route path="/profile">
               {this.state.space && (
-                <Profile
-                  box={this.state.box}
-                  space={this.state.space}
-                  accounts={this.state.accounts}
-                  threeBoxProfile={this.state.threeBoxProfile}
-                />
+                <div className="container mx-auto px-4 flex flex-wrap justify-center">
+                  <Profile
+                    box={this.state.box}
+                    space={this.state.space}
+                    accounts={this.state.accounts}
+                    threeBoxProfile={this.state.threeBoxProfile}
+                  />
+                  <FooterSection />
+                </div>
               )}
               {!this.state.space && (
                 <div style={{ width: "60px", margin: "auto" }}>
@@ -91,16 +94,19 @@ export default class App extends Component {
             </Route>
             <Route path="/add-application">
               {this.state.accounts && (
-                <AddApp
-                  accounts={this.state.accounts}
-                  thread={this.state.thread}
-                  box={this.state.box}
-                  space={this.state.space}
-                  threadMembers={this.state.threadMembers}
-                  posts={this.state.posts}
-                  threeBoxProfile={this.state.threeBoxProfile}
-                  getAppsThread={this.getAppsThread.bind(this)}
-                />
+                <div className="container mx-auto px-4">
+                  <AddApp
+                    accounts={this.state.accounts}
+                    thread={this.state.thread}
+                    box={this.state.box}
+                    space={this.state.space}
+                    threadMembers={this.state.threadMembers}
+                    posts={this.state.posts}
+                    threeBoxProfile={this.state.threeBoxProfile}
+                    getAppsThread={this.getAppsThread.bind(this)}
+                  />
+                  <FooterSection />
+                </div>
               )}
               {!this.state.accounts && <h1>Login with metamask</h1>}
             </Route>

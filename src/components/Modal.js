@@ -10,7 +10,7 @@ export default class Modal extends Component {
     show: false,
     showHideClassName: 'hidden',
     handleHide: () => this.setState({ show: false, showHideClassName: 'hidden' }),
-    handleShow: () => this.setState({ show: true, showHideClassName: 'block relative' })
+    handleShow: () => this.setState({ show: true, showHideClassName: 'block' })
   };
 
   render() {
@@ -20,22 +20,20 @@ export default class Modal extends Component {
         Comments
       </button>
       <div className={this.state.showHideClassName}>
-      <section className="modal-main">
-
-        <CommentBox
-          spaceName={"demo-app-store"}
-          threadName={this.props.app.name}
-          box={this.props.box}
-          currentUserAddr={this.props.usersAddress}
-          currentUser3BoxProfile={this.props.threeBox}
-          adminEthAddr={"0x2f4cE4f714C68A3fC871d1f543FFC24b9b3c2386"}
-
-        />
-        <button onClick={this.state.handleHide}>
-          close
-        </button>
-      </section>
-    </div>
+        <div className="modal-main">
+          <CommentBox
+            spaceName={"demo-app-store"}
+            threadName={this.props.app.name}
+            box={this.props.box}
+            currentUserAddr={this.props.usersAddress}
+            //currentUser3BoxProfile={this.props.threeBox}
+            adminEthAddr={"0x2f4cE4f714C68A3fC871d1f543FFC24b9b3c2386"}
+          />
+          <button onClick={this.state.handleHide}>
+            close
+          </button>
+        </div>
+      </div>
     </>
   );
   }

@@ -16,7 +16,7 @@ export default class AddApp extends Component {
     render() {
       return (
         <div className="container">
-          <h1 style={{ textAlign: "center" }}>Submit your Opinion!</h1>
+          <h1 className="text-center mb-8">Submit your Opinion!</h1>
           {!this.props.thread && (
             <div style={{ width: "100px", margin: "auto" }}>
               <ClimbingBoxLoader color={"blue"} />
