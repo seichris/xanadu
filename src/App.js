@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Box from "3box";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { BounceLoader } from "react-spinners";
+import { ClimbingBoxLoader } from "react-spinners";
 
 import HeroSection from "./components/2HeroSection";
 import FlowSection from "./components/6FlowSection";
@@ -12,7 +12,6 @@ import FooterSection from "./components/10FooterSection";
 import PublicFeed from "./pages/PublicFeed";
 import AddApp from "./pages/AddApp";
 import Profile from "./pages/Profile";
-import Nav from "./components/Nav";
 
 const getThreeBox = async address => {
   const profile = await Box.getProfile(address);
@@ -86,7 +85,7 @@ export default class App extends Component {
               )}
               {!this.state.space && (
                 <div style={{ width: "60px", margin: "auto" }}>
-                  <BounceLoader color={"blue"} />
+                  <ClimbingBoxLoader color={"blue"} />
                 </div>
               )}
             </Route>
@@ -105,17 +104,16 @@ export default class App extends Component {
               )}
               {!this.state.accounts && <h1>Login with metamask</h1>}
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <div className="container mx-auto px-4">
                 <HeroSection />
                 <FlowSection />
                 <BenefitsSection />
                 <ProductSection />
                 <FooterSection />
-                <Nav />
               </div>
             </Route>
-            <Route path="/public-feed">
+            <Route exact path="/public-feed">
               <div className="container mx-auto px-4">
                 <PublicFeed
                   posts={this.state.posts}
@@ -126,6 +124,7 @@ export default class App extends Component {
                     this.state.accounts ? this.state.accounts[0] : null
                   }
                 />
+                <FooterSection />
               </div>
             </Route>
           </Switch>
