@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import AppForm from './../components/AppForm';
-import { BounceLoader } from 'react-spinners';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 export default class AddApp extends Component {
     state = {
@@ -16,10 +16,10 @@ export default class AddApp extends Component {
     render() {
       return (
         <div className="container">
-          <h1 style={{ textAlign: "center" }}>Submit your Opinion!</h1>
+          <h1 className="text-center mb-8">Submit your Opinion!</h1>
           {!this.props.thread && (
             <div style={{ width: "100px", margin: "auto" }}>
-              <BounceLoader color={"blue"} />
+              <ClimbingBoxLoader color={"blue"} />
             </div>
           )}
           {this.props.thread && <AppForm savePost={this.savePost} />}

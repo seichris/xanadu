@@ -19,3 +19,15 @@
 
     transition: 0.1s -webkit-filter linear;
 }
+
+.modal-main {
+  position: absolute;
+  background: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.threebox-comments-react > .comments_footer {
+  display: none;
+}

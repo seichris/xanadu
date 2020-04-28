@@ -26,65 +26,70 @@ export default class AppForm extends Component {
 
   render() {
     return (
-      <div style={{ maxWidth: "500px", margin: "auto" }}>
+        <div class="w-full max-w-sm mx-auto">
         {!this.state.submitted && (
           <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">Name:</label>
+            <div class="mb-4">
               <input
+                className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                type="text"
+                placeholder="Name"
                 type="text"
                 name="name"
-                className="form-control"
                 aria-describedby="appName"
-                placeholder="Enter App Name"
                 value={this.state.name}
                 onChange={this.handleChange}
-              />
+                />
             </div>
-            <div className="form-group">
-              <label htmlFor="url">URL:</label>
+            <div class="mb-4">
               <input
+                className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                type="password"
+                placeholder="URL"
                 type="text"
                 name="url"
-                className="form-control"
                 aria-describedby="url"
-                placeholder="Add url"
                 value={this.state.url}
                 onChange={this.handleChange}
-              />
+                />
             </div>
-            <div className="form-group">
-              <label htmlFor="appImage">Image URL:</label>
+            <div class="mb-4">
               <input
+                className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                type="text"
+                placeholder="Image URL"
                 type="text"
                 name="appImage"
-                className="form-control"
                 aria-describedby="application image"
-                placeholder="Add an image"
                 value={this.state.appImage}
                 onChange={this.handleChange}
-              />
+                />
             </div>
-            <div className="form-group">
-              <label htmlFor="description">Description:</label>
+            <div class="mb-4">
               <input
+                className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
+                type="password"
+                placeholder="Description"
                 type="text"
                 name="description"
-                className="form-control"
                 aria-describedby="description"
-                placeholder="Add a description"
                 value={this.state.description}
                 onChange={this.handleChange}
-              />
+                />
             </div>
-            <input type="submit" value="Submit" className="btn btn-primary" />
+            <div class="mb-6">
+              <input type="submit" value="Submit" className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow" />
+            </div>
+            <p class="text-center"><a class="text-blue-700 hover:underline" href="#">or sign in with Twitter »</a></p>
+
           </form>
-        )}
-        {this.state.submitted && <div className="jumbotron">
-          <h1>Thank you for submiting</h1>
-          <button className="btn btn-secondary"  onClick={()=>(this.setState({submitted : false}))}>Add another application </button>
-           </div>}
-      </div>
-    );
-  }
+          )}
+          {this.state.submitted && <div className="jumbotron">
+            <h1>Thank you for submiting</h1>
+            <button className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow"  onClick={()=>(this.setState({submitted : false}))}>Add another application</button>
+             </div>}
+        </div>
+
+        );
+      }
 }
