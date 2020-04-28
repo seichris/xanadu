@@ -4,15 +4,25 @@ import { ClimbingBoxLoader } from "react-spinners";
 import Modal from "./../components/Modal";
 
 class AppCard extends Component {
+
+  state = { show: false };
+  showModal = () => {
+    this.setState({ show: true });
+  };
+  hideModal = () => {
+    this.setState({ show: false });
+  };
+
   render(){
     return (
     <>
-      <div className="lg:w-1/3 px-8 mb-8">
+      <div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
         <div style={{ padding: "20px" }}>
           <h5>
             {this.props.post.message.name ? this.props.post.message.name : "unknown"}
           </h5>
           <img
+            className="mx-auto"
             style={{ height: "10vw" }}
             src={
               this.props.post.message.appImage
@@ -42,13 +52,14 @@ class AppCard extends Component {
               />
             </div>
           )}
-          {/*<Modal
+          <Modal
             app={this.props.post.message}
             threeBox={this.props.threeBox}
             space={this.props.space}
             box={this.props.box}
             usersAddress={this.props.usersAddress}
-          />*/}
+          />
+
         </div>
       </div>
       {(this.props.i + 1) % 3 == 0 && <div className="w-100"></div>}

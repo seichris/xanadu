@@ -38,14 +38,14 @@ export default class App extends Component {
       const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
       this.setState({ threeBoxProfile });
     }
-    const rach = "0x2f4cE4f714C68A3fC871d1f543FFC24b9b3c2386";
+    const chris = "0x2f4cE4f714C68A3fC871d1f543FFC24b9b3c2386";
     const box = await Box.openBox(this.state.accounts[0], window.ethereum);
     this.setState({ box });
     const space = await this.state.box.openSpace("demo-app-store");
     this.setState({ space });
 
     const thread = await space.joinThread("application_list", {
-      firstModerator: rach,
+      firstModerator: chris,
       members: false
     });
     this.setState({ thread }, ()=>(this.getAppsThread()));
