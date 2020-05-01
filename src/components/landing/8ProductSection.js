@@ -1,7 +1,7 @@
 import React from 'react';
-import products1 from '.././images/products/mars.jpg';
-import products2 from '.././images/products/chongqing.jpg';
-import products3 from '.././images/products/shanghai.jpg';
+import products1 from './../../images/products/mars.jpg';
+import products2 from './../../images/products/chongqing.jpg';
+import products3 from './../../images/products/shanghai.jpg';
 
 function ProductSection(props) {
   return (

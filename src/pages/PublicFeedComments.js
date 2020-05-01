@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ProfileHover from "profile-hover";
 import { ClimbingBoxLoader } from "react-spinners";
+import Draggable from 'react-draggable';
 
 class AppCard extends Component {
 
@@ -15,17 +16,17 @@ class AppCard extends Component {
   render(){
     return (
     <>
-      <div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
+      {/*<div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
         <div className="relative" style={{ padding: "20px" }}>
-          <h5>
+          <p>
             {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
-          </h5>
-          <h5>
+          </p>
+          <p>
             {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
-          </h5>
-          <h5>
+          </p>
+          <p>
             Position: x: {this.props.post.message.deltaPosition.x ? this.props.post.message.deltaPosition.x : "unknown"}, y: {this.props.post.message.deltaPosition.y ? this.props.post.message.deltaPosition.y : "unknown"}
-          </h5>
+          </p>
           {this.props.post.message.account && (
             <div style={{ marginBottom: "10px" }}>
               <p>Submitted by</p>
@@ -36,10 +37,35 @@ class AppCard extends Component {
               />
             </div>
           )}
-
         </div>
       </div>
       {(this.props.i + 1) % 3 === 0 && <div className="w-100"></div>}
+      */}
+      <Draggable defaultPosition={this.props.post.message.deltaPosition}>
+      <div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
+        <div className="relative" style={{ padding: "20px" }}>
+          <p>
+            {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
+          </p>
+          <p>
+            {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
+          </p>
+          <p className="text-xs text-gray-500">
+            Position: x: {this.props.post.message.deltaPosition.x ? this.props.post.message.deltaPosition.x : "unknown"}, y: {this.props.post.message.deltaPosition.y ? this.props.post.message.deltaPosition.y : "unknown"}
+          </p>
+          {this.props.post.message.account && (
+            <div style={{ marginBottom: "10px" }}>
+              {/*<p className="text-xs">Submitted by</p>*/}
+              <ProfileHover
+                address={this.props.post.message.account}
+                style={{ width: "100%" }}
+                showName={true}
+              />
+            </div>
+          )}
+        </div>
+      </div>
+      </Draggable>
     </>)
   }
 

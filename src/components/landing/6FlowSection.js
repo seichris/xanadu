@@ -1,7 +1,7 @@
 import React from 'react';
-import flow1 from '.././images/flow/create.png';
-import flow2 from '.././images/flow/share.png';
-import flow3 from '.././images/flow/reward.png';
+import flow1 from './../../images/flow/create.png';
+import flow2 from './../../images/flow/share.png';
+import flow3 from './../../images/flow/reward.png';
 
 function FlowSection(props) {
   return (
