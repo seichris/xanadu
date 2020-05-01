@@ -20,12 +20,16 @@
     transition: 0.1s -webkit-filter linear;
 }
 
-.modal-main {
+.comment-modal-main {
   position: absolute;
-  background: white;
+  background: ivory;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.landingpage-comments-modal {
+
 }
 
 .threebox-comments-react > .comments_footer {

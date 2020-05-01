@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AppForm from './../components/AppForm';
+import InputApps from './../components/InputApps';
 import { ClimbingBoxLoader } from 'react-spinners';
 
 export default class AddApp extends Component {
@@ -22,7 +22,7 @@ export default class AddApp extends Component {
               <ClimbingBoxLoader color={"blue"} />
             </div>
           )}
-          {this.props.thread && <AppForm savePost={this.savePost} />}
+          {this.props.thread && <InputApps savePost={this.savePost} />}
         </div>
       );
     }

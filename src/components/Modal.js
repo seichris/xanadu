@@ -20,7 +20,7 @@ export default class Modal extends Component {
         Comments
       </button>
       <div className={this.state.showHideClassName}>
-        <div className="modal-main">
+        <div className="comment-modal-main">
           <CommentBox
             spaceName={"demo-app-store"}
             threadName={this.props.app.name}
