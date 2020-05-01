@@ -5,9 +5,13 @@ import icon2 from '.././images/icons/share.svg';
 
 function ProductSection(props) {
   return (
-    <footer class="flex flex-wrap flex-col lg:flex-row items-center p-4 border-t">
-      <div class="w-full lg:w-auto lg:mr-6 text-center">© 2020 Xanadu</div>
-      <div class="mx-auto my-4 lg:my-0 lg:ml-0">
+    <footer className="flex flex-wrap flex-col lg:flex-row items-center p-4 border-t">
+      <div className="w-full lg:w-auto lg:mr-6 text-center">
+      <Link className="nav-link" to="/">
+        © 2020 Xanadu
+      </Link>
+      </div>
+      <div className="mx-auto my-4 lg:my-0 lg:ml-0">
         <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">
           <Link className="nav-link" to="/public-feed">
             Public feed

@@ -5,11 +5,12 @@ import { ClimbingBoxLoader } from "react-spinners";
 
 import HeroSection from "./components/2HeroSection";
 import FlowSection from "./components/6FlowSection";
-import BenefitsSection from "./components/3BenefitsSection";
+import BenefitsSection from "./components/7BenefitsSection";
 import ProductSection from "./components/8ProductSection";
 import FooterSection from "./components/10FooterSection";
 
 import PublicFeed from "./pages/PublicFeed";
+import HeroCommentSection from "./pages/HeroCommentSection";
 import AddApp from "./pages/AddApp";
 import Profile from "./pages/Profile";
 
@@ -38,13 +39,15 @@ export default class App extends Component {
       const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
       this.setState({ threeBoxProfile });
     }
-    const chris = "0x2f4cE4f714C68A3fC871d1f543FFC24b9b3c2386";
+    //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
+    const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
     const box = await Box.openBox(this.state.accounts[0], window.ethereum);
     this.setState({ box });
-    const space = await this.state.box.openSpace("demo-app-store");
+    const space = await this.state.box.openSpace("xanadu_now_sh");
     this.setState({ space });
 
-    const thread = await space.joinThread("application_list", {
+    const thread = await space.joinThread("context", {
+    //const thread = await space.joinThread("application_list", {
       firstModerator: chris,
       members: false
     });
@@ -56,8 +59,14 @@ export default class App extends Component {
       return;
     }
 
+    // use this option, if your user has authenticated to their 3Box and space
     const posts = await this.state.thread.getPosts();
     this.setState({posts});
+
+    // use this option, if your user has not yet authenticated to their 3Box and space
+    //const thread = await box.openThread('https://xanadu.now.sh', 'context', { firstModerator: chris, members: false })
+    //const posts = await thread.getPosts()
+    //console.log(posts)
 
     await this.state.thread.onUpdate(async()=> {
       const posts = await this.state.thread.getPosts();
@@ -113,6 +122,16 @@ export default class App extends Component {
             <Route exact path="/">
               <div className="container mx-auto px-4">
                 <HeroSection />
+                <HeroCommentSection
+                  accounts={this.state.accounts}
+                  thread={this.state.thread}
+                  box={this.state.box}
+                  space={this.state.space}
+                  threadMembers={this.state.threadMembers}
+                  posts={this.state.posts}
+                  threeBoxProfile={this.state.threeBoxProfile}
+                  getAppsThread={this.getAppsThread.bind(this)}
+                />
                 <FlowSection />
                 <BenefitsSection />
                 <ProductSection />

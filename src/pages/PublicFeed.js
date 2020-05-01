@@ -23,6 +23,7 @@ class AppCard extends Component {
           </h5>
           <img
             className="mx-auto"
+            alt=""
             style={{ height: "10vw" }}
             src={
               this.props.post.message.appImage
@@ -37,7 +38,7 @@ class AppCard extends Component {
           <p>{this.props.post.message.description}</p>
           {this.props.post.message.url && (
             <p>
-              <a href={this.props.post.message.url} target="_blank">
+              <a href={this.props.post.message.url} target="_blank" rel="noopener noreferrer">
                 website
               </a>
             </p>
@@ -62,7 +63,7 @@ class AppCard extends Component {
 
         </div>
       </div>
-      {(this.props.i + 1) % 3 == 0 && <div className="w-100"></div>}
+      {(this.props.i + 1) % 3 === 0 && <div className="w-100"></div>}
     </>)
   }
 

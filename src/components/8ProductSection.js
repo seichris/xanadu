@@ -34,7 +34,8 @@ function ProductSection(props) {
           v3: videos, music, restaurants, longread, movie recommendations
           ➖ p2p recommendations: similar to this
 
-          v4: make webUI more interesting
+          v4: personalize other websites (chrome addons, changing static code, on ipfs)
+          ➖ users hang out on the same sites around the web. You can personalize them with some addons.
           ➖ follow lists like "darkmode everywhere" and pay everyone a split who adds a website to the list
           ➖ follow a list
 
@@ -47,6 +48,10 @@ function ProductSection(props) {
           ➖ DAI staking
           ➖ personal token issuance, ...
           ➖ topic tokens to reward contribution to each list...
+
+          v7: TL;DR for developing world
+          ➖ decentralized distribution: ipfs is great for developing world. bad internet connection, offline.
+          ➖ resilient, no DDOS
 
           v7: ?
           ➖ join the chat

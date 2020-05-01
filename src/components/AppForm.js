@@ -26,13 +26,12 @@ export default class AppForm extends Component {
 
   render() {
     return (
-        <div class="w-full max-w-sm mx-auto">
+        <div className="w-full max-w-sm mx-auto">
         {!this.state.submitted && (
           <form onSubmit={this.handleSubmit}>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                type="text"
                 placeholder="Name"
                 type="text"
                 name="name"
@@ -41,10 +40,9 @@ export default class AppForm extends Component {
                 onChange={this.handleChange}
                 />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                type="password"
                 placeholder="URL"
                 type="text"
                 name="url"
@@ -53,10 +51,9 @@ export default class AppForm extends Component {
                 onChange={this.handleChange}
                 />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                type="text"
                 placeholder="Image URL"
                 type="text"
                 name="appImage"
@@ -65,10 +62,9 @@ export default class AppForm extends Component {
                 onChange={this.handleChange}
                 />
             </div>
-            <div class="mb-4">
+            <div className="mb-4">
               <input
                 className="form-control appearance-none block w-full py-3 px-4 leading-tight text-gray-700 bg-gray-200 focus:bg-white border border-gray-200 focus:border-gray-500 rounded focus:outline-none"
-                type="password"
                 placeholder="Description"
                 type="text"
                 name="description"
@@ -77,10 +73,10 @@ export default class AppForm extends Component {
                 onChange={this.handleChange}
                 />
             </div>
-            <div class="mb-6">
+            <div className="mb-6">
               <input type="submit" value="Submit" className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow" />
             </div>
-            <p class="text-center"><a class="text-blue-700 hover:underline" href="#">or sign in with Twitter »</a></p>
+            <p className="text-center"><a className="text-blue-700 hover:underline" href="google.com">or sign in with Twitter »</a></p>
 
           </form>
           )}
