@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AppForm from './../components/AppForm';
+import InputComments from './../components/InputComments';
 import { ClimbingBoxLoader } from 'react-spinners';
 
 export default class AddApp extends Component {
@@ -11,7 +11,7 @@ export default class AddApp extends Component {
       // add the loggedin account to the form data to be saved
       formData.account = this.props.accounts[0];
       await this.props.thread.post(formData);
-      this.props.getAppsThread();
+      this.props.getCommentsThread();
     };
 
     state = {
@@ -33,17 +33,18 @@ export default class AddApp extends Component {
             Add your shitty opinion
             </button>
           </div>
-          <div className={this.state.showHideClassName}>
-            <div className="modal-main">
-          {!this.props.thread && (
-            <div style={{ width: "100px", margin: "auto" }}>
-              <ClimbingBoxLoader color={"blue"} />
-            </div>
-            )}
-            {this.props.thread && <AppForm savePost={this.savePost} />}
+          <div className={`text-center ${this.state.showHideClassName}`}>
+            <div className="landingpage-comments-modal">
             <button onClick={this.state.handleHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-              close
+              X
             </button>
+            {!this.props.thread && (
+              <div style={{ width: "100px", margin: "auto" }}>
+                <ClimbingBoxLoader color={"blue"} />
+              </div>
+            )}
+            {this.props.thread && <InputComments savePost={this.savePost} />}
+
           </div>
         </div>
       </div>

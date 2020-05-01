@@ -14,7 +14,12 @@ function ProductSection(props) {
       <div className="mx-auto my-4 lg:my-0 lg:ml-0">
         <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">
           <Link className="nav-link" to="/public-feed">
-            Public feed
+            All Apps
+          </Link>
+        </div>
+        <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">
+          <Link className="nav-link" to="/public-feed-comments">
+            All Comments
           </Link>
         </div>
         <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ProfileHover from "profile-hover";
 import { ClimbingBoxLoader } from "react-spinners";
-import Modal from "./../components/Modal";
 
 class AppCard extends Component {
 
@@ -19,30 +18,12 @@ class AppCard extends Component {
       <div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
         <div className="relative" style={{ padding: "20px" }}>
           <h5>
-            {this.props.post.message.name ? this.props.post.message.name : "unknown"}
+            {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
           </h5>
-          <img
-            className="mx-auto"
-            alt=""
-            style={{ height: "10vw" }}
-            src={
-              this.props.post.message.appImage
-                ? this.props.post.message.appImage
-                : "https://via.placeholder.com/200"
-            }
-            onError={ev =>
-              (ev.target.src =
-                "http://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder-350x350.png")
-            }
-          />
-          <p>{this.props.post.message.description}</p>
-          {this.props.post.message.url && (
-            <p>
-              <a href={this.props.post.message.url} target="_blank" rel="noopener noreferrer">
-                website
-              </a>
-            </p>
-          )}
+          <h5>
+            {this.props.post.message.rating ? this.props.post.message.rating : "unknown"}
+          </h5>
+
           {this.props.post.message.account && (
             <div style={{ marginBottom: "10px" }}>
               <p>Submitted by</p>
@@ -53,13 +34,6 @@ class AppCard extends Component {
               />
             </div>
           )}
-          <Modal
-            app={this.props.post.message}
-            threeBox={this.props.threeBox}
-            space={this.props.space}
-            box={this.props.box}
-            usersAddress={this.props.usersAddress}
-          />
 
         </div>
       </div>
@@ -74,9 +48,9 @@ export default class PublicFeed extends Component {
     return (
       <div className="container" style={{ textAlign: "center" }}>
         <h1 className="brand-font" style={{ fontSize: "4rem" }}>
-          Feed of all public Apps
+          Feed of all public comments
         </h1>
-        <p>Each app is a item in a thread, and got one comment box.</p>
+        <p>...</p>
         <div className="flex flex-wrap items-center p-4 mt-12">
           {(!this.props.posts || this.props.posts.length < 1) && (
             <div style={{ width: "60px", margin: "auto" }}>

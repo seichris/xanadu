@@ -4,13 +4,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ClimbingBoxLoader } from "react-spinners";
 
 import HeroSection from "./components/2HeroSection";
+import HeroCommentSection from "./components/3HeroCommentSection";
 import FlowSection from "./components/6FlowSection";
 import BenefitsSection from "./components/7BenefitsSection";
 import ProductSection from "./components/8ProductSection";
 import FooterSection from "./components/10FooterSection";
 
 import PublicFeed from "./pages/PublicFeed";
-import HeroCommentSection from "./pages/HeroCommentSection";
+import PublicFeedComments from "./pages/PublicFeedComments";
 import AddApp from "./pages/AddApp";
 import Profile from "./pages/Profile";
 
@@ -46,21 +47,29 @@ export default class App extends Component {
     const space = await this.state.box.openSpace("xanadu_now_sh");
     this.setState({ space });
 
-    const thread = await space.joinThread("context", {
+    const threadApps = await space.joinThread("context", {
     //const thread = await space.joinThread("application_list", {
       firstModerator: chris,
       members: false
     });
-    this.setState({ thread }, ()=>(this.getAppsThread()));
-  }
+    this.setState({ threadApps }, ()=>(this.getAppsThread()));
+
+    // add another thread
+    const threadComments = await space.joinThread("xanadu_now_sh_comments", {
+      firstModerator: chris,
+      members: false
+    });
+    this.setState({ threadComments }, ()=>(this.getCommentsThread()));
+    }
+
   async getAppsThread() {
-    if (!this.state.thread) {
+    if (!this.state.threadApps) {
       console.error("apps thread not in react state");
       return;
     }
 
     // use this option, if your user has authenticated to their 3Box and space
-    const posts = await this.state.thread.getPosts();
+    const posts = await this.state.threadApps.getPosts();
     this.setState({posts});
 
     // use this option, if your user has not yet authenticated to their 3Box and space
@@ -68,9 +77,27 @@ export default class App extends Component {
     //const posts = await thread.getPosts()
     //console.log(posts)
 
-    await this.state.thread.onUpdate(async()=> {
-      const posts = await this.state.thread.getPosts();
+    await this.state.threadApps.onUpdate(async()=> {
+      const posts = await this.state.threadApps.getPosts();
       this.setState({posts});
+    })
+  }
+
+  async getCommentsThread() {
+
+    if (!this.state.threadComments) {
+      console.error("comments thread not in react state");
+      return;
+    }
+
+    // use this option, if your user has authenticated to their 3Box and space
+
+    const comments = await this.state.threadComments.getPosts();
+    this.setState({comments});
+
+    await this.state.threadComments.onUpdate(async()=> {
+      const comments = await this.state.threadComments.getPosts();
+      this.setState({comments});
     })
   }
 
@@ -106,7 +133,7 @@ export default class App extends Component {
                 <div className="container mx-auto px-4">
                   <AddApp
                     accounts={this.state.accounts}
-                    thread={this.state.thread}
+                    thread={this.state.threadApps}
                     box={this.state.box}
                     space={this.state.space}
                     threadMembers={this.state.threadMembers}
@@ -124,13 +151,15 @@ export default class App extends Component {
                 <HeroSection />
                 <HeroCommentSection
                   accounts={this.state.accounts}
-                  thread={this.state.thread}
+                  thread={this.state.threadApps}
                   box={this.state.box}
                   space={this.state.space}
                   threadMembers={this.state.threadMembers}
                   posts={this.state.posts}
+                  comments={this.state.comments}
                   threeBoxProfile={this.state.threeBoxProfile}
                   getAppsThread={this.getAppsThread.bind(this)}
+                  getCommentsThread={this.getCommentsThread.bind(this)}
                 />
                 <FlowSection />
                 <BenefitsSection />
@@ -145,6 +174,20 @@ export default class App extends Component {
                   space={this.state.space}
                   box={this.state.box}
                   getAppsThread={this.getAppsThread}
+                  usersAddress={
+                    this.state.accounts ? this.state.accounts[0] : null
+                  }
+                />
+                <FooterSection />
+              </div>
+            </Route>
+            <Route exact path="/public-feed-comments">
+              <div className="container mx-auto px-4">
+                <PublicFeedComments
+                  posts={this.state.posts}
+                  space={this.state.space}
+                  box={this.state.box}
+                  getCommentsThread={this.getCommentsThread}
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
