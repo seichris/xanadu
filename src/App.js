@@ -151,12 +151,11 @@ export default class App extends Component {
                 <HeroSection />
                 <HeroCommentSection
                   accounts={this.state.accounts}
-                  thread={this.state.threadApps}
+                  thread={this.state.threadComments}
                   box={this.state.box}
                   space={this.state.space}
                   threadMembers={this.state.threadMembers}
-                  posts={this.state.posts}
-                  comments={this.state.comments}
+                  posts={this.state.comments}
                   threeBoxProfile={this.state.threeBoxProfile}
                   getAppsThread={this.getAppsThread.bind(this)}
                   getCommentsThread={this.getCommentsThread.bind(this)}
@@ -184,7 +183,7 @@ export default class App extends Component {
             <Route exact path="/public-feed-comments">
               <div className="container mx-auto px-4">
                 <PublicFeedComments
-                  posts={this.state.posts}
+                  posts={this.state.comments}
                   space={this.state.space}
                   box={this.state.box}
                   getCommentsThread={this.getCommentsThread}

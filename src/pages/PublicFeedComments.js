@@ -21,9 +21,11 @@ class AppCard extends Component {
             {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
           </h5>
           <h5>
-            {this.props.post.message.rating ? this.props.post.message.rating : "unknown"}
+            {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
           </h5>
-
+          <h5>
+            Position: x: {this.props.post.message.deltaPosition.x ? this.props.post.message.deltaPosition.x : "unknown"}, y: {this.props.post.message.deltaPosition.y ? this.props.post.message.deltaPosition.y : "unknown"}
+          </h5>
           {this.props.post.message.account && (
             <div style={{ marginBottom: "10px" }}>
               <p>Submitted by</p>
