@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ProfileHover from "profile-hover";
 import { ClimbingBoxLoader } from "react-spinners";
-import Modal from "./../components/Modal";
+import Modal from "./../components/AppModal";
 
 class AppCard extends Component {
 
@@ -20,6 +20,9 @@ class AppCard extends Component {
         <div className="relative" style={{ padding: "20px" }}>
           <h5>
             {this.props.post.message.name ? this.props.post.message.name : "unknown"}
+          </h5>
+          <h5>
+            {this.props.post.message.rating ? this.props.post.message.rating : "unknown"}
           </h5>
           <img
             className="mx-auto"
