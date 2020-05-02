@@ -17,23 +17,16 @@ export default class AddApp extends Component {
     };
 
     state = {
-      show: false,
-      showHideClassName: 'hidden',
-      handleHide: () => this.setState({ show: false, showHideClassName: 'hidden' }),
-      handleShow: () => this.setState({ show: true, showHideClassName: 'block' })
+      show: false
     };
 
-
-
-
-    //switchShowHide () => this.setState({ show: !previousstae.show, showHideClassName: 'block'.... })
-
-    // und unten die buttons sollen nur ein button sein
-    //  <button onClick={switchShowHide}
-
-
-
-
+    switchShowHide= () => {
+            this.setState(prevState => {
+                return {
+                    show: !prevState.show
+                }
+            })
+        }
 
     render() {
       return (
@@ -42,27 +35,10 @@ export default class AddApp extends Component {
             <p className="mb-4 text-gray-700 ">
               What do you think about this proposition?
             </p>
-            <button onClick={this.state.handleShow} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+            <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
               {this.state.show ? "cancel" : "Add your shitty opinion"}
             </button>
-            <button onClick={this.state.handleHide} className={`inline-block py-4 px-8 leading-none text-white bg-transparent hover:text-indigo-600 rounded shadow ${this.state.showHideClassName}`}>
-              cancel
-            </button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div className={`text-center absolute w-full ${this.state.showHideClassName}`}>
+            <div className={`text-center absolute w-full ${this.state.show ? "block" : "hidden"}`}>
               <div className="landingpage-comments-modal w-1/3 mx-auto">
 
               {!this.props.thread && (
