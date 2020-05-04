@@ -13,19 +13,18 @@ import FooterSection from "./components/10FooterSection";
 import PublicFeed from "./pages/PublicFeed";
 import PublicFeedComments from "./pages/PublicFeedComments";
 import AddApp from "./pages/AddApp";
-import ContextChromeAddon from "./pages/ContextChromeAddon";
 import Profile from "./pages/Profile";
 
-const getThreeBox = async address => {
+/*const getThreeBox = async address => {
   const profile = await Box.getProfile(address);
   return profile;
-};
+};*/
 
 export default class App extends Component {
   state = {
     needToAWeb3Browser: false
   };
-  async getAddressFromMetaMask() {
+  /*async getAddressFromMetaMask() {
     if (typeof window.ethereum == "undefined") {
       this.setState({ needToAWeb3Browser: true });
     } else {
@@ -33,18 +32,18 @@ export default class App extends Component {
       const accounts = await window.ethereum.enable();
       this.setState({ accounts });
     }
-  }
+  }*/
 
   async componentDidMount() {
-    await this.getAddressFromMetaMask();
+    /*await this.getAddressFromMetaMask();
     if (this.state.accounts) {
       const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
       this.setState({ threeBoxProfile });
-    }
+    }*/
     //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
     const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-    const box = await Box.openBox(this.state.accounts[0], window.ethereum);
-    //const box = await Box.openBox("0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE", window.ethereum);
+    /*const box = await Box.openBox(this.state.accounts[0], window.ethereum);*/
+    const box = await Box.openBox("0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE", window.ethereum);
     this.setState({ box });
     // open a new space for each current URL
     const currentURL = window.location.href;
@@ -225,25 +224,6 @@ export default class App extends Component {
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
-                />
-                <FooterSection />
-              </div>
-            </Route>
-            <Route exact path="/context">
-              <div className="container mx-auto px-4">
-                <ContextChromeAddon
-                accounts={this.state.accounts}
-                thread={this.state.threadComments}
-                box={this.state.box}
-                space={this.state.space}
-                threadMembers={this.state.threadMembers}
-                posts={this.state.comments}
-                threeBoxProfile={this.state.threeBoxProfile}
-                getAppsThread={this.getAppsThread.bind(this)}
-                getCommentsThread={this.getCommentsThread.bind(this)}
-                usersAddress={
-                  this.state.accounts ? this.state.accounts[0] : null
-                }
                 />
                 <FooterSection />
               </div>

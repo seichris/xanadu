@@ -1,17 +1,50 @@
 import React, {Component} from 'react';
+import Box from "3box";
 import InputComments from './../../components/InputComments';
 import ProfileHover from "profile-hover";
 import { ClimbingBoxLoader } from "react-spinners";
 import Draggable from 'react-draggable';
+
+const getThreeBox = async address => {
+  const profile = await Box.getProfile(address);
+  return profile;
+};
 
 export default class AddApp extends Component {
   state = {
     thread: null
   };
 
+  async getAddressFromMetaMask() {
+    if (typeof window.ethereum == "undefined") {
+      this.setState({ needToAWeb3Browser: true });
+    } else {
+      window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
+      const accounts = await window.ethereum.enable();
+      this.setState({ accounts });
+    }
+  }
+
   savePost = async formData => {
+    // should load metamask on save
+
+
+    await this.getAddressFromMetaMask();
+    if (this.state.accounts) {
+      const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
+      this.setState({ threeBoxProfile });
+    }
+
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    const cleanCurrentURL = currentURL.replace(/\//g, "_");
+    console.log(cleanCurrentURL);
+    const box = await Box.openBox(this.state.accounts[0], window.ethereum);
+    this.setState({ box });
+    const space = await this.state.box.openSpace(cleanCurrentURL);
+
     // add the loggedin account to the form data to be saved
-    formData.account = this.props.accounts[0];
+    formData.account = this.state.accounts[0];
     await this.props.thread.post(formData);
     this.props.getCommentsThread();
   };
@@ -37,9 +70,6 @@ export default class AddApp extends Component {
           </p>
           <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
             {this.state.show ? "cancel" : "Add your shitty opinion"}
-          </button>
-          <button onClick={this.props.loginMetaMask} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-            "Metamask"
           </button>
           <div className={`text-center absolute w-full ${this.state.show ? "block" : "hidden"}`}>
             <div className="landingpage-comments-modal w-1/3 mx-auto">
