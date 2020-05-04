@@ -84,7 +84,7 @@ export default class AddApp extends Component {
   class CommentCard extends Component {
     render(){
       return (
-      <>
+      <div className="h-0">
         <Draggable defaultPosition={this.props.post.message.deltaPosition}>
         <div className="comments-box-landing w-1/4 flex flex-col mx-auto items-center">
           <div className="relative" style={{ padding: "20px" }}>
@@ -110,6 +110,6 @@ export default class AddApp extends Component {
           </div>
         </div>
         </Draggable>
-      </>)
+      </div>)
     }
   }

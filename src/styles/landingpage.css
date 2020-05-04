@@ -28,8 +28,8 @@
   right: 0;
 }
 
-.landingpage-comments-modal {
-
+.bg-body {
+  background-image: linear-gradient(to right bottom, #fffaf0, #fdf0dd, #fce4cb, #fdd9ba, #ffccac);
 }
 
 .comments-box-landing {

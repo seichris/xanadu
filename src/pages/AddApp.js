@@ -15,8 +15,8 @@ export default class AddApp extends Component {
     };
     render() {
       return (
-        <div className="container">
-          <h1 className="text-center mb-8">Submit your Opinion!</h1>
+        <div className="container xl:mb-48 lg:mb-48 md:mb-12 sm:mb-12 mb-12">
+          <h1 className="text-center mb-8">Submit your App!</h1>
           {!this.props.thread && (
             <div style={{ width: "100px", margin: "auto" }}>
               <ClimbingBoxLoader color={"blue"} />

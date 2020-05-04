@@ -27,6 +27,7 @@ function ProductSection(props) {
           ➖ Rate an ICO project. Add a comment to a website
           ➖ Rate any site (crowdsourced google schema 5star rating)
           ➖ Customer feedback. A siteowner wants to see comments on his site directly
+          ➖ put relevant tweets on ethereum.org https://twitter.com/pedrouid/status/1256548140049674241
 
           v2b: anti fake news / two-sided opinion formation
           ➖ know another source, which says the opposite? Post it and get rewarded
@@ -38,6 +39,7 @@ function ProductSection(props) {
           ➖ users hang out on the same sites around the web. You can personalize them with some addons.
           ➖ follow lists like "darkmode everywhere" and pay everyone a split who adds a website to the list
           ➖ follow a list
+          ➖ tag addresses on etherscan: https://info.etherscan.com/etherscan-connect-a-beginning/
 
           v5: brave ads // market to value advertisements per user
           ➖ allow brave to put ads... get feedback on ads...
