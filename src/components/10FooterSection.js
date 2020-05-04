@@ -32,6 +32,11 @@ function ProductSection(props) {
             Add an Application
           </Link>
         </div>
+        <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">
+          <Link className="nav-link" to="/context">
+            Chrome Addon
+          </Link>
+        </div>
       </div>
       <div className="mx-auto lg:mx-0 lg:ml-auto">
         <a className="inline-block mt-0 text-blue-900 hover:text-blue-700" href="/">FAQ</a>

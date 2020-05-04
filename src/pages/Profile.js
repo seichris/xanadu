@@ -7,7 +7,7 @@ export default class Profile extends Component {
   }
   render() {
     return (
-        <div className="xl:mb-48 lg:mb-48 md:mb-12 sm:mb-12 mb-12">
+        <div className="mb-12">
           <h1 className="text-center mb-8">Edit your profile here, or visit 3box.io</h1>
           {!this.state.hideEdit && <EditProfile
             box={this.props.box}
