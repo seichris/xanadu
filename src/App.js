@@ -31,7 +31,7 @@ export default class App extends Component {
       this.setState({ needsAWeb3Browser: true });
       const currentURL = window.location.href;
       const cleanCurrentURL = currentURL.replace(/\//g, "_");
-      const cleanerCurrentURL = currentURL.replace(/\./g, "_");
+      const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
       console.log(cleanerCurrentURL);
       //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
       const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
@@ -53,7 +53,7 @@ export default class App extends Component {
       const currentURL = window.location.href;
       const cleanCurrentURL = currentURL.replace(/\//g, "_");
       console.log(cleanCurrentURL);
-      const cleanerCurrentURL = currentURL.replace(/\./g, "_");
+      const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
       console.log(cleanerCurrentURL);
       const space = await this.state.box.openSpace(cleanerCurrentURL);
       this.setState({ space });
