@@ -33,17 +33,21 @@
 }
 
 .comments-box-landing {
-  background-color: #f0f7fb;
+  background-color: #f6f8f9;
   border-left: solid 4px #3498db;
 }
 
 .landingpage-comments-modal > .react-draggable {
-  background-color: #f0f7fb;
+  background-color: #f6f8f9;
   border-left: solid 4px #3498db;
 }
 
 .threebox-comments-react > .comments_footer {
   display: none;
+}
+
+.threeboxProfileHover__style_boxAddressWrap {
+  padding-top: 6px;
 }
 
 .threeboxProfileHover__style_boxAddress .threeboxProfileHover__style_boxImg {

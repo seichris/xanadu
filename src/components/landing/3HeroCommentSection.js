@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 //import Box from "3box";
 import InputComments from './../../components/InputComments';
 import ProfileHover from "profile-hover";
-import { ClimbingBoxLoader } from "react-spinners";
+import { ScaleLoader } from "react-spinners";
 import Draggable from 'react-draggable';
+import ReactStars from 'react-stars';
 
 export default class AddApp extends Component {
   state = {
@@ -44,7 +45,7 @@ render() {
 
              {!this.props.thread && (
                <div style={{ width: "100px", margin: "auto" }}>
-                 <ClimbingBoxLoader color={"blue"} />
+                 <ScaleLoader color={"#667eea"} />
                </div>
              )}
              {this.props.thread && <InputComments savePost={this.savePost} />}
@@ -58,10 +59,10 @@ render() {
        {/* show me all comments. could also be on the press of a button */}
          <div className="">
            {(!this.props.posts || this.props.posts.length < 1) && (
-             <div style={{ width: "60px", margin: "auto" }}>
-               {/*<ClimbingBoxLoader color={"blue"} />*/}
+             <div className="mx-auto text-center text-gray-700">
+               <ScaleLoader color={"#667eea"} />
                <p>
-                 No comments yet. Make the first comment.
+                 No comments yet. Be first to add one!
                </p>
              </div>
            )}
@@ -95,19 +96,26 @@ render() {
            <p>
              {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
            </p>
-           <p>
+           {/*<p>
              {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
-           </p>
-           <p className="text-xs text-gray-500">
+           </p>*/}
+           {/*<p className="text-xs text-gray-500">
              Position: x: {this.props.post.message.deltaPosition.x ? this.props.post.message.deltaPosition.x : "unknown"}, y: {this.props.post.message.deltaPosition.y ? this.props.post.message.deltaPosition.y : "unknown"}
-           </p>
+           </p>*/}
            {this.props.post.message.account && (
-             <div style={{ marginBottom: "10px" }}>
+             <div className="pt-4">
                {/*<p className="text-xs">Submitted by</p>*/}
-               <ProfileHover
-                 address={this.props.post.message.account}
-                 style={{ width: "100%" }}
-                 showName={true}
+                 <ProfileHover
+                   address={this.props.post.message.account}
+                   showName={true}
+                 />
+               <ReactStars
+                 count={5}
+                 size={20}
+                 color2={'#ffd700'}
+                 edit={false}
+                 half={false}
+                 value={this.props.post.message.rating}
                />
              </div>
            )}

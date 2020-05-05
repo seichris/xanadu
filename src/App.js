@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Box from "3box";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ClimbingBoxLoader } from "react-spinners";
+import { ScaleLoader } from "react-spinners";
 
 import HeroSection from "./components/landing/2HeroSection";
 import HeroCommentSection from "./components/landing/3HeroCommentSection";
@@ -166,7 +166,7 @@ export default class App extends Component {
               )}
               {!this.state.space && (
                 <div style={{ width: "60px", margin: "auto" }}>
-                  <ClimbingBoxLoader color={"blue"} />
+                  <ScaleLoader color={"#667eea"} />
                 </div>
               )}
             </Route>

@@ -53,7 +53,7 @@ export default class AppForm extends Component {
     return (
       <Draggable
         //axis="x"
-        handle=".handle"
+        //handle=".handle"
         defaultPosition={{x: 0, y: 0}}
         position={this.deltaPosition}
         //grid={[25, 25]}
@@ -63,10 +63,24 @@ export default class AppForm extends Component {
         onStop={this.onControlledDragStop}
       >
           <div className="w-full max-w-sm mx-auto">
-            <div className="handle">Drag here</div>
-            <div>x: {this.state.deltaPosition.x.toFixed(0)}, y: {this.state.deltaPosition.y.toFixed(0)}</div>
+            {/*<div className="handle">Drag here</div>*/}
+            {/*<div>x: {this.state.deltaPosition.x.toFixed(0)}, y: {this.state.deltaPosition.y.toFixed(0)}</div>*/}
             {!this.state.submitted && (
               <form onSubmit={this.handleSubmit}>
+                <div className="py-4 flex flex-row items-center">
+                  <div className="mx-4">
+                   How do your rate this site?
+                  </div>
+                  <ReactStars
+                    count={5}
+                    onChange={this.ratingChanged}
+                    size={20}
+                    color2={'#ffd700'}
+                    edit={true}
+                    half={false}
+                    value={this.state.rating}
+                  />
+                </div>
                 <div className="mb-4">
                   <textarea
                     className="w-full shadow-inner p-4 border-0"
@@ -79,19 +93,7 @@ export default class AppForm extends Component {
                     aria-describedby="commentText"
                   />
                 </div>
-                <div className="mb-4">
 
-                  <ReactStars
-                    count={5}
-                    onChange={this.ratingChanged}
-                    size={24}
-                    color2={'#ffd700'}
-                    edit={true}
-                    half={false}
-                    value={this.state.rating}
-                  />
-
-                </div>
                 <div className="mb-6">
                   <input type="submit" value="Submit" className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow" />
                 </div>
