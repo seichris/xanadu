@@ -60,6 +60,7 @@ export default class App extends Component {
       members: false
     });
     this.setState({ threadComments }, ()=>(this.getCommentsThread()));
+    console.log(threadComments);
     }
 
   async getAppsThread() {
@@ -71,6 +72,7 @@ export default class App extends Component {
     // use this option, if your user has authenticated to their 3Box and space
     const posts = await this.state.threadApps.getPosts();
     this.setState({posts});
+    console.log(posts);
 
     // use this option, if your user has not yet authenticated to their 3Box and space
     //const thread = await box.openThread('https://xanadu.now.sh', 'context', { firstModerator: chris, members: false })
