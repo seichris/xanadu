@@ -50,12 +50,7 @@ export default class App extends Component {
       const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
       const box = await Box.openBox(this.state.accounts[0], window.ethereum);
       this.setState({ box });
-      const currentURL = window.location.href;
-      const cleanCurrentURL = currentURL.replace(/\//g, "_");
-      console.log(cleanCurrentURL);
-      const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
-      console.log(cleanerCurrentURL);
-      const space = await this.state.box.openSpace(cleanerCurrentURL);
+      const space = await this.state.box.openSpace("xanadu_now_sh");
       this.setState({ space });
 
       const threadApps = await space.joinThread("context", {
