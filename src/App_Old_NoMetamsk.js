@@ -24,21 +24,90 @@ export default class App extends Component {
   state = {
     needToAWeb3Browser: false
   };
+  /*async getAddressFromMetaMask() {
+    if (typeof window.ethereum == "undefined") {
+      this.setState({ needToAWeb3Browser: true });
+    } else {
+      window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
+      const accounts = await window.ethereum.enable();
+      this.setState({ accounts });
+    }
+  }*/
 
   async componentDidMount() {
-
-    const currentURL = window.location.href;
-    const cleanCurrentURL = currentURL.replace(/\//g, "_");
+    /*await this.getAddressFromMetaMask();
+    if (this.state.accounts) {
+      const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
+      this.setState({ threeBoxProfile });
+    }*/
+    //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
     const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-    // check if there is a thread for this currentURL
-    const threadCommentsThisURL = await Box.getThread(cleanCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
-    this.setState({ threadCommentsThisURL });
+    /*const box = await Box.openBox(this.state.accounts[0], window.ethereum);*/
+    const box = await Box.openBox("0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE", window.ethereum);
+    this.setState({ box });
+    // open a new space for each current URL
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    const cleanCurrentURL = currentURL.replace(/\//g, "_");
+    console.log(cleanCurrentURL);
+    const space = await this.state.box.openSpace(cleanCurrentURL);
+    this.setState({ space });
 
-    console.log(threadCommentsThisURL);
+    const threadApps = await space.joinThread("context", {
+    //const thread = await space.joinThread("application_list", {
+      firstModerator: chris,
+      members: false
+    });
+    this.setState({ threadApps }, ()=>(this.getAppsThread()));
+
+    // add another thread
+    const threadComments = await space.joinThread("xanadu_now_sh_comments", {
+      firstModerator: chris,
+      members: false
+    });
+    this.setState({ threadComments }, ()=>(this.getCommentsThread()));
 
     }
 
 
+  async getAppsThread() {
+    if (!this.state.threadApps) {
+      console.error("apps thread not in react state");
+      return;
+    }
+
+    // use this option, if your user has authenticated to their 3Box and space
+    const posts = await this.state.threadApps.getPosts();
+    this.setState({posts});
+
+    // use this option, if your user has not yet authenticated to their 3Box and space
+    //const thread = await box.openThread('https://xanadu.now.sh', 'context', { firstModerator: chris, members: false })
+    //const posts = await thread.getPosts()
+    //console.log(posts)
+
+    await this.state.threadApps.onUpdate(async()=> {
+      const posts = await this.state.threadApps.getPosts();
+      this.setState({posts});
+    })
+  }
+
+  async getCommentsThread() {
+
+    if (!this.state.threadComments) {
+      console.error("comments thread not in react state");
+      return;
+    }
+
+    // use this option, if your user has authenticated to their 3Box and space
+
+    const comments = await this.state.threadComments.getPosts();
+    this.setState({comments});
+
+    await this.state.threadComments.onUpdate(async()=> {
+      const comments = await this.state.threadComments.getPosts();
+      this.setState({comments});
+    })
+  }
 
   render() {
     if (this.state.needToAWeb3Browser) {
@@ -54,14 +123,14 @@ export default class App extends Component {
                 <HeroSection />
                 <HeroCommentSection
                   accounts={this.state.accounts}
-                  thread={this.state.threadCommentsThisURL}
-                  //box={this.state.box}
-                  //space={this.state.space}
+                  thread={this.state.threadComments}
+                  box={this.state.box}
+                  space={this.state.space}
                   threadMembers={this.state.threadMembers}
                   posts={this.state.comments}
-                  //threeBoxProfile={this.state.threeBoxProfile}
-                  //getAppsThread={this.getAppsThread.bind(this)}
-                  //getCommentsThread={this.getCommentsThread.bind(this)}
+                  threeBoxProfile={this.state.threeBoxProfile}
+                  getAppsThread={this.getAppsThread.bind(this)}
+                  getCommentsThread={this.getCommentsThread.bind(this)}
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
@@ -72,7 +141,7 @@ export default class App extends Component {
                 <FooterSection />
               </div>
             </Route>
-            {/*<Route path="/profile">
+            <Route path="/profile">
               {this.state.space && (
                 <div className="container mx-auto px-4 flex flex-wrap justify-center">
                   <Profile
@@ -89,9 +158,8 @@ export default class App extends Component {
                   <ClimbingBoxLoader color={"blue"} />
                 </div>
               )}
-            </Route>*/}
-
-            {/*<Route path="/add-application">
+            </Route>
+            <Route path="/add-application">
               {this.state.accounts && (
                 <div className="container mx-auto px-4">
                   <AddApp
@@ -108,9 +176,9 @@ export default class App extends Component {
                 </div>
               )}
               {!this.state.accounts && <h1>Login with metamask</h1>}
-            </Route>*/}
+            </Route>
 
-            {/*<Route exact path="/public-feed">
+            <Route exact path="/public-feed">
               <div className="container mx-auto px-4">
                 <PublicFeed
                   posts={this.state.posts}
@@ -123,9 +191,8 @@ export default class App extends Component {
                 />
                 <FooterSection />
               </div>
-            </Route>*/}
-
-            {/*<Route exact path="/public-feed-comments">
+            </Route>
+            <Route exact path="/public-feed-comments">
               <div className="container mx-auto px-4">
                 <PublicFeedComments
                   posts={this.state.comments}
@@ -138,7 +205,7 @@ export default class App extends Component {
                 />
                 <FooterSection />
               </div>
-            </Route>*/}
+            </Route>
           </Switch>
         </div>
       </Router>

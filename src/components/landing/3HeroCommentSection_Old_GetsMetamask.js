@@ -25,27 +25,6 @@ export default class AddApp extends Component {
     }
   }
 
-
-  async getCommentsThread() {
-    const currentURL = window.location.href;
-    const cleanCurrentURL = currentURL.replace(/\//g, "_");
-    if (!this.props.threadComments) {
-      console.error("comments thread not in react state");
-      return;
-    }
-
-    // use this option, if your user has authenticated to their 3Box and space
-
-    const comments = await this.state.threadComments.getPosts();
-    this.setState({comments});
-
-    await this.props.threadComments.onUpdate(async()=> {
-      const comments = await this.props.threadComments.getPosts();
-      this.setState({comments});
-    })
-  }
-
-
   savePost = async formData => {
     // should load metamask on save
 
@@ -56,21 +35,18 @@ export default class AddApp extends Component {
       this.setState({ threeBoxProfile });
     }
 
+    const currentURL = window.location.href;
+    console.log(currentURL);
+    const cleanCurrentURL = currentURL.replace(/\//g, "_");
+    console.log(cleanCurrentURL);
     const box = await Box.openBox(this.state.accounts[0], window.ethereum);
     this.setState({ box });
-
-
-    const currentURL = window.location.href;
-    const cleanCurrentURL = currentURL.replace(/\//g, "_");
     const space = await this.state.box.openSpace(cleanCurrentURL);
-    this.setState({ space });
-
-
 
     // add the loggedin account to the form data to be saved
     formData.account = this.state.accounts[0];
     await this.props.thread.post(formData);
-    this.state.getCommentsThread();
+    this.props.getCommentsThread();
   };
 
   state = {
