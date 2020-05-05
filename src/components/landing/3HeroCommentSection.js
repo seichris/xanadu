@@ -59,7 +59,10 @@ render() {
          <div className="">
            {(!this.props.posts || this.props.posts.length < 1) && (
              <div style={{ width: "60px", margin: "auto" }}>
-               <ClimbingBoxLoader color={"blue"} />
+               {/*<ClimbingBoxLoader color={"blue"} />*/}
+               <p>
+                 No comments yet. Make the first comment.
+               </p>
              </div>
            )}
            {this.props.posts &&
