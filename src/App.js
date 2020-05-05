@@ -30,9 +30,11 @@ export default class App extends Component {
       // if there is no Metamask, show public thread.posts for this URL
       this.setState({ needsAWeb3Browser: true });
       const currentURL = window.location.href;
-      const cleanCurrentURL = currentURL.replace(/\//g, "_");
+      const cleanCurrentURL = currentURL.replace("\\."g, "_");
+      const cleanerCurrentURL = currentURL.replace(/\./g, "_");
+      console.log(cleanerCurrentURL);
       //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-      const threadCommentsThisURL = await Box.getThread(cleanCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+      const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
       this.setState({ threadCommentsThisURL });
       console.log(threadCommentsThisURL);
     } else {
@@ -50,7 +52,10 @@ export default class App extends Component {
       this.setState({ box });
       const currentURL = window.location.href;
       const cleanCurrentURL = currentURL.replace(/\//g, "_");
-      const space = await this.state.box.openSpace(cleanCurrentURL);
+      console.log(cleanCurrentURL);
+      const cleanerCurrentURL = currentURL.replace(/\./g, "_");
+      console.log(cleanerCurrentURL);
+      const space = await this.state.box.openSpace(cleanerCurrentURL);
       this.setState({ space });
 
       const threadApps = await space.joinThread("context", {
