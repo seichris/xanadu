@@ -36,8 +36,8 @@ export default class App extends Component {
       //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
       const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
       const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
-      this.setState({ threadCommentsThisURL , threadProductsThisURL });
-      //this.setState({ threadProductsThisURL });
+      this.setState({ threadCommentsThisURL });
+      this.setState({ threadProductsThisURL });
     } else {
       // if Metamask detected, then set accounts
       window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
