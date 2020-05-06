@@ -38,6 +38,8 @@ export default class App extends Component {
       const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
       this.setState({ threadCommentsThisURL });
       this.setState({ threadProductsThisURL });
+      console.log(this.state.threadCommentsThisURL);
+      console.log(this.state.threadProductsThisURL);
     } else {
       // if Metamask detected, then set accounts
       window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
