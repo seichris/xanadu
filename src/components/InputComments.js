@@ -36,6 +36,7 @@ export default class AppForm extends Component {
     });
 
     this.setState(Object.assign({}, blankState, { submitted: true }));
+    console.log(this.state.submitted);
   };
 
 
