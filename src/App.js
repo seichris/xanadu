@@ -142,6 +142,7 @@ export default class App extends Component {
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
+                  needsAWeb3Browser={this.state.needsAWeb3Browser}
                 />
                 <FlowSection />
                 <BenefitsSection />
@@ -158,6 +159,7 @@ export default class App extends Component {
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
+                  needsAWeb3Browser={this.state.needsAWeb3Browser}
                 />
                 <FooterSection />
               </div>

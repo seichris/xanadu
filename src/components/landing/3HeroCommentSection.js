@@ -45,9 +45,17 @@ render() {
               What do you think about this proposition?
             </p>
            </div>
-           <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-             {this.state.show ? "cancel" : "Add your shitty opinion"}
-           </button>
+
+           { this.props.needsAWeb3Browser ?
+             <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+               Install metamask to add your comment
+             </a>
+           :
+             <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+               {this.state.show ? "cancel" : "Add your shitty opinion"}
+             </button>
+           }
+
            <div className={`text-center absolute w-full ${this.state.show ? "block" : "hidden"}`}>
              <div className="landingpage-comments-modal w-1/3 mx-auto">
 

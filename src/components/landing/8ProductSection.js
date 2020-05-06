@@ -140,9 +140,17 @@ export default class ProductSection extends Component {
             Which other use cases come to your mind?
             </p>
           </div>
-          <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-            {this.state.show ? "cancel" : "Add them to the site!"}
-          </button>
+
+          { this.props.needsAWeb3Browser ?
+            <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+              Install metamask to add your idea
+            </a>
+          :
+            <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+              {this.state.show ? "cancel" : "Add them to the site!"}
+            </button>
+          }
+
         </div>
 
         <div className="h-64 w-screen relative bg-rainbow -mx-40">
