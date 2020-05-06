@@ -36,6 +36,7 @@ export default class InputProductIdeas extends Component {
     });
 
     this.setState(Object.assign({}, blankState, { submitted: true }));
+    console.log(this.state.submitted);
   };
 
 
@@ -55,7 +56,7 @@ export default class InputProductIdeas extends Component {
         bounds="parent"
         //axis="x"
         //handle=".handle"
-        defaultPosition={{x: 200, y: 50}}
+        defaultPosition={{x: 100, y: 50}}
         //positionOffset={{x: '50%', y: '1%'}}
         position={this.deltaPosition}
         //grid={[25, 25]}
