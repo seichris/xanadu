@@ -35,11 +35,11 @@ export default class App extends Component {
       console.log(cleanerCurrentURL);
       //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
       const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
-      const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+      //const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
       this.setState({ threadCommentsThisURL });
-      this.setState({ threadProductsThisURL });
+      //this.setState({ threadProductsThisURL });
       console.log(this.state.threadCommentsThisURL);
-      console.log(this.state.threadProductsThisURL);
+      //console.log(this.state.threadProductsThisURL);
     } else {
       // if Metamask detected, then set accounts
       window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
@@ -148,7 +148,7 @@ export default class App extends Component {
                 />
                 <FlowSection />
                 <BenefitsSection />
-                <ProductSection
+                {/*<ProductSection
                   accounts={this.state.accounts}
                   thread={productThreadWithOrWithoutMetamask}
                   box={this.state.box}
@@ -162,7 +162,7 @@ export default class App extends Component {
                     this.state.accounts ? this.state.accounts[0] : null
                   }
                   needsAWeb3Browser={this.state.needsAWeb3Browser}
-                />
+                />*/}
                 <FooterSection />
               </div>
             </Route>
