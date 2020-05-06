@@ -67,7 +67,7 @@ render() {
            <div className="mx-auto text-center text-gray-700 mb-12">
              <ScaleLoader color={"#667eea"} />
              <p>
-               loading posts...
+               loading posts... MetaMask will ask you to sign access 3 times.
              </p>
            </div>
          )}
