@@ -38,7 +38,7 @@ export default class App extends Component {
       //const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
       this.setState({ threadCommentsThisURL });
       //this.setState({ threadProductsThisURL });
-      console.log(this.state.threadCommentsThisURL);
+      console.log(threadCommentsThisURL);
       //console.log(this.state.threadProductsThisURL);
     } else {
       // if Metamask detected, then set accounts
@@ -60,6 +60,7 @@ export default class App extends Component {
       console.log(cleanerCurrentURL);
       const space = await this.state.box.openSpace(cleanerCurrentURL);
       this.setState({ space });
+      console.log(space);
 
       const threadProducts = await space.joinThread("productIdeas", {
         firstModerator: chris,
@@ -148,7 +149,7 @@ export default class App extends Component {
                 />
                 <FlowSection />
                 <BenefitsSection />
-                {/*<ProductSection
+                <ProductSection
                   accounts={this.state.accounts}
                   thread={productThreadWithOrWithoutMetamask}
                   box={this.state.box}
@@ -162,7 +163,7 @@ export default class App extends Component {
                     this.state.accounts ? this.state.accounts[0] : null
                   }
                   needsAWeb3Browser={this.state.needsAWeb3Browser}
-                />*/}
+                />
                 <FooterSection />
               </div>
             </Route>
