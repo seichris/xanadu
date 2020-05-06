@@ -4,22 +4,22 @@ import Draggable from 'react-draggable';
 
 const blankState = {
   comment: "",
-  rating: "",
+  //rating: "",
   deltaPosition: {
         x: 0, y: 0
       }
 };
-export default class AppForm extends Component {
+export default class InputProductIdeas extends Component {
   state = blankState;
 
   handleChange = event => {
     this.setState(Object.assign({ [event.target.name]: event.target.value }));
   };
 
-  ratingChanged = (newRating) => {
+  /*ratingChanged = (newRating) => {
     console.log(`${newRating} stars`);
     this.setState(Object.assign({ rating: newRating }));
-  };
+  };*/
 
   async validateFormFields() {
     console.log("to do - validiate form");
@@ -31,7 +31,7 @@ export default class AppForm extends Component {
 
     this.props.savePost({
       comment: this.state.comment,
-      rating: this.state.rating,
+      //rating: this.state.rating,
       deltaPosition: this.state.deltaPosition,
     });
 
@@ -52,9 +52,11 @@ export default class AppForm extends Component {
   render() {
     return (
       <Draggable
+        bounds="parent"
         //axis="x"
         //handle=".handle"
-        defaultPosition={{x: 0, y: 0}}
+        defaultPosition={{x: 200, y: 50}}
+        //positionOffset={{x: '50%', y: '1%'}}
         position={this.deltaPosition}
         //grid={[25, 25]}
         scale={1}
@@ -62,29 +64,15 @@ export default class AppForm extends Component {
         onDrag={this.handleDrag}
         onStop={this.onControlledDragStop}
       >
-          <div className="w-full max-w-sm mx-auto">
+          <div className="max-w-sm">
             {/*<div className="handle">Drag here</div>*/}
             {/*<div>x: {this.state.deltaPosition.x.toFixed(0)}, y: {this.state.deltaPosition.y.toFixed(0)}</div>*/}
             {!this.state.submitted && (
               <form onSubmit={this.handleSubmit}>
-                <div className="py-4 flex flex-row items-center">
-                  <div className="mx-4">
-                   How do your rate this site?
-                  </div>
-                  <ReactStars
-                    count={5}
-                    onChange={this.ratingChanged}
-                    size={20}
-                    color2={'#ffd700'}
-                    edit={true}
-                    half={false}
-                    value={this.state.rating}
-                  />
-                </div>
-                <div className="mb-4">
+                <div>
                   <textarea
                     className="w-full shadow-inner p-4 border-0"
-                    placeholder="Add your comment."
+                    placeholder="Add your idea, and drag the note"
                     rows="2"
                     value={this.state.comment}
                     onChange={this.handleChange}
@@ -94,19 +82,19 @@ export default class AppForm extends Component {
                   />
                 </div>
 
-                <div className="mb-6">
+                <div>
                   <input type="submit" value="Submit" className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow" />
                 </div>
 
               </form>
             )}
-            {this.state.submitted && <div className="jumbotron">
+            {/*{this.state.submitted && <div className="jumbotron">
                 <h1>Thank you for submiting</h1>
                 <button className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow"  onClick={()=>(this.setState({submitted : false}))}>
-                  Add another comment
+                  Add another idea
                 </button>
               </div>
-            }
+            }*/}
           </div>
         </Draggable>
         );

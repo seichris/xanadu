@@ -33,10 +33,18 @@ export default class AddApp extends Component {
 render() {
      return (
        <div className="container relative">
-         <div className="items-center text-center my-24 -mx-2">
-           <p className="mb-4 text-gray-700 ">
-             What do you think about this proposition?
-           </p>
+        <div className="items-center my-24 text-center">
+          <div className="w-1/4 mx-auto text-left">
+            <p className="mb-4 text-gray-700">
+              context is so valuable
+            </p>
+            <p className="mb-4 text-gray-700">
+              this chrome addon allows us to add content to any website. ratings, comments, tldr, recommendations, social context...
+            </p>
+            <p className="mb-4 text-gray-700">
+              What do you think about this proposition?
+            </p>
+           </div>
            <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
              {this.state.show ? "cancel" : "Add your shitty opinion"}
            </button>
@@ -54,32 +62,29 @@ render() {
          </div>
        </div>
 
-
-
-       {/* show me all comments. could also be on the press of a button */}
-         <div className="">
-           {(!this.props.posts || this.props.posts.length < 1) && (
-             <div className="mx-auto text-center text-gray-700">
-               <ScaleLoader color={"#667eea"} />
-               <p>
-                 No comments yet. Be first to add one!
-               </p>
-             </div>
-           )}
-           {this.props.posts &&
-             this.props.posts.map((post, i) => {
-               return (
-                   <CommentCard
-                     post={post}
-                     key={i}
-                     threeBox={this.props.threeBox}
-                     space={this.props.space}
-                     box={this.props.box}
-                     usersAddress={this.props.usersAddress}
-                     i={i} />
-               );
-             })}
-         </div>
+       <div>
+         {(!this.props.posts || this.props.posts.length < 1) && (
+           <div className="mx-auto text-center text-gray-700 mb-12">
+             <ScaleLoader color={"#667eea"} />
+             <p>
+               loading posts...
+             </p>
+           </div>
+         )}
+         {this.props.posts &&
+           this.props.posts.map((post, i) => {
+             return (
+                 <CommentCard
+                   post={post}
+                   key={i}
+                   threeBox={this.props.threeBox}
+                   space={this.props.space}
+                   box={this.props.box}
+                   usersAddress={this.props.usersAddress}
+                   i={i} />
+             );
+           })}
+       </div>
 
      </div>
      );
@@ -91,7 +96,7 @@ render() {
      return (
      <div className="h-0">
        <Draggable defaultPosition={this.props.post.message.deltaPosition}>
-       <div className="comments-box-landing w-1/4 flex flex-col mx-auto items-center">
+       <div className="comments-box-landing w-1/5 flex flex-col mx-auto items-center">
          <div className="relative" style={{ padding: "20px" }}>
            <p>
              {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}

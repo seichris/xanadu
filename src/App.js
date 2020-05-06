@@ -35,8 +35,9 @@ export default class App extends Component {
       console.log(cleanerCurrentURL);
       //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
       const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+      const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
       this.setState({ threadCommentsThisURL });
-      console.log(threadCommentsThisURL);
+      this.setState({ threadProductsThisURL });
     } else {
       // if Metamask detected, then set accounts
       window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
@@ -58,11 +59,11 @@ export default class App extends Component {
       const space = await this.state.box.openSpace(cleanerCurrentURL);
       this.setState({ space });
 
-      const threadApps = await space.joinThread("context", {
+      const threadProducts = await space.joinThread("productIdeas", {
         firstModerator: chris,
         members: false
       });
-      this.setState({ threadApps }, ()=>(this.getAppsThread()));
+      this.setState({ threadProducts }, ()=>(this.getProductsThread()));
 
       // add another thread
       const threadComments = await space.joinThread("xanadu_now_sh_comments", {
@@ -74,16 +75,16 @@ export default class App extends Component {
     }
   }
 
-  async getAppsThread() {
-    if (!this.state.threadApps) {
-      console.error("apps thread not in react state");
+  async getProductsThread() {
+    if (!this.state.threadProducts) {
+      console.error("products thread not in react state");
       return;
     }
-    const posts = await this.state.threadApps.getPosts();
-    this.setState({posts});
-    await this.state.threadApps.onUpdate(async()=> {
-      const posts = await this.state.threadApps.getPosts();
-      this.setState({posts});
+    const products = await this.state.threadProducts.getPosts();
+    this.setState({products});
+    await this.state.threadProducts.onUpdate(async()=> {
+      const products = await this.state.threadProducts.getPosts();
+      this.setState({products});
     })
   }
 
@@ -100,29 +101,25 @@ export default class App extends Component {
     })
   }
 
-    // open Box
-
-    // open space
-
-    // open thread
-
-    // open posts
-
-    // forward all these to the components as (box, space, account, threeBoxProfile, thread, posts)
-    // trigger it in Save Post
 
 
   render() {
 
-    let postsWithOrWithoutMetamask = 0;
     let threadWithOrWithoutMetamask = 0;
+    let postsWithOrWithoutMetamask = 0;
+    let productThreadWithOrWithoutMetamask = 0;
+    let productPostsWithOrWithoutMetamask = 0;
 
     if (this.state.needsAWeb3Browser) {
       threadWithOrWithoutMetamask = this.state.threadCommentsThisURL;
       postsWithOrWithoutMetamask = this.state.threadCommentsThisURL;
+      productThreadWithOrWithoutMetamask = this.state.threadProductsThisURL;
+      productPostsWithOrWithoutMetamask = this.state.threadProductsThisURL;
     } else {
       threadWithOrWithoutMetamask = this.state.threadComments;
       postsWithOrWithoutMetamask = this.state.comments;
+      productThreadWithOrWithoutMetamask = this.state.threadProducts;
+      productPostsWithOrWithoutMetamask = this.state.products;
     }
 
     return (
@@ -148,7 +145,20 @@ export default class App extends Component {
                 />
                 <FlowSection />
                 <BenefitsSection />
-                <ProductSection />
+                <ProductSection
+                  accounts={this.state.accounts}
+                  thread={productThreadWithOrWithoutMetamask}
+                  box={this.state.box}
+                  space={this.state.space}
+                  threadMembers={this.state.threadMembers}
+                  posts={productPostsWithOrWithoutMetamask}
+                  threeBoxProfile={this.state.threeBoxProfile}
+                  //getAppsThread={this.getAppsThread.bind(this)}
+                  getProductsThread={this.getProductsThread.bind(this)}
+                  usersAddress={
+                    this.state.accounts ? this.state.accounts[0] : null
+                  }
+                />
                 <FooterSection />
               </div>
             </Route>
@@ -171,12 +181,12 @@ export default class App extends Component {
               )}
             </Route>
 
-            <Route path="/add-application">
+            {/*<Route path="/add-application">
               {this.state.accounts && (
                 <div className="container mx-auto px-4">
                   <AddApp
                     accounts={this.state.accounts}
-                    thread={this.state.threadApps}
+                    thread={this.state.threadProducts}
                     box={this.state.box}
                     space={this.state.space}
                     threadMembers={this.state.threadMembers}
@@ -188,9 +198,9 @@ export default class App extends Component {
                 </div>
               )}
               {!this.state.accounts && <h1>Login with metamask</h1>}
-            </Route>
+            </Route>*/}
 
-            <Route exact path="/public-feed">
+            {/*<Route exact path="/public-feed">
               <div className="container mx-auto px-4">
                 <PublicFeed
                   posts={this.state.posts}
@@ -203,7 +213,7 @@ export default class App extends Component {
                 />
                 <FooterSection />
               </div>
-            </Route>
+            </Route>*/}
 
             <Route exact path="/public-feed-comments">
               <div className="container mx-auto px-4">

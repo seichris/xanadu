@@ -60,3 +60,17 @@
     font-size: 0.75rem !important;
     font-weight: 200 !important;
 }
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+.bg-rainbow {
+    background: linear-gradient(45deg,red,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8,red);
+
+    background-size: 400%;
+    animation: glowing 200s linear infinite;
+    border-radius: 4px;
+}

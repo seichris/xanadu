@@ -6,7 +6,7 @@ import flow3 from './../../images/flow/reward.png';
 function FlowSection(props) {
   return (
     <section className="py-12 px-4">
-      <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed text-center">HOW IT WORKS</p>
+      <p className="max-w-2xl mx-auto text-gray-500 leading-relaxed text-center">HOW IT WORKS (delete this. add it to different products and add a technical section below the products with 3box, ethereum, ipfs and their benefits)</p>
       {/*<h2 className="text-4xl mb-2 leading-tight font-heading text-center">Use the internet just like a google doc</h2>
       <p className="text-gray-500">click the div to auth with ethereum and open your first note</p>*/}
       <div className="flex flex-wrap items-center -mx-8 mt-12 mb-2">
