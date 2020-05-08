@@ -101,13 +101,13 @@ export default class AppForm extends Component {
 
               </form>
             )}
-            {this.state.submitted && <div className="jumbotron">
+            {/*{this.state.submitted && <div className="jumbotron">
                 <h1>Thank you for submiting</h1>
                 <button className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow"  onClick={()=>(this.setState({submitted : false}))}>
                   Add another comment
                 </button>
               </div>
-            }
+            }*/}
           </div>
         </Draggable>
         );
