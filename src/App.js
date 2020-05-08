@@ -5,14 +5,13 @@ import { ScaleLoader } from "react-spinners";
 
 import HeroSection from "./components/landing/2HeroSection";
 import HeroCommentSection from "./components/landing/3HeroCommentSection";
-import FlowSection from "./components/landing/6FlowSection";
 import BenefitsSection from "./components/landing/7BenefitsSection";
 import ProductSection from "./components/landing/8ProductSection";
 import FooterSection from "./components/10FooterSection";
 
-import PublicFeed from "./pages/PublicFeed";
+//import PublicFeed from "./pages/PublicFeed";
 import PublicFeedComments from "./pages/PublicFeedComments";
-import AddApp from "./pages/AddApp";
+//import AddApp from "./pages/AddApp";
 import Profile from "./pages/Profile";
 
 const getThreeBox = async address => {
@@ -147,7 +146,6 @@ export default class App extends Component {
                   }
                   needsAWeb3Browser={this.state.needsAWeb3Browser}
                 />
-                <FlowSection />
                 <BenefitsSection />
                 <ProductSection
                   accounts={this.state.accounts}

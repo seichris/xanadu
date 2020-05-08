@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactStars from 'react-stars';
 import Draggable from 'react-draggable';
 
 const blankState = {

@@ -34,27 +34,28 @@ render() {
      return (
        <div className="container relative">
         <div className="items-center my-24 text-center">
-          <div className="w-1/4 mx-auto text-left">
-            <p className="mb-4 text-gray-700">
-              context is so valuable
+          <div className="mx-auto">
+            <p className="">
+              Add social context to any website, to guide new community members in their research.
             </p>
-            <p className="mb-4 text-gray-700">
-              this chrome addon allows us to add content to any website. ratings, comments, tldr, recommendations, social context...
+            <p className="my-4">
+             And get rewarded with tradable onchain reputation.
             </p>
-            <p className="mb-4 text-gray-700">
-              What do you think about this proposition?
+            <p className="my-4">
+              What do you think? &nbsp;
+              { this.props.needsAWeb3Browser ?
+                <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="underline">
+                  Install metamask to add your comment
+                </a>
+              :
+                <button onClick={this.switchShowHide} className="underline">
+                  {this.state.show ? "cancel" : "Add your shitty opinion!"}
+                </button>
+              }
             </p>
            </div>
 
-           { this.props.needsAWeb3Browser ?
-             <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-               Install metamask to add your comment
-             </a>
-           :
-             <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-               {this.state.show ? "cancel" : "Add your shitty opinion"}
-             </button>
-           }
+
 
            <div className={`text-center absolute w-full ${this.state.show ? "block" : "hidden"}`}>
              <div className="landingpage-comments-modal w-1/3 mx-auto">
