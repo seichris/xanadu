@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 //import AppForm from './AppForm';
 //import AddApp from '.././pages/AddApp';
 //import { ClimbingBoxLoader } from 'react-spinners';
-import logo from './../../images/eth.png';
+import logo from './../../images/logos/eth.png';
 
 export default class HeroSection extends Component {
 
@@ -19,7 +19,7 @@ export default class HeroSection extends Component {
               <img src={logo} alt="Xanadu" width="50"/>
               <div>
                 <h2 className="text-5xl mb-6 leading-tight font-heading">share your personal {"\n"} version of the web</h2>
-                <h3 className="mb-6 leading-tight font-heading">Edit any website, just like a google doc, share it & get rewards</h3>
+                <h3 className="mb-6 leading-tight font-heading">a web³ note tool</h3>
               </div>
             </div>
           </div>

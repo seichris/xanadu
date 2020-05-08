@@ -17,7 +17,7 @@ class AppCard extends Component {
     return (
     <>
       <div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
-        <div className="relative" style={{ padding: "20px" }}>
+        <div className="relative p-12 bg-white rounded-sm shadow w-full">
           <h5>
             {this.props.post.message.name ? this.props.post.message.name : "unknown"}
           </h5>

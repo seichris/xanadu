@@ -1,0 +1,63 @@
+{
+  "ethereumsection": [
+    {
+      "id": "1",
+      "h3": "Link existing TLDR, ELI5 to the source",
+      "p": "Curate a list of crypto ELI5s from twitter, reddit, telegram and link them where they are relevant. Like a crowdsourced ethereum twitter account, linked to ethereum.org.",
+      "image1": "1tldrs.png"
+    },
+    {
+      "id": "2",
+      "h3": "Comment and curate visible context",
+      "p": "....",
+      "image1": "reputation-vitalik.jpg"
+    },
+    {
+      "id": "3",
+      "h3": "Improve open source projects as non-coder",
+      "p": ".....",
+      "image1": "3graph.png"
+    },
+    {
+      "id": "4",
+      "h3": "Rate anything",
+      "p": "Trust score. Investment ratings. Security ratings. Entertainment value. Service score. Rate anything. Help metamask to keep their phishing database up to date. And view your friends ratings.",
+      "image1": "metamask-warning.jpg"
+    },
+    {
+      "id": "5",
+      "h3": "Share your address book with friends",
+      "p": "Share your address book with friends, access database of labelled addresses and send money to users via their github or twitter name.",
+      "image1": "chongqing.jpg"
+    },
+    {
+      "id": "6",
+      "h3": "Discover Ethereum mentors",
+      "p": "Experienced Ethereum commmunity members link content, creating context for the ones who just start out. Newbs upvote and mentors gain reputation - purely anonymous and onchain.",
+      "image1": "6mentors.png"
+    }],
+  "beyondsection": [{
+      "id": "1",
+      "h3": "Discover great content",
+      "p": "Exchange p2p recommendations: videos, music, restaurants, longread, movie. Add and receive content similar to the one you currently view.",
+      "image1": "chongqing.jpg"
+    },
+    {
+      "id": "2",
+      "h3": "Dark mode anywhere",
+      "p": "Personalize websites. Follow lists like \"darkmode anywhere\" and edit the css of your favorite website.",
+      "image1": "chongqing.jpg"
+    },
+    {
+      "id": "1",
+      "h3": "Spot fake news",
+      "p": "Know another source, which says the opposite? Post it and get rewarded",
+      "image1": "chongqing.jpg"
+    },
+    {
+      "id": "2",
+      "h3": "Better ad market",
+      "p": "Better data for brave ads. Allow anyone to put ads anywhere and match them with viewers. Users price the viewing time. Allowing for variable pricing.",
+      "image1": "chongqing.jpg"
+    }]
+}
