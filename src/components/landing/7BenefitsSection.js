@@ -1,6 +1,6 @@
 import React from 'react';
-import eth from './../../images/logos/eth.png';
-import xanadu from './../../images/logos/eth_logo.png';
+import xanadu from './../../images/logos/eth.png';
+import eth from './../../images/logos/eth_logo.png';
 import threebox from './../../images/logos/3box.png';
 import ipfs from './../../images/logos/ipfs.png';
 
@@ -22,7 +22,7 @@ function BenefitsSection(props) {
         <div className="lg:w-1/4 px-8 mb-8">
           <img className="h-16 w-auto mx-auto  my-4" src={ipfs} alt="ipfs"/>
           <p className="font-semibold mb-2">
-          Free data
+          Anywhere, forever, accountable
           </p>
           <p className=" mb-2">
           Safe data to ipfs, for it shall always be there
@@ -100,7 +100,4 @@ export default BenefitsSection;
 
   v7: existing context
   ➖ show twitter search, reddit search, hackernews search. if that link is posted there
-
-
-
 */}

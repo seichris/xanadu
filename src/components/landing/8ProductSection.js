@@ -35,69 +35,44 @@ export default class ProductSection extends Component {
       <section className="py-12 px-4">
         {/*<p className="text-center max-w-2xl mx-auto text-gray-500 leading-relaxed">PRODUCTS</p>
         <h2 className="text-center text-4xl mb-4 font-heading">What can we do with this?</h2>*/}
-        <p className="text-center mx-auto">
-          Ethereum knowledge being scattered throughout social, forums, etc makes it hard for newcomers to get started.
-        </p>
-        <p className="text-center mx-auto">
-          Using xanadu, we incentivize community members to free common good information from silos to where people need it.
-        </p>
+        <div className="pb-8">
+          <p className="text-center mx-auto">
+            Its hard for newcomers to get started, as Ethereum knowledge is scattered throughout social, forums, etc.
+          </p>
+          <p className="text-center mx-auto">
+            Searching reddit, twitter, google, etc only helps to a certain level. Can we build a better database?
+          </p>
+          <p className="text-center mx-auto">
+          Can we incentivize community members to curate lists of useful content? And link these resources wherever new community members start their research.
+          </p>
+        </div>
 
         <div className="flex flex-col">
 
-          <p className="py-4">For The Ethereum Community</p>
+          <p className="py-4 mx-auto font-semibold uppercase">For The Ethereum Community</p>
           <div className="grid gap-4 grid-cols-2">
           {
             products.ethereumsection.map((eth, id) => {
               return (
-                <div key={id} className="grid  grid-cols-2 rounded shadow-md">
-                  <div className="p-4 h-full bg-gray-100 rounded-l">
-                    <h3 className="font-semibold pb-2">{eth.h3}</h3>
-                    <p>{eth.p}</p>
-                  </div>
-                  <div className="rounded-r">
-                    <img className="rounded-tr" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
-                    <img className="rounded-br" src={require(`./../../images/products/${eth.image2}`)} alt=""/>
-                  </div>
+                <div key={id} className="p-4 bg-gray-100 rounded shadow-md">
+                  <img className="rounded pb-4" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
+                  <h3 className="font-semibold py-4">{eth.h3}</h3>
+                  <p>{eth.p}</p>
                 </div>
               );
             })
           }
           </div>
 
-          <p className="py-4">For Content Creators</p>
+          <p className="py-4 mt-8 mx-auto font-semibold uppercase">Beyond Ethereum</p>
           <div className="grid gap-4 grid-cols-2">
           {
-            products.creatorsection.map((eth, id) => {
+            products.beyondsection.map((eth, id) => {
               return (
-                <div key={id} className="grid  grid-cols-2 rounded shadow-md">
-                  <div className="p-4 h-full bg-gray-100 rounded-l">
-                    <h3 className="font-semibold pb-2">{eth.h3}</h3>
-                    <p>{eth.p}</p>
-                  </div>
-                  <div className="rounded-r">
-                    <img className="rounded-tr" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
-                    <img className="rounded-br" src={require(`./../../images/products/${eth.image2}`)} alt=""/>
-                  </div>
-                </div>
-              );
-            })
-          }
-          </div>
-
-          <p className="py-4">For web2 users</p>
-          <div className="grid gap-4 grid-cols-2">
-          {
-            products.usersection.map((eth, id) => {
-              return (
-                <div key={id} className="grid  grid-cols-2 rounded shadow-md">
-                  <div className="p-4 h-full bg-gray-100 rounded-l">
-                    <h3 className="font-semibold pb-2">{eth.h3}</h3>
-                    <p>{eth.p}</p>
-                  </div>
-                  <div className="rounded-r">
-                    <img className="rounded-tr" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
-                    <img className="rounded-br" src={require(`./../../images/products/${eth.image2}`)} alt=""/>
-                  </div>
+                <div key={id} className="p-4 bg-gray-100 rounded shadow-md">
+                  <img className="rounded pb-4" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
+                  <h3 className="font-semibold py-4">{eth.h3}</h3>
+                  <p>{eth.p}</p>
                 </div>
               );
             })
@@ -108,21 +83,22 @@ export default class ProductSection extends Component {
 
 
         <div className="py-16">
-          <div className="w-1/4 mx-auto text-left">
+          <div className="w-1/4 mx-auto text-center">
             <p className="mb-4 text-gray-700">
             Which other use cases come to your mind?
             </p>
+            { this.props.needsAWeb3Browser ?
+              <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+                Install metamask to add your idea
+              </a>
+            :
+              <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
+                {this.state.show ? "cancel" : "Add them here!"}
+              </button>
+            }
           </div>
 
-          { this.props.needsAWeb3Browser ?
-            <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-              Install metamask to add your idea
-            </a>
-          :
-            <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-              {this.state.show ? "cancel" : "Add them to the site!"}
-            </button>
-          }
+
 
         </div>
 

@@ -35,14 +35,11 @@ render() {
        <div className="container relative">
         <div className="items-center my-24 text-center">
           <div className="mx-auto">
-            <p className="">
-              Add social context to any website, to guide new community members in their research.
+            <p className="my-4">
+             Get rewarded for sharing your notes.
             </p>
             <p className="my-4">
-             And get rewarded with tradable onchain reputation.
-            </p>
-            <p className="my-4">
-              What do you think? &nbsp;
+              How does that sound? &nbsp;
               { this.props.needsAWeb3Browser ?
                 <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="underline">
                   Install metamask to add your comment
