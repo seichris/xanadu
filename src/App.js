@@ -24,6 +24,7 @@ export default class App extends Component {
     needsAWeb3Browser: false
   };
 
+// async butttonClick
   async componentDidMount() {
     if (typeof window.ethereum == "undefined") {
       // if there is no Metamask, show public thread.posts for this URL

@@ -34,8 +34,10 @@ export default class InputProductIdeas extends Component {
       deltaPosition: this.state.deltaPosition,
     });
 
-    this.setState(Object.assign({}, blankState, { submitted: true }));
-    console.log(this.state.submitted);
+    //this.setState(Object.assign({}, blankState, { submitted: true }));
+    this.setState(Object.assign({}, blankState, { deltaPosition: { x: 0, y: 0 } }));
+    let activeBox = document.querySelector(".activeBox");
+    activeBox.style.transform = "translate(0, 0)";
   };
 
 
@@ -64,7 +66,7 @@ export default class InputProductIdeas extends Component {
         onDrag={this.handleDrag}
         onStop={this.onControlledDragStop}
       >
-          <div className="max-w-sm">
+          <div className="max-w-sm activeBox">
             {/*<div className="handle">Drag here</div>*/}
             {/*<div>x: {this.state.deltaPosition.x.toFixed(0)}, y: {this.state.deltaPosition.y.toFixed(0)}</div>*/}
             {!this.state.submitted && (

@@ -8,7 +8,8 @@ import ReactStars from 'react-stars';
 
 export default class AddApp extends Component {
   state = {
-    thread: null
+    thread: null,
+    showCommentOpen: false
   };
 
   savePost = async formData => {
@@ -18,14 +19,10 @@ export default class AddApp extends Component {
       this.props.getCommentsThread();
     };
 
-    state = {
-      show: false
-    };
-
   switchShowHide= () => {
           this.setState(prevState => {
               return {
-                  show: !prevState.show
+                  showCommentOpen: !prevState.showCommentOpen
               }
           })
       }
@@ -46,7 +43,7 @@ render() {
                 </a>
               :
                 <button onClick={this.switchShowHide} className="underline">
-                  {this.state.show ? "cancel" : "Add your shitty opinion!"}
+                  {this.state.showCommentOpen ? "cancel" : "Add your shitty opinion!"}
                 </button>
               }
             </p>
@@ -54,7 +51,7 @@ render() {
 
 
 
-           <div className={`text-center absolute w-full ${this.state.show ? "block" : "hidden"}`}>
+           <div className={`text-center absolute w-full ${this.state.showCommentOpen ? "block" : "hidden"}`}>
              <div className="landingpage-comments-modal w-1/3 mx-auto">
 
              {!this.props.thread && (
