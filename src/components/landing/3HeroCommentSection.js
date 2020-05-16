@@ -8,7 +8,8 @@ import ReactStars from 'react-stars';
 
 export default class AddApp extends Component {
   state = {
-    thread: null
+    thread: null,
+    showCommentOpen: false
   };
 
   savePost = async formData => {
@@ -18,17 +19,14 @@ export default class AddApp extends Component {
       this.props.getCommentsThread();
     };
 
-    state = {
-      show: false
-    };
-
   switchShowHide= () => {
           this.setState(prevState => {
               return {
-                  show: !prevState.show
+                  showCommentOpen: !prevState.showCommentOpen
               }
           })
-      }
+          this.props.askMetamask();
+        }
 
 render() {
      return (
@@ -40,43 +38,41 @@ render() {
             </p>
             <p className="my-4">
               How does that sound? &nbsp;
-              { this.props.needsAWeb3Browser ?
-                <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="underline">
-                  Install metamask to add your comment
-                </a>
-              :
-                <button onClick={this.switchShowHide} className="underline">
-                  {this.state.show ? "cancel" : "Add your shitty opinion!"}
-                </button>
-              }
+              <button onClick={this.switchShowHide} className="underline">
+                {this.state.showCommentOpen ? "cancel" : "Add your shitty opinion!"}
+              </button>
+
             </p>
            </div>
 
 
 
-           <div className={`text-center absolute w-full ${this.state.show ? "block" : "hidden"}`}>
+           <div className={`text-center absolute w-full ${this.state.showCommentOpen ? "block" : "hidden"}`}>
              <div className="landingpage-comments-modal w-1/3 mx-auto">
 
              {!this.props.thread && (
-               <div style={{ width: "100px", margin: "auto" }}>
+               <div className="mx-auto text-gray-700">
                  <ScaleLoader color={"#667eea"} />
+                 <p>
+                   Loading posts... You may have to sign MetaMask 3 times.
+                 </p>
                </div>
              )}
-             {this.props.thread && <InputComments savePost={this.savePost} />}
+             {this.props.thread && <InputComments needsAWeb3Browser={this.props.needsAWeb3Browser} savePost={this.savePost} />}
 
            </div>
          </div>
        </div>
 
        <div>
-         {(!this.props.posts || this.props.posts.length < 1) && (
+         {/*{(!this.props.posts || this.props.posts.length < 1) && (
            <div className="mx-auto text-center text-gray-700 mb-12">
              <ScaleLoader color={"#667eea"} />
              <p>
                loading posts... MetaMask will ask you to sign access 3 times.
              </p>
            </div>
-         )}
+         )}*/}
          {this.props.posts &&
            this.props.posts.map((post, i) => {
              return (
