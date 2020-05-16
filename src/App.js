@@ -167,6 +167,7 @@ export default class App extends Component {
                   threeBoxProfile={this.state.threeBoxProfile}
                   //getAppsThread={this.getAppsThread.bind(this)}
                   getProductsThread={this.getProductsThread.bind(this)}
+                  askMetamask={this.askMetamask.bind(this)}
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }

@@ -7,7 +7,8 @@ import products from './products';
 
 export default class ProductSection extends Component {
   state = {
-    thread: null
+    thread: null,
+    showCommentOpen: false
   };
 
   savePost = async formData => {
@@ -17,16 +18,13 @@ export default class ProductSection extends Component {
       this.props.getProductsThread();
     };
 
-    state = {
-      show: false
-    };
-
   switchShowHide= () => {
           this.setState(prevState => {
               return {
-                  show: !prevState.show
+                  showCommentOpen: !prevState.showCommentOpen
               }
           })
+          this.props.askMetamask();
       }
 
   render() {
@@ -87,15 +85,9 @@ export default class ProductSection extends Component {
             <p className="mb-4 text-gray-700">
             Which other use cases come to your mind?
             </p>
-            { this.props.needsAWeb3Browser ?
-              <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-                Install metamask to add your idea
-              </a>
-            :
-              <button onClick={this.switchShowHide} className="inline-block py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow">
-                {this.state.show ? "cancel" : "Add them here!"}
-              </button>
-            }
+            <button onClick={this.switchShowHide} className="underline">
+              {this.state.showCommentOpen ? "cancel" : "Add them here!"}
+            </button>
           </div>
 
 
@@ -103,24 +95,27 @@ export default class ProductSection extends Component {
         </div>
 
         <div className="h-64 relative bg-white">
-          <div className={`text-center absolute h-64 w-full ${this.state.show ? "block" : "hidden"}`}>
+          <div className={`text-center absolute h-64 w-full ${this.state.showCommentOpen ? "block" : "hidden"}`}>
 
             {!this.props.thread && (
-              <div style={{ width: "100px", margin: "auto" }}>
+              <div className="mx-auto text-gray-700">
                 <ScaleLoader color={"#667eea"} />
+                <p>
+                   Loading posts... You may have to sign MetaMask 3 times.
+                 </p>
               </div>
             )}
-            {this.props.thread && <InputProductIdeas savePost={this.savePost} />}
+            {this.props.thread && <InputProductIdeas needsAWeb3Browser={this.props.needsAWeb3Browser} savePost={this.savePost} />}
 
           </div>
-          {(!this.props.posts || this.props.posts.length < 1) && (
+          {/*{(!this.props.posts || this.props.posts.length < 1) && (
             <div className="mx-auto text-center text-gray-700 mb-12">
               <ScaleLoader color={"#667eea"} />
               <p>
                 loading posts...
               </p>
             </div>
-          )}
+          )}*/}
           {this.props.posts &&
             this.props.posts.map((post, i) => {
               return (
