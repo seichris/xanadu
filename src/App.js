@@ -24,57 +24,65 @@ export default class App extends Component {
     needsAWeb3Browser: false
   };
 
-// async butttonClick
   async componentDidMount() {
-    if (typeof window.ethereum == "undefined") {
-      // if there is no Metamask, show public thread.posts for this URL
-      this.setState({ needsAWeb3Browser: true });
-      const currentURL = window.location.href;
-      const cleanCurrentURL = currentURL.replace(/\//g, "_");
-      const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
-      console.log(cleanerCurrentURL);
-      //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-      const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
-      //const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
-      this.setState({ threadCommentsThisURL });
-      //this.setState({ threadProductsThisURL });
-      console.log(threadCommentsThisURL);
-      //console.log(this.state.threadProductsThisURL);
+    this.setState({ needsAWeb3Browser: true });
+    const currentURL = window.location.href;
+    const cleanCurrentURL = currentURL.replace(/\//g, "_");
+    const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
+    console.log(cleanerCurrentURL);
+    //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
+    const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+    //const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+    this.setState({ threadCommentsThisURL });
+    //this.setState({ threadProductsThisURL });
+    console.log(threadCommentsThisURL);
+    //console.log(this.state.threadProductsThisURL);
+    /*if (typeof window.ethereum == "object") {
+      this.setState({ needsAWeb3Browser: false });
     } else {
-      // if Metamask detected, then set accounts
-      window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
-      const accounts = await window.ethereum.enable();
-      this.setState({ accounts });
+      this.setState({ needsAWeb3Browser: true });
+    }*/
+    console.log(this.state.needsAWeb3Browser);
+    }
 
-      const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
-      this.setState({ threeBoxProfile });
+  async askMetamask() {
+    if (typeof window.ethereum == "object") {
+    // if Metamask detected, then set accounts
 
-      //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
-      const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-      const box = await Box.openBox(this.state.accounts[0], window.ethereum);
-      this.setState({ box });
-      const currentURL = window.location.href;
-      const cleanCurrentURL = currentURL.replace(/\//g, "_");
-      console.log(cleanCurrentURL);
-      const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
-      console.log(cleanerCurrentURL);
-      const space = await this.state.box.openSpace(cleanerCurrentURL);
-      this.setState({ space });
-      console.log(space);
+    this.setState({ needsAWeb3Browser: false });
+    window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
+    const accounts = await window.ethereum.enable();
+    this.setState({ accounts });
 
-      const threadProducts = await space.joinThread("productIdeas", {
-        firstModerator: chris,
-        members: false
-      });
-      this.setState({ threadProducts }, ()=>(this.getProductsThread()));
+    const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
+    this.setState({ threeBoxProfile });
 
-      // add another thread
-      const threadComments = await space.joinThread("xanadu_now_sh_comments", {
-        firstModerator: chris,
-        members: false
-      });
-      this.setState({ threadComments }, ()=>(this.getCommentsThread()));
-      //console.log(threadComments);
+    //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
+    const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
+    const box = await Box.openBox(this.state.accounts[0], window.ethereum);
+    this.setState({ box });
+    const currentURL = window.location.href;
+    const cleanCurrentURL = currentURL.replace(/\//g, "_");
+    console.log(cleanCurrentURL);
+    const cleanerCurrentURL = cleanCurrentURL.replace(/\./g, "_");
+    console.log(cleanerCurrentURL);
+    const space = await this.state.box.openSpace(cleanerCurrentURL);
+    this.setState({ space });
+    console.log(space);
+
+    const threadProducts = await space.joinThread("productIdeas", {
+      firstModerator: chris,
+      members: false
+    });
+    this.setState({ threadProducts }, ()=>(this.getProductsThread()));
+
+    // add another thread
+    const threadComments = await space.joinThread("xanadu_now_sh_comments", {
+      firstModerator: chris,
+      members: false
+    });
+    this.setState({ threadComments }, ()=>(this.getCommentsThread()));
+    //console.log(threadComments);
     }
   }
 
@@ -142,6 +150,7 @@ export default class App extends Component {
                   threeBoxProfile={this.state.threeBoxProfile}
                   //getAppsThread={this.getAppsThread.bind(this)}
                   getCommentsThread={this.getCommentsThread.bind(this)}
+                  askMetamask={this.askMetamask.bind(this)}
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }

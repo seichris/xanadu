@@ -54,59 +54,71 @@ export default class AppForm extends Component {
 
   render() {
     return (
-      <Draggable
-        //axis="x"
-        //handle=".handle"
-        defaultPosition={{x: 0, y: 0}}
-        position={this.state.deltaPosition}
-        //grid={[25, 25]}
-        scale={1}
-        onStart={this.handleStart}
-        onDrag={this.handleDrag}
-        onStop={this.onControlledDragStop}
-      >
-          <div className="w-full mx-auto bg-white activeBox rounded shadow">
-            {/*<div className="handle">Drag here</div>*/}
-            {/*<div>x: {this.state.deltaPosition.x.toFixed(0)}, y: {this.state.deltaPosition.y.toFixed(0)}</div>*/}
+      <>
+        { this.props.needsAWeb3Browser ?
+          <>
+          <p> Seems like you don't have a web3 browser.
+          </p>
+          <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="underline">
+            Install metamask to add your comment!
+          </a>
+          </>
+        :
+        <Draggable
+          //axis="x"
+          //handle=".handle"
+          defaultPosition={{x: 0, y: 0}}
+          position={this.state.deltaPosition}
+          //grid={[25, 25]}
+          scale={1}
+          onStart={this.handleStart}
+          onDrag={this.handleDrag}
+          onStop={this.onControlledDragStop}
+        >
+            <div className="w-full mx-auto bg-white activeBox rounded shadow">
+              {/*<div className="handle">Drag here</div>*/}
+              {/*<div>x: {this.state.deltaPosition.x.toFixed(0)}, y: {this.state.deltaPosition.y.toFixed(0)}</div>*/}
 
-              <form onSubmit={this.handleSubmit}>
-                <div className="py-4 flex flex-row items-center">
-                  <div className="mx-4">
-                   How do your rate this site?
+                <form onSubmit={this.handleSubmit}>
+                  <div className="py-4 flex flex-row items-center">
+                    <div className="mx-4">
+                     How do your rate this site?
+                    </div>
+                    <ReactStars
+                      count={5}
+                      onChange={this.ratingChanged}
+                      size={20}
+                      color2={'#ffd700'}
+                      edit={true}
+                      half={false}
+                      value={this.state.rating}
+                    />
                   </div>
-                  <ReactStars
-                    count={5}
-                    onChange={this.ratingChanged}
-                    size={20}
-                    color2={'#ffd700'}
-                    edit={true}
-                    half={false}
-                    value={this.state.rating}
-                  />
+                    <textarea
+                      className="w-full shadow-inner p-4 border-0 relative"
+                      placeholder="Add your comment."
+                      rows="2"
+                      value={this.state.comment}
+                      onChange={this.handleChange}
+                      type="text"
+                      name="comment"
+                      aria-describedby="commentText"
+                    />
+                    <input type="submit" value="▶ submit" className="inline-block py-2 px-2 mb-2 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow absolute bottom-0 right-0" />
+
+                </form>
+
+              {/*{this.state.submitted && <div className="jumbotron">
+                  <h1>Thank you for submiting</h1>
+                  <button className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow"  onClick={()=>(this.setState({submitted : false}))}>
+                    Add another comment
+                  </button>
                 </div>
-                  <textarea
-                    className="w-full shadow-inner p-4 border-0 relative"
-                    placeholder="Add your comment."
-                    rows="2"
-                    value={this.state.comment}
-                    onChange={this.handleChange}
-                    type="text"
-                    name="comment"
-                    aria-describedby="commentText"
-                  />
-                  <input type="submit" value="▶ submit" className="inline-block py-2 px-2 mb-2 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow absolute bottom-0 right-0" />
-
-              </form>
-
-            {/*{this.state.submitted && <div className="jumbotron">
-                <h1>Thank you for submiting</h1>
-                <button className="inline-block w-full py-4 px-8 leading-none text-white bg-indigo-500 hover:bg-indigo-600 rounded shadow"  onClick={()=>(this.setState({submitted : false}))}>
-                  Add another comment
-                </button>
-              </div>
-            }*/}
-          </div>
-        </Draggable>
+              }*/}
+            </div>
+          </Draggable>
+          }
+        </>
         );
       }
 }
