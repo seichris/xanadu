@@ -5,7 +5,6 @@ import { ScaleLoader } from "react-spinners";
 
 import HeroSection from "./components/landing/2HeroSection";
 import HeroCommentSection from "./components/landing/3HeroCommentSection";
-import BenefitsSection from "./components/landing/7BenefitsSection";
 import ProductSection from "./components/landing/8ProductSection";
 import FooterSection from "./components/10FooterSection";
 
@@ -156,7 +155,6 @@ export default class App extends Component {
                   }
                   needsAWeb3Browser={this.state.needsAWeb3Browser}
                 />
-                <BenefitsSection />
                 <ProductSection
                   accounts={this.state.accounts}
                   thread={productThreadWithOrWithoutMetamask}

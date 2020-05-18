@@ -2,21 +2,21 @@
   "ethereumsection": [
     {
       "id": "1",
-      "h3": "Link existing TLDR, ELI5 to the source",
-      "p": "Curate a list of crypto ELI5s from twitter, reddit, telegram and link them where they are relevant. Like a crowdsourced ethereum twitter account, linked to ethereum.org.",
+      "h3": "Link crypto TL;DRs, ELI5s",
+      "p": "Link TL;DRs ELI5s from Twitter, Reddit, Telegram to relevant sites like ethereum.org. This way, we won't lose useful content, while retaining context of the original poster.",
       "image1": "1tldrs.png"
     },
     {
       "id": "2",
-      "h3": "Comment and curate visible context",
-      "p": "....",
-      "image1": "reputation-vitalik.jpg"
+      "h3": "Improve open source projects as non-coder (zeig hier auch demand side \"i want feedback on this very website you are browsing\")",
+      "p": "Lower the hurdle to give feedback on projects. Any Metamask user can leave a simple note. And product teams can ask for feedback on their website, targeting only xanadu users.",
+      "image1": "3graph.png"
     },
     {
       "id": "3",
-      "h3": "Improve open source projects as non-coder",
-      "p": ".....",
-      "image1": "3graph.png"
+      "h3": "Ask for context",
+      "p": "Ask for similar projects while playing with new DEFI apps, or ask for tooling while scrolling through documentation. Or add context yourself.",
+      "image1": "reputation-vitalik.jpg"
     },
     {
       "id": "4",
@@ -27,7 +27,7 @@
     {
       "id": "5",
       "h3": "Share your address book with friends",
-      "p": "Share your address book with friends, access database of labelled addresses and send money to users via their github or twitter name.",
+      "p": "Label addresses publicly, share them with your friends, or sell access. Send money to users via their github or twitter name. And crowdsource a database of malicious addresses to highlight on etherscan.",
       "image1": "chongqing.jpg"
     },
     {

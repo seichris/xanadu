@@ -5,7 +5,7 @@ import icon2 from '.././images/icons/share.svg';
 
 function ProductSection(props) {
   return (
-    <footer className="flex flex-wrap flex-col lg:flex-row items-center p-4 border-t border-gray-500">
+    <footer className="flex flex-wrap flex-col lg:flex-row items-center p-4 border-t border-gray-500 mt-8">
       <div className="w-full lg:w-auto lg:mr-6 text-center">
       <Link className="nav-link" to="/">
         © 2020 Xanadu

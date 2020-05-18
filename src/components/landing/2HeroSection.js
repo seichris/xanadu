@@ -16,10 +16,11 @@ export default class HeroSection extends Component {
           <div className="lg:w-3/6 px-2 lg:pr-10 mt-10 lg:mt-0 order-1 lg:order-none items-center text-center mx-auto">
             <div className="flex flex-row items-center -mx-8 mt-12 mb-2">
               {/*<img src={logo} alt="Xanadu" width="50"/>*/}
-              <img src={logo} alt="Xanadu" width="50"/>
               <div>
-                <h2 className="text-5xl mb-6 leading-tight font-heading">share your personal {"\n"} version of the web</h2>
-                <h3 className="mb-6 leading-tight font-heading">a web³ note tool</h3>
+                <h1 className="text-5xl mb-6 leading-tight font-heading">share notes on Ethereum {"\n"} and get rewarded</h1>
+                {/*<h2 className="text-5xl mb-6 leading-tight font-heading">share your personal  version of the web</h2>
+                <h3 className="mb-6 leading-tight font-heading">share web³ notes and get rewarded</h3>*/}
+                <h3 className="text-xl mb-6 leading-tight font-heading">with valuable reputation tokens</h3>
               </div>
             </div>
           </div>

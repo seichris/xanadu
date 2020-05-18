@@ -16,25 +16,25 @@ function BenefitsSection(props) {
           Rewards
           </p>
           <p className=" mb-2">
-          Like reddit karma, on the Ethereum blockchain
+          Like tradable reddit karma, plus negative karma.
           </p>
         </div>
         <div className="lg:w-1/4 px-8 mb-8">
           <img className="h-16 w-auto mx-auto  my-4" src={ipfs} alt="ipfs"/>
           <p className="font-semibold mb-2">
-          Anywhere, forever, accountable
+          Anywhere, forever
           </p>
           <p className=" mb-2">
-          Safe data to ipfs, for it shall always be there
+          Safe data to ipfs, for it shall always be there.
           </p>
         </div>
         <div className="lg:w-1/4 px-8 mb-8">
           <img className="h-16 w-auto mx-auto  my-4" src={threebox} alt="3box"/>
           <p className="font-semibold mb-2">
-          Private sharing
+          Social context
           </p>
           <p className=" mb-2">
-          Share with a group of friends or the public
+          Import contacts from Twitter, Github, Reddit.
           </p>
         </div>
         <div className="lg:w-1/4 px-8 mb-8">
@@ -43,7 +43,7 @@ function BenefitsSection(props) {
           Anonymous reputation
           </p>
           <p className=" mb-2">
-          Build reputation for your eth address, or import your twitter
+          Get reputation for your ETH address.
           </p>
         </div>
       </div>
