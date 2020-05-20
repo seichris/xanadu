@@ -33,21 +33,29 @@ export default class ProductSection extends Component {
       <section className="py-12 px-4">
         {/*<p className="text-center max-w-2xl mx-auto text-gray-500 leading-relaxed">PRODUCTS</p>
         <h2 className="text-center text-4xl mb-4 font-heading">What can we do with this?</h2>*/}
-        <div className="pb-8">
+        {/*<div className="pb-8">
           <p className="text-center mx-auto">
-            Its hard for newcomers to get started, as Ethereum knowledge is scattered throughout social, forums, etc.
+            Getting started with building Ethereum apps is hard, as knowledge is scattered throughout the social internet.
           </p>
           <p className="text-center mx-auto">
-            Searching reddit, twitter, google, etc only helps to a certain level. Can we build a better database?
+          This is Annie. She wants to build on Ethereum. And finding the right tooling or similar code is hard. It's all scattered throughout the social internet.
           </p>
           <p className="text-center mx-auto">
-          Can we incentivize community members to curate lists of useful content? And link these resources wherever new community members start their research.
+          She wants useful links.
+          She wants social context.
+          She wants to view the info without searching for it.
+          She wants to find a mentor.
+          She wants to guide the devs following her.
+          She wants the links to always be accessible.
           </p>
-        </div>
+          <p className="text-center mx-auto">
+          This is how she gets all of this.
+          </p>
+        </div>*/}
 
         <div className="flex flex-col">
 
-          <p className="py-4 mx-auto font-semibold uppercase">For The Ethereum Community</p>
+          <h2 className="py-8 mx-auto font-heading text-xl">Here is what we can build</h2>
           <div className="grid gap-4 grid-cols-2">
           {
             products.ethereumsection.map((eth, id) => {
@@ -62,7 +70,7 @@ export default class ProductSection extends Component {
           }
           </div>
 
-          <p className="py-4 mt-8 mx-auto font-semibold uppercase">Beyond Ethereum</p>
+          <h2 className="py-8 mx-auto font-heading text-xl">Beyond Ethereum</h2>
           <div className="grid gap-4 grid-cols-2">
           {
             products.beyondsection.map((eth, id) => {
@@ -81,11 +89,11 @@ export default class ProductSection extends Component {
 
 
         <div className="py-16">
-          <div className="w-1/4 mx-auto text-center">
-            <p className="mb-4 text-gray-700">
+          <div className="w-1/3 mx-auto text-center">
+            <p className="text-xl mb-4 text-gray-700 font-header">
             Which other use cases come to your mind?
             </p>
-            <button onClick={this.switchShowHide} className="underline">
+            <button onClick={this.switchShowHide} className="underline font-semibold">
               {this.state.showCommentOpen ? "cancel" : "Add them here!"}
             </button>
           </div>
@@ -94,8 +102,8 @@ export default class ProductSection extends Component {
 
         </div>
 
-        <div className="h-64 relative bg-white">
-          <div className={`text-center absolute h-64 w-full ${this.state.showCommentOpen ? "block" : "hidden"}`}>
+        <div className="relative">
+          <div className={`text-center absolute w-full ${this.state.showCommentOpen ? "block" : "hidden"}`}>
 
             {!this.props.thread && (
               <div className="mx-auto text-gray-700">
@@ -105,7 +113,7 @@ export default class ProductSection extends Component {
                  </p>
               </div>
             )}
-            {this.props.thread && <InputProductIdeas needsAWeb3Browser={this.props.needsAWeb3Browser} savePost={this.savePost} />}
+
 
           </div>
           {/*{(!this.props.posts || this.props.posts.length < 1) && (
@@ -116,6 +124,8 @@ export default class ProductSection extends Component {
               </p>
             </div>
           )}*/}
+          <div className="grid gap-4 grid-cols-2">
+          {this.props.thread && <InputProductIdeas needsAWeb3Browser={this.props.needsAWeb3Browser} savePost={this.savePost} showCommentOpen={this.state.showCommentOpen}/>}
           {this.props.posts &&
             this.props.posts.map((post, i) => {
               return (
@@ -129,6 +139,7 @@ export default class ProductSection extends Component {
                     i={i} />
               );
             })}
+          </div>
         </div>
 
       </section>
@@ -140,24 +151,23 @@ export default class ProductSection extends Component {
 class CommentCard extends Component {
   render(){
     return (
-      <Draggable bounds="parent" defaultPosition={this.props.post.message.deltaPosition}>
-      <div className="comments-box-landing w-1/5 flex flex-col items-center">
-        <div className="relative" style={{ padding: "20px" }}>
-          <p>
-            {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
-          </p>
-          {this.props.post.message.account && (
-            <div className="pt-4">
-              {/*<p className="text-xs">Submitted by</p>*/}
-                <ProfileHover
-                  address={this.props.post.message.account}
-                  showName={true}
-                />
-            </div>
-          )}
-        </div>
+      <div className="p-4 bg-gray-100 rounded shadow-md">
+        <p className="font-semibold py-4">
+          {this.props.post.message.commentHeader ? this.props.post.message.commentHeader : "unknown"}
+        </p>
+        <p>
+          {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
+        </p>
+        {this.props.post.message.account && (
+          <div className="pt-4">
+            {/*<p className="text-xs">Submitted by</p>*/}
+              <ProfileHover
+                address={this.props.post.message.account}
+                showName={true}
+              />
+          </div>
+        )}
       </div>
-      </Draggable>
     )
   }
 }

@@ -7,7 +7,8 @@
 }
 
 .bg-body {
-  background-image: linear-gradient(to right bottom, #fffaf0, #fdf0dd, #fce4cb, #fdd9ba, #ffccac);
+  /*background-image: linear-gradient(to right bottom, #fffaf0, #fdf0dd, #fce4cb, #fdd9ba, #ffccac);*/
+  background: linear-gradient(156.23deg, #FAFCFD 0.27%, #E5ECF0 31.26%, #C3D2D9 99.44%);
 }
 
 .comments-box-landing {
