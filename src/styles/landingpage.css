@@ -8,7 +8,7 @@
 
 .bg-body {
   /*background-image: linear-gradient(to right bottom, #fffaf0, #fdf0dd, #fce4cb, #fdd9ba, #ffccac);*/
-  background: linear-gradient(156.23deg, #FAFCFD 0.27%, #E5ECF0 31.26%, #C3D2D9 99.44%);
+  background: linear-gradient(156.23deg, #FAFCFD 0.27%, #F9FBFD 6.88%, #F8FAFC 13.49%, #F5F8FA 20.1%, #F2F6F8 26.71%, #EDF2F5 33.33%, #E8EEF1 39.94%, #E2E9ED 46.55%, #DBE4E9 53.16%, #D5E0E5 59.77%, #D0DBE1 66.38%, #CBD8DE 72.99%, #C8D5DC 79.6%, #C5D3DA 86.21%, #C4D2D9 92.82%, #C3D2D9 99.44%);
 }
 
 .comments-box-landing {
@@ -53,3 +53,37 @@
     animation: glowing 200s linear infinite;
     border-radius: 4px;
 }
+
+.upvoteIcon {
+    background-color: #4a5568;
+    -webkit-mask: url(./../images/icons/ArrowUp.svg) no-repeat center;
+    mask: url(./../images/icons/ArrowUp.svg) no-repeat center;
+}
+
+.upvoteIcon:hover {
+    background-color: #7193ff;
+}
+
+.upvoteIcon.upVoted {
+    background-color: #7193ff;
+}
+
+.downvoteIcon {
+    background-color: #4a5568;
+    -webkit-mask: url(./../images/icons/ArrowDown.svg) no-repeat center;
+    mask: url(./../images/icons/ArrowUp.svg) no-repeat center;
+}
+
+.downvoteIcon:hover {
+    background-color: #ff4501;
+}
+
+.downvoteIcon.downVoted {
+    background-color: #ff4501;
+}
+
+.vote_btn {
+  border: none;
+  background-color: transparent;
+  padding: 0 2px;
+  }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 //import AppForm from './AppForm';
 //import AddApp from '.././pages/AddApp';
 //import { ClimbingBoxLoader } from 'react-spinners';
-import logo from './../../images/logos/eth.png';
+//import logo from './../../images/logos/eth.png';
 
 export default class HeroSection extends Component {
 

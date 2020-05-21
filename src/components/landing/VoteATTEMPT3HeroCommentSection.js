@@ -10,23 +10,109 @@ import xanadu from './../../images/logos/eth.png';
 import eth from './../../images/logos/eth_logo.png';
 import threebox from './../../images/logos/3box.png';
 import ipfs from './../../images/logos/ipfs.png';
+import arrowUp from './../../images/icons/ArrowUp.svg';
+import arrowDown from './../../images/icons/ArrowDown.svg';
+
+const encodeMessage = (category, data, parentId, nestLevel, grandParentId) => {
+  if (parentId) {
+    return {
+      category,
+      data,
+      nestLevel,
+      parentId,
+      grandParentId
+    }
+  } else {
+    return {
+      category,
+      data,
+      nestLevel,
+      grandParentId
+    }
+  }
+}
+
+export const filterComments = (comments, category, deleted) => {
+  if (comments && comments.length > 0 && category) {
+    return comments.filter(c => (c.message.category === category || c.message.category === deleted));
+  } else {
+    return [];
+  }
+}
 
 export default class AddApp extends Component {
-  state = {
-    thread: null,
-    showCommentOpen: false
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      thread: null,
+      showCommentOpen: false,
+    };
+    this.upvote = () => { this.vote(1); console.log("upvoted") }
+    this.downvote = () => { this.vote(-1); console.log("downvoted") }
+  }
+
+  vote = async (direction) => {
+    const {
+      updateComments,
+      login,
+      comment,
+      hasAuthed
+    } = this.props;
+    const { disableVote } = this.state;
+
+    if (this.props.needsAWeb3Browser || disableVote) return;
+
+    this.setState({ loadingPost: true });
+    //if (!hasAuthed) await login();
+
+    try {
+      const myVote = this.getMyVote();
+      if (myVote) {
+        if (myVote.message.data === direction) {
+          // undo vote
+          await this.props.thread.deletePost(myVote.postId);
+        } else {
+          // re-vote
+          await this.props.thread.deletePost(myVote.postId);
+          const message = encodeMessage("vote", direction, comment.postId);
+          await this.props.thread.post(message);
+        }
+      } else {
+        const message = encodeMessage("vote", direction, comment.postId);
+        await this.props.thread.post(message);
+      }
+
+      await updateComments();
+      this.setState({ loadingPost: false });
+    } catch (error) {
+      console.error('There was an error saving your vote', error);
+    }
+  }
+
+  getMyVote = () => {
+    const {
+      currentUserAddr,
+      profiles,
+      post
+    } = this.props;
+
+    const votes = post ? filterComments(post, "vote") : [];
+
+    const currentUserAddrNormalized = currentUserAddr && currentUserAddr.toLowerCase();
+    const myVotes = votes.filter(v => {
+      const profile = profiles[v.author];
+      const voterAddr = profile && profile.ethAddr.toLowerCase();
+      return voterAddr === currentUserAddrNormalized
+    });
+    return myVotes && myVotes.length > 0 ? myVotes[0] : null;
+  }
+
 
   savePost = async formData => {
       // add the loggedin account to the form data to be saved
       formData.account = this.props.accounts[0];
       await this.props.thread.post(formData);
-      this.props.getCommentsThread();
-    };
-
-  editPost = async voteData => {
-      voteData.account = this.props.accounts[0];
-      await this.props.thread.post(voteData);
       this.props.getCommentsThread();
     };
 
@@ -40,6 +126,25 @@ export default class AddApp extends Component {
         }
 
 render() {
+
+  const {
+      comment,
+      profile,
+      thread,
+      currentUserAddr,
+      currentUser3BoxProfile,
+      box,
+      profiles,
+      votes,
+    } = this.props;
+
+    let voted = 0;
+    const myVote = this.getMyVote();
+    if (myVote) voted = myVote.message.data;
+
+    //const count = votes.reduce((sum, v) => (sum + v.message.data), 0);
+    const count = votes;
+
      return (
        <div className="container relative">
         <div className="items-center my-12 text-center">
@@ -151,11 +256,16 @@ render() {
                    space={this.props.space}
                    box={this.props.box}
                    usersAddress={this.props.usersAddress}
-                   needsAWeb3Browser={this.props.needsAWeb3Browser}
-                   editPost={this.editPost}
-                   accounts={this.props.accounts}
+                   i={i}
+                   currentUserAddr={this.props.currentUserAddr}
+                   currentUser3BoxProfile={this.props.currentUser3BoxProfile}
                    thread={this.props.thread}
-                   getCommentsThread={this.props.getCommentsThread.bind(this)}
+                   votes={votes}
+                   voted={voted}
+                   count={count}
+                   getMyVote={this.getMyVote}
+                   upvote={this.upvote}
+                   downvote={this.downvote}
                    />
              );
            })}
@@ -166,95 +276,89 @@ render() {
    }
  }
 
-class CommentCard extends Component {
+ class CommentCard extends Component {
 
-  state = {
-    voteSum: 0,
-  };
+   constructor(props) {
+    super(props);
+    this.state = {
+      disableVote: true,
+    }
+  }
 
-  editPost = async voteData => {
-      voteData.account = this.props.accounts[0];
-      voteData.comment = this.props.post.message.comment;
-      voteData.deltaPosition = this.props.post.message.deltaPosition;
-      voteData.rating = this.props.post.message.rating;
-      const voteSumPrevious = this.props.post.message.voteSum ? this.props.post.message.voteSum : 0;
-      voteData.voteSum = this.state.voteSum + voteSumPrevious;
-      await this.props.thread.deletePost(this.props.post.postId);
-      await this.props.thread.post(voteData);
-      await this.props.getCommentsThread();
-      console.log(this.props.post.message);
-    };
+  async componentDidMount() {
+    this.setState({ disableVote: false });
+  }
 
-  upvote = () => {
-    //console.log(`${this.state.voteSum} voteSum in state before upvote`);
-    this.state.voteSum = 1;
-    //console.log(`${this.state.voteSum} voteSum in state after upvote`);
-    this.editPost({
-      voteSum: this.state.voteSum
-    });
-  };
-
-  downvote = () => {
-    this.state.voteSum = -1;
-    this.editPost({
-      voteSum: this.state.voteSum
-    });
-  };
+  convertDate = (input) => {
+    const date = new Date(input);
+    const postdate = date.getFullYear() + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + ("0" + date.getDate()).slice(-2);
+    return postdate
+  }
 
   render(){
+
+    const {
+      count,
+      voted,
+      upvote,
+      downvote,
+    } = this.props;
+
+    const countClass = count > 0 ? "positive" : (count < 0 ? "negative" : "");
+
+
     return (
     <div className="h-0">
      <Draggable defaultPosition={this.props.post.message.deltaPosition}>
      <div className="comments-box-landing w-1/5 mx-auto items-center">
        <div className="relative flex flex-row" style={{ padding: "20px" }}>
-       { !this.props.needsAWeb3Browser &&
-         <div className="flex flex-col">
-           <div className="comment_vote">
-             <button className="vote_btn vote_btn-middle" onClick={this.upvote}>
-              <div className={`upvoteIcon h-4 w-4 ${this.state.voteSum > 0 ? "upVoted" : ""}`}></div>
-               {/*<img src={arrowUp} alt="Upvote" width="50" className={`vote_icon upvote ${this.voted ? "voted" : ""}`}/>*/}
-             </button>
-               {/*<div className={`text-center ${countClass}`}>{count}</div>
-               <p className="text-center text-xs text-gray-500">{this.state.voteSum}</p>*/}
-               <p className="text-center text-xs text-gray-500">{this.props.post.message.voteSum}</p>
-             <button className="vote_btn" onClick={this.downvote}>
-               {/*<img src={arrowDown} alt="Downvote" width="50" className={`vote_icon downvote ${this.voted ? "voted" : ""}`}/>*/}
-               <div className={`downvoteIcon h-4 w-4 ${this.state.voteSum < 0 ? "downVoted" : ""}`}></div>
-             </button>
-           </div>
-         </div>
-        }
-         <div>
-           <p>
-             {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
-           </p>
-           {/*<p>
-             {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
-           </p>*/}
-           {/*<p className="text-xs text-gray-500">
-             Position: x: {this.props.post.message.deltaPosition.x ? this.props.post.message.deltaPosition.x : "unknown"}, y: {this.props.post.message.deltaPosition.y ? this.props.post.message.deltaPosition.y : "unknown"}
-           </p>*/}
-           {this.props.post.message.account && (
-             <div className="pt-4">
-               {/*<p className="text-xs">Submitted by</p>*/}
-                 <ProfileHover
-                   address={this.props.post.message.account}
-                   showName={true}
-                 />
-               <ReactStars
-                 count={5}
-                 size={20}
-                 color2={'#ffd700'}
-                 edit={false}
-                 half={false}
-                 value={this.props.post.message.rating}
+
+        <div className="flex flex-col">
+        <div className="comment_vote">
+          <div className={`text-center ${countClass}`}>{count}</div>
+          <button className="vote_btn vote_btn-middle" onClick={upvote}>
+            <img src={arrowUp} alt="Upvote" width="50" className={`vote_icon upvote ${voted === 1 ? "voted" : ""}`}/>
+          </button>
+          <button className="vote_btn" onClick={downvote}>
+            <img src={arrowDown} alt="Downvote" width="50" className={`vote_icon downvote ${voted === -1 ? "voted" : ""}`}/>
+          </button>
+        </div>
+        </div>
+        <div>
+         <p>
+           {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
+         </p>
+         {/*<p>
+           {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
+         </p>*/}
+         {/*<p className="text-xs text-gray-500">
+           Position: x: {this.props.post.message.deltaPosition.x ? this.props.post.message.deltaPosition.x : "unknown"}, y: {this.props.post.message.deltaPosition.y ? this.props.post.message.deltaPosition.y : "unknown"}
+         </p>*/}
+         {this.props.post.message.account && (
+           <div className="pt-4">
+             {/*<p className="text-xs">Submitted by</p>*/}
+               <ProfileHover
+                 address={this.props.post.message.account}
+                 showName={true}
                />
-             </div>
-           )}
+             <ReactStars
+               count={5}
+               size={20}
+               color2={'#ffd700'}
+               edit={false}
+               half={false}
+               value={this.props.post.message.rating}
+             />
+             {/*<p className="text-xs text-gray-500 ml-8">
+               {this.props.post.timestamp ? this.convertDate(this.props.post.timestamp) : "unknown timestamp"}
+             </p>*/}
+           </div>
+         )}
          </div>
+
        </div>
      </div>
      </Draggable>
     </div>)
   }
-}
+ }
