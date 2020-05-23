@@ -1,4 +1,4 @@
-[context.featurePortisContractWallet)]
+[context.featurePortisContractWallet]
   command = "echo 'featurePortisContractWallet'"
   base = "/packages/react-app/"
 
