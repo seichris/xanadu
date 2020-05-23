@@ -98,7 +98,7 @@ export default class App extends Component {
 
     //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
     const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-    const box = await Box.openBox(this.state.accounts[0], web3.portis);
+    const box = await Box.openBox(this.state.accounts[0], web3.currentProvider);
     console.log(box);
     this.setState({ box });
     const currentURL = window.location.href;

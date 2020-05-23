@@ -8,7 +8,7 @@ function ProductSection(props) {
     <footer className="flex flex-wrap flex-col lg:flex-row items-center p-4 border-t border-gray-500 mt-8">
       <div className="w-full lg:w-auto lg:mr-6 text-center">
       <Link className="nav-link" to="/">
-        © 2020 Xanadu
+        © 2020 Kontext
       </Link>
       </div>
       <div className="mx-auto my-4 lg:my-0 lg:ml-0">
