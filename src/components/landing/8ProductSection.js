@@ -23,7 +23,7 @@ export default class ProductSection extends Component {
                   showCommentOpen: !prevState.showCommentOpen
               }
           })
-          this.props.askMetamask();
+          this.props.askPortis();
       }
 
   render() {

@@ -36,7 +36,7 @@ export default class AddApp extends Component {
                   showCommentOpen: !prevState.showCommentOpen
               }
           })
-          this.props.askMetamask();
+          this.props.askPortis();
         }
 
 render() {
@@ -122,7 +122,7 @@ render() {
                <div className="mx-auto text-gray-700">
                  <ScaleLoader color={"#667eea"} />
                  <p>
-                   Loading posts... You may have to sign MetaMask 3 times.
+                   Loading posts... Please wait for Portis signing 3 messages.
                  </p>
                </div>
              )}
@@ -137,7 +137,7 @@ render() {
            <div className="mx-auto text-center text-gray-700 mb-12">
              <ScaleLoader color={"#667eea"} />
              <p>
-               loading posts... MetaMask will ask you to sign access 3 times.
+               loading posts... Portis will ask you to sign access 3 times.
              </p>
            </div>
          )}*/}

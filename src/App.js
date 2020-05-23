@@ -31,6 +31,32 @@ export default class App extends Component {
   };
 
   async componentDidMount() {
+    portis.onLogin(() => {
+      console.log("Logged in!");
+    });
+
+    // check if the user is logged in
+    portis.isLoggedIn().then(({ error, result }) => {
+      // set the login state
+      console.log(result);
+      //document.getElementById("root").innerHTML = result;
+    });
+
+    // enable the provider - this will cause the portis popup to show if the  user is not logged in
+    web3.currentProvider.enable().then(() => {
+      // check if the user is logged in again
+      portis.isLoggedIn().then(({ error, result }) => {
+        // set the login state
+        console.log(result);
+        //document.getElementById("root").innerHTML = result;
+      });
+
+      // get the user accounts
+      web3.eth.getAccounts().then(accounts => {
+        console.log("portis is logged in in test yay. this is the account");
+        console.log(accounts[0]);
+      });
+    });
     this.setState({ needsAWeb3Browser: true });
     const currentURL = window.location.href;
     const cleanCurrentURL = currentURL.replace(/\//g, "_");
@@ -54,16 +80,14 @@ export default class App extends Component {
     console.log(this.state.needsAWeb3Browser);
     }
 
-  async askMetamask() {
+  async askPortis() {
 
-      web3.eth.getAccounts((error, accounts) => {
-        console.log(accounts);
-      });
     // if Metamask detected, then set accounts
 
     this.setState({ needsAWeb3Browser: false });
     //  window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
     //const accounts1 = await window.ethereum.enable();
+
     const accounts = await web3.eth.getAccounts();
     //console.log(accounts1);
     console.log(accounts);
@@ -74,7 +98,8 @@ export default class App extends Component {
 
     //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
     const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-    const box = await Box.openBox(this.state.accounts[0], web3);
+    const box = await Box.openBox(this.state.accounts[0], web3.portis);
+    console.log(box);
     this.setState({ box });
     const currentURL = window.location.href;
     const cleanCurrentURL = currentURL.replace(/\//g, "_");
@@ -189,7 +214,7 @@ export default class App extends Component {
                   threeBoxProfile={this.state.threeBoxProfile}
                   //getAppsThread={this.getAppsThread.bind(this)}
                   getCommentsThread={this.getCommentsThread.bind(this)}
-                  askMetamask={this.askMetamask.bind(this)}
+                  askPortis={this.askPortis.bind(this)}
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
@@ -205,7 +230,7 @@ export default class App extends Component {
                   threeBoxProfile={this.state.threeBoxProfile}
                   //getAppsThread={this.getAppsThread.bind(this)}
                   getProductsThread={this.getProductsThread.bind(this)}
-                  askMetamask={this.askMetamask.bind(this)}
+                  askPortis={this.askPortis.bind(this)}
                   usersAddress={
                     this.state.accounts ? this.state.accounts[0] : null
                   }
@@ -244,7 +269,7 @@ export default class App extends Component {
                     threeBoxProfile={this.state.threeBoxProfile}
                     //getAppsThread={this.getAppsThread.bind(this)}
                     getBountiesThread={this.getBountiesThread.bind(this)}
-                    askMetamask={this.askMetamask.bind(this)}
+                    askPortis={this.askPortis.bind(this)}
                     usersAddress={
                       this.state.accounts ? this.state.accounts[0] : null
                     }
