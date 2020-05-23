@@ -89,7 +89,7 @@ export default class ProductSection extends Component {
 
         <div className="py-16">
           <div className="w-1/3 mx-auto text-center">
-            <h3 className="text-xl mb-4 text-gray-700 font-header">
+            <h3 className="text-xl mb-4 text-gray-700 font-heading">
             Which other use cases come to your mind?
             </h3>
             <button onClick={this.switchShowHide} className="underline font-semibold">

@@ -23,6 +23,11 @@ function ProductSection(props) {
           </Link>
         </div>
         <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">
+          <Link className="nav-link" to="/bounties">
+            Bounties
+          </Link>
+        </div>
+        <div className="block lg:inline-block mt-4 lg:mt-0 mr-10 text-blue-900 hover:text-blue-700" href="/">
           <Link className="nav-link" to="/profile">
             My Profile
           </Link>

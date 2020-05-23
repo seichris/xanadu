@@ -12,6 +12,7 @@ import FooterSection from "./components/10FooterSection";
 import PublicFeedComments from "./pages/PublicFeedComments";
 //import AddApp from "./pages/AddApp";
 import Profile from "./pages/Profile";
+import Bounties from "./pages/Bounties";
 
 const getThreeBox = async address => {
   const profile = await Box.getProfile(address);
@@ -31,11 +32,14 @@ export default class App extends Component {
     console.log(cleanerCurrentURL);
     //const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
     const threadCommentsThisURL = await Box.getThread(cleanerCurrentURL, 'xanadu_now_sh_comments', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
-    //const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+    const threadProductsThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
+    const threadBountiesThisURL = await Box.getThread(cleanerCurrentURL, 'productIdeas', "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu", false );
     this.setState({ threadCommentsThisURL });
-    //this.setState({ threadProductsThisURL });
+    this.setState({ threadProductsThisURL });
+    this.setState({ threadBountiesThisURL });
     console.log(threadCommentsThisURL);
-    //console.log(this.state.threadProductsThisURL);
+    console.log(threadProductsThisURL);
+    console.log(threadBountiesThisURL);
     /*if (typeof window.ethereum == "object") {
       this.setState({ needsAWeb3Browser: false });
     } else {
@@ -81,7 +85,13 @@ export default class App extends Component {
       members: false
     });
     this.setState({ threadComments }, ()=>(this.getCommentsThread()));
-    //console.log(threadComments);
+
+    // add another thread
+    const threadBounties = await space.joinThread("xanadu_bounties", {
+      firstModerator: chris,
+      members: false
+    });
+    this.setState({ threadBounties }, ()=>(this.getBountiesThread()));
     }
   }
 
@@ -111,6 +121,18 @@ export default class App extends Component {
     })
   }
 
+  async getBountiesThread() {
+    if (!this.state.threadBounties) {
+      console.error("bounties thread not in react state");
+      return;
+    }
+    const bounties = await this.state.threadBounties.getPosts();
+    this.setState({bounties});
+    await this.state.threadBounties.onUpdate(async()=> {
+      const bounties = await this.state.threadBounties.getPosts();
+      this.setState({bounties});
+    })
+  }
 
 
   render() {
@@ -119,17 +141,23 @@ export default class App extends Component {
     let postsWithOrWithoutMetamask = 0;
     let productThreadWithOrWithoutMetamask = 0;
     let productPostsWithOrWithoutMetamask = 0;
+    let bountiesThreadWithOrWithoutMetamask = 0;
+    let bountiesPostsWithOrWithoutMetamask = 0;
 
     if (this.state.needsAWeb3Browser) {
       threadWithOrWithoutMetamask = this.state.threadCommentsThisURL;
       postsWithOrWithoutMetamask = this.state.threadCommentsThisURL;
       productThreadWithOrWithoutMetamask = this.state.threadProductsThisURL;
       productPostsWithOrWithoutMetamask = this.state.threadProductsThisURL;
+      bountiesThreadWithOrWithoutMetamask = this.state.threadBountiesThisURL;
+      bountiesPostsWithOrWithoutMetamask = this.state.threadBountiesThisURL;
     } else {
       threadWithOrWithoutMetamask = this.state.threadComments;
       postsWithOrWithoutMetamask = this.state.comments;
       productThreadWithOrWithoutMetamask = this.state.threadProducts;
       productPostsWithOrWithoutMetamask = this.state.products;
+      bountiesThreadWithOrWithoutMetamask = this.state.threadBounties;
+      bountiesPostsWithOrWithoutMetamask = this.state.bounties;
     }
 
     return (
@@ -191,6 +219,32 @@ export default class App extends Component {
                   <ScaleLoader color={"#667eea"} />
                 </div>
               )}
+            </Route>
+            <Route path="/bounties">
+                <div className="container mx-auto px-4 justify-center">
+                  <Bounties
+                    accounts={this.state.accounts}
+                    thread={bountiesThreadWithOrWithoutMetamask}
+                    box={this.state.box}
+                    space={this.state.space}
+                    threadMembers={this.state.threadMembers}
+                    posts={bountiesPostsWithOrWithoutMetamask}
+                    threeBoxProfile={this.state.threeBoxProfile}
+                    //getAppsThread={this.getAppsThread.bind(this)}
+                    getBountiesThread={this.getBountiesThread.bind(this)}
+                    askMetamask={this.askMetamask.bind(this)}
+                    usersAddress={
+                      this.state.accounts ? this.state.accounts[0] : null
+                    }
+                    needsAWeb3Browser={this.state.needsAWeb3Browser}
+                  />
+                  <FooterSection />
+                </div>
+              {/*{!this.state.space && (
+                <div style={{ width: "60px", margin: "auto" }}>
+                  <ScaleLoader color={"#667eea"} />
+                </div>
+              )}*/}
             </Route>
 
             {/*<Route path="/add-application">
