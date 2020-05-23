@@ -6,6 +6,7 @@
     "3box": "^1.18.1",
     "3box-comments-react": "^2.0.3",
     "3box-profile-edit-react": "0.0.9",
+    "@portis/web3": "^2.0.0-beta.55",
     "autoprefixer": "^9.7.6",
     "postcss-cli": "^7.1.1",
     "react": "^16.11.0",
@@ -14,7 +15,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "react-spinners": "^0.8.1",
-    "react-stars": "^2.2.5"
+    "react-stars": "^2.2.5",
+    "web3": "^1.2.8"
   },
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",

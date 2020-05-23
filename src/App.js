@@ -14,6 +14,12 @@ import PublicFeedComments from "./pages/PublicFeedComments";
 import Profile from "./pages/Profile";
 import Bounties from "./pages/Bounties";
 
+import Portis from '@portis/web3';
+import Web3 from 'web3';
+
+const portis = new Portis('364fc158-816b-441b-af42-1dbfbc4b1786', 'mainnet');
+const web3 = new Web3(portis.provider);
+
 const getThreeBox = async address => {
   const profile = await Box.getProfile(address);
   return profile;
@@ -49,12 +55,18 @@ export default class App extends Component {
     }
 
   async askMetamask() {
-    if (typeof window.ethereum == "object") {
+
+      web3.eth.getAccounts((error, accounts) => {
+        console.log(accounts);
+      });
     // if Metamask detected, then set accounts
 
     this.setState({ needsAWeb3Browser: false });
-    window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
-    const accounts = await window.ethereum.enable();
+    //  window.ethereum.autoRefreshOnNetworkChange = false; //silences warning about no autofresh on network change
+    //const accounts1 = await window.ethereum.enable();
+    const accounts = await web3.eth.getAccounts();
+    //console.log(accounts1);
+    console.log(accounts);
     this.setState({ accounts });
 
     const threeBoxProfile = await getThreeBox(this.state.accounts[0]);
@@ -62,7 +74,7 @@ export default class App extends Component {
 
     //const chris = "0x336BF8be536c8C804dab7D6CA5E5076a7DE555EE";
     const chris = "did:3:bafyreiefwktffgtt75edstz3kwcijfqsviv33okgciioreuzpari3lnqyu";
-    const box = await Box.openBox(this.state.accounts[0], window.ethereum);
+    const box = await Box.openBox(this.state.accounts[0], web3);
     this.setState({ box });
     const currentURL = window.location.href;
     const cleanCurrentURL = currentURL.replace(/\//g, "_");
@@ -92,7 +104,7 @@ export default class App extends Component {
       members: false
     });
     this.setState({ threadBounties }, ()=>(this.getBountiesThread()));
-    }
+
   }
 
   async getProductsThread() {
