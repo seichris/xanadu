@@ -71,7 +71,7 @@
 .downvoteIcon {
     background-color: #4a5568;
     -webkit-mask: url(./../images/icons/ArrowDown.svg) no-repeat center;
-    mask: url(./../images/icons/ArrowUp.svg) no-repeat center;
+    mask: url(./../images/icons/ArrowDown.svg) no-repeat center;
 }
 
 .downvoteIcon:hover {

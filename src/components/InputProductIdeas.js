@@ -41,15 +41,6 @@ export default class InputProductIdeas extends Component {
   render() {
     return (
       <>
-        { this.props.needsAWeb3Browser ?
-          <>
-          <p> Seems like you don't have a web3 browser.
-          </p>
-          <a href="https://metamask.io/download.html" rel="noopener noreferrer" target="_blank" className="underline">
-            Install Portis to add your comment!
-          </a>
-          </>
-        :
         <div className={`p-4 bg-gray-100 rounded shadow-md ${this.props.showCommentOpen ? "block" : "hidden"}`}>
           {!this.state.submitted && (
             <form onSubmit={this.handleSubmit}>
@@ -83,7 +74,6 @@ export default class InputProductIdeas extends Component {
             </form>
           )}
         </div>
-          }
         </>
         );
       }
