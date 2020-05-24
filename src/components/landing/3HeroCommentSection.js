@@ -11,6 +11,12 @@ import eth from './../../images/logos/eth_logo.png';
 import threebox from './../../images/logos/3box.png';
 import ipfs from './../../images/logos/ipfs.png';
 
+import Portis from '@portis/web3';
+import Web3 from 'web3';
+
+const portis = new Portis('364fc158-816b-441b-af42-1dbfbc4b1786', 'mainnet');
+const web3 = new Web3(portis.provider);
+
 export default class AddApp extends Component {
   state = {
     thread: null,
@@ -47,7 +53,7 @@ render() {
             <div className="my-4 w-1/3 mx-auto text-left">
               <img className="h-48 w-auto mx-auto my-8" src={user} alt="user"/>
               <p>
-              <span className="font-semibold">This is Annie.</span> She wants to build on Ethereum. And it's tough. The knowledge is all scattered.
+              <span className="font-semibold">This is Annie.</span> She wants to build on Ethereum.
               </p>
               <ul className="py-4">
               <li>She wants <span className="font-semibold">useful links</span>.</li>
@@ -55,10 +61,10 @@ render() {
               <li>She wants to <span className="font-semibold">find a mentor</span>.</li>
               <li>She wants to <span className="font-semibold">help future devs</span> herself.</li>
               <li>She wants the links to <span className="font-semibold">always be accessible</span>.</li>
-              <li>She wants to view the info <span className="font-semibold">without searching</span> for it.</li>
+              <li>She wants to get info <span className="font-semibold">without searching</span> for everything.</li>
               </ul>
               <p>
-              Only web³ technology allows to build this sustainable ecosystem:
+              Only web³ technology allows this:
               </p>
 
             </div>
@@ -71,7 +77,7 @@ render() {
                   Rewards
                   </p>
                   <p className=" mb-2">
-                  Like tradable reddit karma, plus negative karma.
+                  Like tradable reddit karma, with a price tag.
                   </p>
                 </div>
                 <div className="lg:w-1/4 px-8 mb-8">
@@ -98,7 +104,7 @@ render() {
                   Anonymous reputation
                   </p>
                   <p className=" mb-2">
-                  Get reputation for your ETH address.
+                  Stay incognito and earn reputation for your ETH address.
                   </p>
                 </div>
               </div>
@@ -106,7 +112,7 @@ render() {
               <p>
               How does that sound?
               </p>
-              <button onClick={this.switchShowHide} className="underline font-semibold">
+              <button onClick={this.switchShowHide} className="underline font-semibold text-4xl">
                 {this.state.showCommentOpen ? "cancel" : "✍️ Add your opinion!"}
               </button>
 
@@ -192,6 +198,11 @@ class CommentCard extends Component {
     this.editPost({
       voteSum: this.state.voteSum
     });
+    web3.eth.sendTransaction({
+          to: '0xE08aa75AAE695c4622Cd430FbeBF4B97689d4Ee3',
+          from: this.props.accounts[0],
+          value: web3.utils.toWei('1', 'ether'),
+      })
   };
 
   downvote = () => {
@@ -206,7 +217,7 @@ class CommentCard extends Component {
     <div className="h-0">
      <Draggable defaultPosition={this.props.post.message.deltaPosition}>
      <div className="comments-box-landing w-1/5 mx-auto items-center">
-       <div className="relative flex flex-row" style={{ padding: "20px" }}>
+       <div className="relative flex flex-row" style={{ padding: "10px" }}>
        { !this.props.needsAWeb3Browser &&
          <div className="flex flex-col">
            <div className="comment_vote">

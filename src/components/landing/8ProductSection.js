@@ -54,7 +54,7 @@ export default class ProductSection extends Component {
 
         <div className="flex flex-col">
 
-          <h2 className="py-8 mx-auto font-heading text-xl">Here is what we can build</h2>
+          <h2 className="py-8 mx-auto font-heading text-xl">So what can we use this for?</h2>
           <div className="grid gap-4 grid-cols-2">
           {
             products.ethereumsection.map((eth, id) => {
@@ -92,7 +92,7 @@ export default class ProductSection extends Component {
             <h3 className="text-xl mb-4 text-gray-700 font-heading">
             Which other use cases come to your mind?
             </h3>
-            <button onClick={this.switchShowHide} className="underline font-semibold">
+            <button onClick={this.switchShowHide} className="underline font-semibold text-2xl">
               {this.state.showCommentOpen ? "cancel" : "Add them here!"}
             </button>
           </div>
