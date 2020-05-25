@@ -115,7 +115,9 @@ render() {
               <button onClick={this.switchShowHide} className="underline font-semibold text-4xl">
                 {this.state.showCommentOpen ? "cancel" : "✍️ Add your opinion!"}
               </button>
-
+              <p>
+              Chrome extension coming soon.
+              </p>
             </div>
            </div>
 
