@@ -93,7 +93,7 @@ export default class ProductSection extends Component {
             Which other use cases come to your mind?
             </h3>
             <button onClick={this.switchShowHide} className="underline font-semibold text-2xl">
-              {this.state.showCommentOpen ? "cancel" : "Add them here!"}
+              {this.state.showCommentOpen ? "cancel" : "✍️ Add them here!"}
             </button>
           </div>
 

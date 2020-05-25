@@ -116,7 +116,7 @@ render() {
                 {this.state.showCommentOpen ? "cancel" : "✍️ Add your opinion!"}
               </button>
               <p>
-              Chrome extension coming soon.
+              This is a demo. Find the raw chrome extension <a href="https://github.com/seichris/xanadu-chrome" className="underline" rel="noopener noreferrer" to target="_blank">on github</a>.
               </p>
             </div>
            </div>
