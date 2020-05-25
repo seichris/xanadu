@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import ProfileHover from "profile-hover";
-import { ClimbingBoxLoader } from "react-spinners";
-class AppCard extends Component {
+import { ScaleLoader } from "react-spinners";
+
+class AllComments extends Component {
 
   state = { show: false };
   showModal = () => {
@@ -14,10 +15,13 @@ class AppCard extends Component {
   render(){
     return (
     <>
-      <div className="lg:w-1/3 px-8 mb-8 flex flex-col mx-auto items-center">
-        <div className="relative p-12 bg-white rounded-sm shadow w-full">
+      <div className="px-8 mb-8 flex flex-col mx-auto items-center">
+        <div className="relative p-12 bg-white rounded-sm shadow w-full text-left">
           <p>
             {this.props.post.message.comment ? this.props.post.message.comment : "unknown"}
+          </p>
+          <p>
+            {this.props.post.timestamp ? this.props.post.timestamp : "unknown timestamp"}
           </p>
           <p>
             {`${this.props.post.message.rating} stars` ? `${this.props.post.message.rating} stars` : "unknown"}
@@ -51,26 +55,56 @@ export default class PublicFeed extends Component {
           Feed of all public comments
         </h1>
         <p>...</p>
-        <div className="flex flex-wrap items-center p-4 mt-12">
-          {(!this.props.posts || this.props.posts.length < 1) && (
-            <div style={{ width: "60px", margin: "auto" }}>
-              <ClimbingBoxLoader color={"blue"} />
-            </div>
-          )}
-          {this.props.posts &&
-            this.props.posts.map((post, i) => {
-              return (
-                  <AppCard
-                    post={post}
-                    key={i}
-                    threeBox={this.props.threeBox}
-                    space={this.props.space}
-                    box={this.props.box}
-                    usersAddress={this.props.usersAddress}
-                    i={i} />
-              );
-            })}
+
+        <div className="flex flex-row">
+          <div className="flex flex-wrap w-1/2 p-4 mt-12">
+            <h2 className="text-xl mb-4 font-header">
+            All comments
+            </h2>
+            {(!this.props.posts || this.props.posts.length < 1) && (
+              <div style={{ width: "60px", margin: "auto" }}>
+                <ScaleLoader color={"blue"} />
+              </div>
+            )}
+            {this.props.posts &&
+              this.props.posts.map((post, i) => {
+                return (
+                    <AllComments
+                      post={post}
+                      key={i}
+                      threeBox={this.props.threeBox}
+                      space={this.props.space}
+                      box={this.props.box}
+                      usersAddress={this.props.usersAddress}
+                      i={i} />
+                );
+              })}
+          </div>
+          <div className="flex flex-wrap w-1/2 p-4 mt-12">
+            <h2 className="text-xl mb-4 font-header">
+            All product ideas
+            </h2>
+            {(!this.props.posts || this.props.posts.length < 1) && (
+              <div style={{ width: "60px", margin: "auto" }}>
+                <ScaleLoader color={"blue"} />
+              </div>
+            )}
+            {this.props.posts &&
+              this.props.posts.map((post, i) => {
+                return (
+                    <AllComments
+                      post={post}
+                      key={i}
+                      threeBox={this.props.threeBox}
+                      space={this.props.space}
+                      box={this.props.box}
+                      usersAddress={this.props.usersAddress}
+                      i={i} />
+                );
+              })}
+          </div>
         </div>
+
       </div>
     );
   }

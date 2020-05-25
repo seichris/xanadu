@@ -7,7 +7,8 @@ const blankState = {
   rating: 0,
   deltaPosition: {
         x: 0, y: 0
-      }
+      },
+  timestamp: 0
 };
 export default class AppForm extends Component {
   state = blankState;
@@ -21,18 +22,17 @@ export default class AppForm extends Component {
     this.setState(Object.assign({ rating: newRating }));
   };
 
-  async validateFormFields() {
-    console.log("to do - validiate form");
-  }
+  //async validateFormFields() { console.log("to do - validiate form"); }
 
   handleSubmit = event => {
     event.preventDefault();
-    this.validateFormFields();
+    //this.validateFormFields();
 
     this.props.savePost({
       comment: this.state.comment,
       rating: this.state.rating,
       deltaPosition: this.state.deltaPosition,
+      timestamp: this.state.timestamp
     });
 
     //this.setState(Object.assign({}, blankState, { submitted: true }));

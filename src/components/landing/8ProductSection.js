@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import InputProductIdeas from './../../components/InputProductIdeas';
 import ProfileHover from "profile-hover";
 import { ScaleLoader } from "react-spinners";
-import Draggable from 'react-draggable';
 import products from './products';
 
 export default class ProductSection extends Component {
@@ -90,9 +89,9 @@ export default class ProductSection extends Component {
 
         <div className="py-16">
           <div className="w-1/3 mx-auto text-center">
-            <p className="text-xl mb-4 text-gray-700 font-header">
+            <h3 className="text-xl mb-4 text-gray-700 font-heading">
             Which other use cases come to your mind?
-            </p>
+            </h3>
             <button onClick={this.switchShowHide} className="underline font-semibold">
               {this.state.showCommentOpen ? "cancel" : "Add them here!"}
             </button>
