@@ -113,7 +113,7 @@ render() {
               How does that sound?
               </p>
               <button onClick={this.switchShowHide} className="underline font-semibold text-4xl">
-                {this.state.showCommentOpen ? "cancel" : "✍️ Add your opinion!"}
+                {this.state.showCommentOpen ? "cancel" : "✍️ Click to add your opinion!"}
               </button>
               <p>
               This is a demo. Find the raw chrome extension <a href="https://github.com/seichris/xanadu-chrome" className="underline" rel="noopener noreferrer" to target="_blank">on github</a>.
