@@ -6,19 +6,6 @@ import React, {Component} from 'react';
 
 export default class HeroSection extends Component {
 
-  constructor() {
-       super();
-       this.state = { text : 'share notes on Ethereum' }
-     }
-     //set the text
-     onMouseover (e) {
-       this.setState({text : 'add kontext'})
-     }
-     //clear the text
-     onMouseout (e) {
-       this.setState({text : 'share notes on Ethereum'})
-     }
-
   render() {
     return (
       <section className="py-12 px-4">
@@ -28,14 +15,10 @@ export default class HeroSection extends Component {
             <div className="flex flex-row items-center -mx-8 mt-12 mb-2">
               {/*<img src={logo} alt="Xanadu" width="50"/>*/}
               <div className="mx-auto">
-                <h1 className="text-5xl leading-tight font-heading"
-                  onMouseEnter={this.onMouseover.bind(this)}
-                  onMouseLeave={this.onMouseout.bind(this)}>{this.state.text}
-                </h1>
-                <h1 className="text-5xl mb-6 leading-tight font-heading">and get rewarded</h1>
+                <h1 className="text-5xl mb-6 leading-tight font-heading">add kontext anywhere</h1>
                 {/*<h2 className="text-5xl mb-6 leading-tight font-heading">share your personal  version of the web</h2>
                 <h3 className="mb-6 leading-tight font-heading">share web³ notes and get rewarded</h3>*/}
-                <h3 className="text-xl mb-6 leading-tight font-heading">with tokens and ETH reputation</h3>
+                <h3 className="text-xl mb-6 leading-tight font-heading">share your personal  version of the web</h3>
               </div>
             </div>
           </div>

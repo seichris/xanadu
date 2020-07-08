@@ -3,6 +3,10 @@ import InputProductIdeas from './../../components/InputProductIdeas';
 import ProfileHover from "profile-hover";
 import { ScaleLoader } from "react-spinners";
 import products from './products';
+import xanadu from './../../images/logos/eth.png';
+import eth from './../../images/logos/eth_logo.png';
+import threebox from './../../images/logos/3box.png';
+import ipfs from './../../images/logos/ipfs.png';
 
 export default class ProductSection extends Component {
   state = {
@@ -54,14 +58,14 @@ export default class ProductSection extends Component {
 
         <div className="flex flex-col">
 
-          <h2 className="py-8 mx-auto font-heading text-xl">So what can we use this for?</h2>
+          <h2 className="py-12 mx-auto font-heading text-3xl">get social kontext anywhere</h2>
           <div className="grid gap-4 grid-cols-2">
           {
             products.ethereumsection.map((eth, id) => {
               return (
                 <div key={id} className="p-4 bg-gray-100 rounded shadow-md">
                   <img className="rounded pb-4" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
-                  <h3 className="font-semibold py-4">{eth.h3}</h3>
+                  <h3 className="font-semibold py-4 text-xl">{eth.h3}</h3>
                   <p>{eth.p}</p>
                 </div>
               );
@@ -69,20 +73,20 @@ export default class ProductSection extends Component {
           }
           </div>
 
-          <h2 className="py-8 mx-auto font-heading text-xl">Beyond Ethereum</h2>
+          {/*<h2 className="py-8 mx-auto font-heading text-xl">Beyond Ethereum</h2>
           <div className="grid gap-4 grid-cols-2">
           {
             products.beyondsection.map((eth, id) => {
               return (
                 <div key={id} className="p-4 bg-gray-100 rounded shadow-md">
                   <img className="rounded pb-4" src={require(`./../../images/products/${eth.image1}`)} alt=""/>
-                  <h3 className="font-semibold py-4">{eth.h3}</h3>
+                  <h3 className="font-semibold py-4 text-xl">{eth.h3}</h3>
                   <p>{eth.p}</p>
                 </div>
               );
             })
           }
-          </div>
+          </div>*/}
 
         </div>
 
@@ -140,7 +144,49 @@ export default class ProductSection extends Component {
             })}
           </div>
         </div>
+        <div className="text-center py-12">
+          <h2 className="py-12 mx-auto font-heading text-3xl">built with web3 technology</h2>
+          <div className="flex flex-wrap items-center">
+            <div className="flex flex-col lg:w-1/4 px-8 mb-8">
+              <img className="h-20 w-auto mx-auto  mb-4" src={eth} alt="ethereum"/>
+              <p className="font-semibold mb-2">
+              Rewards
+              </p>
+              <p className=" mb-2">
+              Like tradable reddit karma, with a price tag.
+              </p>
+            </div>
+            <div className="lg:w-1/4 px-8 mb-8">
+              <img className="h-16 w-auto mx-auto  my-4" src={ipfs} alt="ipfs"/>
+              <p className="font-semibold mb-2">
+              Accessibility
+              </p>
+              <p className=" mb-2">
+              Safe data to ipfs, for it shall always be there.
+              </p>
+            </div>
+            <div className="lg:w-1/4 px-8 mb-8">
+              <img className="h-16 w-auto mx-auto  my-4" src={threebox} alt="3box"/>
+              <p className="font-semibold mb-2">
+              Social context
+              </p>
+              <p className=" mb-2">
+              Import contacts from Twitter, Github, Reddit.
+              </p>
+            </div>
+            <div className="lg:w-1/4 px-8 mb-8">
+              <img className="h-20 w-auto mx-auto  mb-4" src={xanadu} alt="ethereum"/>
+              <p className="font-semibold mb-2">
+              Anonymous reputation
+              </p>
+              <p className=" mb-2">
+              Stay incognito and earn reputation for your ETH address.
+              </p>
+            </div>
+          </div>
 
+
+        </div>
       </section>
       </>
     );

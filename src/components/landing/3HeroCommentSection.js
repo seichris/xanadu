@@ -6,10 +6,6 @@ import { ScaleLoader } from "react-spinners";
 import Draggable from 'react-draggable';
 import ReactStars from 'react-stars';
 import user from './../../images/persons/ethcat.png';
-import xanadu from './../../images/logos/eth.png';
-import eth from './../../images/logos/eth_logo.png';
-import threebox from './../../images/logos/3box.png';
-import ipfs from './../../images/logos/ipfs.png';
 
 import Portis from '@portis/web3';
 import Web3 from 'web3';
@@ -50,75 +46,22 @@ render() {
        <div className="container relative">
         <div className="items-center my-12 text-center">
           <div className="mx-auto">
-            <div className="my-4 w-1/3 mx-auto text-left">
-              <img className="h-48 w-auto mx-auto my-8" src={user} alt="user"/>
+            <div className="w-1/4 mx-auto text-left">
               <p>
-              <span className="font-semibold">This is Annie.</span> She wants to build on Ethereum.
+              Using Kontext, you can rate, highlight and comment on any content online and share it with the public — just like a tweet.
               </p>
-              <ul className="py-4">
-              <li>She wants <span className="font-semibold">useful links</span>.</li>
-              <li>She wants <span className="font-semibold">social context</span>.</li>
-              <li>She wants to <span className="font-semibold">find a mentor</span>.</li>
-              <li>She wants to <span className="font-semibold">help future devs</span> herself.</li>
-              <li>She wants the links to <span className="font-semibold">always be accessible</span>.</li>
-              <li>She wants to get info <span className="font-semibold">without searching</span> for everything.</li>
-              </ul>
-              <p>
-              Only web³ technology allows this:
-              </p>
-
-            </div>
-            <div>
-
-              <div className="flex flex-wrap items-center -mx-8 mt-12 mb-2 py-12">
-                <div className="flex flex-col lg:w-1/4 px-8 mb-8">
-                  <img className="h-20 w-auto mx-auto  mb-4" src={eth} alt="ethereum"/>
-                  <p className="font-semibold mb-2">
-                  Rewards
-                  </p>
-                  <p className=" mb-2">
-                  Like tradable reddit karma, with a price tag.
-                  </p>
-                </div>
-                <div className="lg:w-1/4 px-8 mb-8">
-                  <img className="h-16 w-auto mx-auto  my-4" src={ipfs} alt="ipfs"/>
-                  <p className="font-semibold mb-2">
-                  Accessibility
-                  </p>
-                  <p className=" mb-2">
-                  Safe data to ipfs, for it shall always be there.
-                  </p>
-                </div>
-                <div className="lg:w-1/4 px-8 mb-8">
-                  <img className="h-16 w-auto mx-auto  my-4" src={threebox} alt="3box"/>
-                  <p className="font-semibold mb-2">
-                  Social context
-                  </p>
-                  <p className=" mb-2">
-                  Import contacts from Twitter, Github, Reddit.
-                  </p>
-                </div>
-                <div className="lg:w-1/4 px-8 mb-8">
-                  <img className="h-20 w-auto mx-auto  mb-4" src={xanadu} alt="ethereum"/>
-                  <p className="font-semibold mb-2">
-                  Anonymous reputation
-                  </p>
-                  <p className=" mb-2">
-                  Stay incognito and earn reputation for your ETH address.
-                  </p>
-                </div>
-              </div>
-
-              <p>
+              <p className="mt-4">
               How does that sound?
               </p>
-              <button onClick={this.switchShowHide} className="underline font-semibold text-4xl">
+              <button onClick={this.switchShowHide} className="underline font-semibold my-4">
                 {this.state.showCommentOpen ? "cancel" : "✍️ Click to add your opinion!"}
               </button>
-              <p>
+              {/*<p>
               This is a demo. Find the raw chrome extension <a href="https://github.com/seichris/xanadu-chrome" className="underline" rel="noopener noreferrer" to target="_blank">on github</a>.
-              </p>
+              </p>*/}
+
             </div>
+
            </div>
 
 

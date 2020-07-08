@@ -2,39 +2,39 @@
   "ethereumsection": [
     {
       "id": "1",
-      "h3": "Link crypto TL;DRs, ELI5s",
+      "h3": "Post tweets to add social kontext to websites",
       "p": "Link TL;DRs ELI5s from Twitter, Reddit, Telegram to relevant sites like ethereum.org. This way, we won't lose useful content, while retaining context of the original poster.",
       "image1": "1tldrs.png"
     },
     {
       "id": "2",
-      "h3": "Improve open source projects as non-coder",
+      "h3": "Improve Open Source projects with your feedback",
       "p": "Lower the hurdle to give feedback on projects. Any Metamask user can leave a simple note. And product teams can ask for feedback on their website, targeting only Kontext users.",
       "image1": "3graph.png"
     },
     {
       "id": "3",
-      "h3": "Ask for context",
-      "p": "Ask for similar projects while playing with new DEFI apps, or ask for tooling while scrolling through documentation. Or add context yourself.",
-      "image1": "reputation-vitalik.jpg"
-    },
-    {
-      "id": "4",
-      "h3": "Rate anything",
-      "p": "Trust score. Investment ratings. Security ratings. Entertainment value. Service score. Rate anything. Help metamask to keep their phishing database up to date. And view your friends ratings.",
+      "h3": "Mark malicious addresses for reputation tokens",
+      "p": "Trust score. Security ratings. Project ratings. Crowdsource a database of malicious actors and good community members. Look up your friends favorite projects and help Metamask to keep their phishing database up to date.",
       "image1": "metamask-warning.jpg"
     },
     {
+      "id": "4",
+      "h3": "Reviews by friends, not bots",
+      "p": "Instead of anonymous fake reviews, see which restaurants your friends like. Visiting a new city? Look up your friend's friends recommendations. Scrolling through Netflix, not sure what to watch next? Kontext recommends you a 5-star movie from your social network.",
+      "image1": "rate-restaurant.jpg"
+    },
+    {
       "id": "5",
-      "h3": "Share your address book with friends",
-      "p": "Label addresses publicly, share them with your friends, or sell access. Send money to users via their github or twitter name. And crowdsource a database of malicious addresses to highlight on etherscan.",
-      "image1": "chongqing.jpg"
+      "h3": "A subjective spam and fake news filter",
+      "p": "Don't want anyone to be able to get your attention? Close your mail access to people in your web-of-trust — friends, colleagues and their friends. Tired of fake news? Know another source, which says the opposite? Post it to the news article and get rewarded",
+      "image1": "spamfilter.jpg"
     },
     {
       "id": "6",
-      "h3": "Discover Ethereum mentors",
-      "p": "Experienced Ethereum commmunity members link content, creating context for the ones who just start out. Newbs upvote and mentors gain reputation - purely anonymous and onchain.",
-      "image1": "6mentors.png"
+      "h3": "Dark mode anywhere",
+      "p": "Follow lists like \"darkmode anywhere\" to get your favorite websites in darkmode. Crowdsource the edited css code with other Kontext users and get rewarded for sharing your code.",
+      "image1": "darkmode-anywhere.JPG"
     }],
   "beyondsection": [{
       "id": "1",
@@ -50,7 +50,7 @@
     },
     {
       "id": "1",
-      "h3": "Spot fake news",
+      "h3": "A subjective spam and fake news filter",
       "p": "Know another source, which says the opposite? Post it and get rewarded",
       "image1": "chongqing.jpg"
     },
