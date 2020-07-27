@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import icon1 from '.././images/icons/message.svg';
-import icon2 from '.././images/icons/share.svg';
+//import icon1 from '.././images/icons/message.svg';
+//import icon2 from '.././images/icons/share.svg';
 
 function ProductSection(props) {
   return (

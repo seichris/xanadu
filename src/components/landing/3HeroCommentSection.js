@@ -5,7 +5,7 @@ import ProfileHover from "profile-hover";
 import { ScaleLoader } from "react-spinners";
 import Draggable from 'react-draggable';
 import ReactStars from 'react-stars';
-import user from './../../images/persons/ethcat.png';
+//import user from './../../images/persons/ethcat.png';
 
 import Portis from '@portis/web3';
 import Web3 from 'web3';
@@ -46,7 +46,7 @@ render() {
        <div className="container relative">
         <div className="items-center my-12 text-center">
           <div className="mx-auto">
-            <div className="w-1/4 mx-auto text-left">
+            <div className="xl:w-1/4 lg:w-1/4 md:w-1/4 sm:w-full mx-auto text-left">
               <p>
               Using Kontext, you can rate, highlight and comment on any content online and share it with the public — just like a tweet.
               </p>

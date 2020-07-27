@@ -59,7 +59,7 @@ export default class ProductSection extends Component {
         <div className="flex flex-col">
 
           <h2 className="py-12 mx-auto font-heading text-3xl">get social kontext anywhere</h2>
-          <div className="grid gap-4 grid-cols-2">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-2">
           {
             products.ethereumsection.map((eth, id) => {
               return (
@@ -127,7 +127,7 @@ export default class ProductSection extends Component {
               </p>
             </div>
           )}*/}
-          <div className="grid gap-4 grid-cols-2">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-2">
           {this.props.thread && <InputProductIdeas needsAWeb3Browser={this.props.needsAWeb3Browser} savePost={this.savePost} showCommentOpen={this.state.showCommentOpen}/>}
           {this.props.posts &&
             this.props.posts.map((post, i) => {
