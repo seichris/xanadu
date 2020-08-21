@@ -48,13 +48,16 @@ render() {
           <div className="mx-auto">
             <div className="xl:w-1/4 lg:w-1/4 md:w-1/4 sm:w-full mx-auto text-left">
               <p>
-              Using Kontext, you can rate, highlight and comment on any content online and share it with the public — just like a tweet.
+              Using our chrome extension, you can rate, highlight and comment on any website, share it with the public — and get rewarded for valuable shares.
               </p>
               <p className="mt-4">
-              How does that sound?
+              The same extension lets you view the posts, together with a web-of-trust reputation rating.
+              </p>
+              <p className="mt-4">
+              And our API allows developers to plug in automated content curation algorithms.
               </p>
               <button onClick={this.switchShowHide} className="underline font-semibold my-4">
-                {this.state.showCommentOpen ? "cancel" : "✍️ Click to add your opinion!"}
+                {this.state.showCommentOpen ? "cancel" : "✍️ Click to add your comment!"}
               </button>
               {/*<p>
               This is a demo. Find the raw chrome extension <a href="https://github.com/seichris/xanadu-chrome" className="underline" rel="noopener noreferrer" to target="_blank">on github</a>.

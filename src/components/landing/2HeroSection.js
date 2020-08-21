@@ -15,10 +15,10 @@ export default class HeroSection extends Component {
             <div className="flex flex-row items-center -mx-8 mt-12 mb-2">
               {/*<img src={logo} alt="Xanadu" width="50"/>*/}
               <div className="mx-auto">
-                <h1 className="text-5xl mb-6 leading-tight font-heading">add kontext anywhere</h1>
+                <h1 className="text-5xl mb-6 leading-tight font-heading">social context anywhere</h1>
                 {/*<h2 className="text-5xl mb-6 leading-tight font-heading">share your personal  version of the web</h2>
                 <h3 className="mb-6 leading-tight font-heading">share web³ notes and get rewarded</h3>*/}
-                <h3 className="text-xl mb-6 leading-tight font-heading">share your personal  version of the web</h3>
+                <h3 className="text-xl mb-6 leading-tight font-heading">find quality content through your friends, even without searching</h3>
               </div>
             </div>
           </div>

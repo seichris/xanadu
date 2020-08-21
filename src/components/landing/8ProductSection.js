@@ -58,7 +58,7 @@ export default class ProductSection extends Component {
 
         <div className="flex flex-col">
 
-          <h2 className="py-12 mx-auto font-heading text-3xl">get social kontext anywhere</h2>
+          <h2 className="pb-24 mx-auto font-heading text-3xl">a trustable information layer on top of any website</h2>
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 md:grid-cols-2  lg:grid-cols-2 xl:grid-cols-2">
           {
             products.ethereumsection.map((eth, id) => {
