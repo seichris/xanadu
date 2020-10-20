@@ -33,7 +33,7 @@ export default class App extends Component {
             <a className="bottom-0 right-0 text-white" href="https://www.deviantart.com/elclon/art/Blade-Runner-2049-Joi-Vector-2-Wallpaper-701437880" target="_blank">background by elclon</a>
           </div>
           <div className="second">
-            <h1 className="xl:px-40 pt-40 xl:pb-24 pb-8 xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-xl font-mono w-11/12 mx-auto">google, facebook & co store and sell your identity. but they don't let you use it to identify anywhere else</h1>
+            <h1 className="xl:px-40 pt-40 xl:pb-24 pb-8 xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-xl font-mono w-11/12 mx-auto">google, facebook & co store and sell your identity. but they don't let you use it to identify yourself anywhere else</h1>
             <img src={problem} alt="the problem" className="w-11/12 mx-auto" />
           </div>
           <div className="second">
@@ -79,7 +79,7 @@ export default class App extends Component {
             <img src={twitter} alt="better twitter" className="w-11/12 mx-auto" />
           </div>
           <div className="fourth">
-            <h1 className="xl:px-40 pt-40 xl:pb-24 pb-8 xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-xl font-mono w-11/12 mx-auto">install the kontext chrome extension to present your identity anywhere. and discover personalized content</h1>
+            <h1 className="xl:px-40 pt-40 xl:pb-24 pb-8 xl:text-5xl lg:text-4xl md:text-3xl sm:text-2xl text-xl font-mono w-11/12 mx-auto">discover personalized content anywhere. with the kontext chrome extension</h1>
             <img src={googlemaps} alt="better googlemaps" className="w-11/12 mx-auto" />
           </div>
           {/*<div className="fifth">
