@@ -17876,10 +17876,6 @@ body {
   --bg-opacity: 1;
   background-color: #fffaf0;
   background-color: rgba(255, 250, 240, var(--bg-opacity));
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 0;
-  padding-bottom: 3rem;
 }
 
 @media (min-width: 640px) {
