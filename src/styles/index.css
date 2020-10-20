@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 body {
-  @apply bg-orange-100 p-12;
+  @apply bg-orange-100 pl-12 pr-12 pt-0 pb-12;
 }
