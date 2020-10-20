@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import bladerunner from './images/bladerunner.png';
-import identitydude from './images/identity.png';
+import identity from './images/identity.png';
 import twitter from './images/twitter.png';
 import airbnb from './images/airbnb.png';
 import logo from './images/logo.svg';
@@ -11,8 +11,9 @@ export default class App extends Component {
   render() {
     return (
       <>
-        <nav className="flex items-center justify-between">
+        <nav className="flex flex-row items-center justify-between sticky top-0 pt-4">
           <div className="">
+            {/*<img src={logo} alt="twitter" className="h-8"/>*/}
             <img src={logo} alt="twitter" className="h-8"/>
           </div>
           <div className="flex flex-row items-center">
@@ -24,16 +25,17 @@ export default class App extends Component {
             </a>
           </div>
         </nav>
-        <div className="p-40">
+        <div className="px-40">
           <div className="first">
-            <h1 className="p-40 text-5xl font-mono">divulge your identity{"\n"} to the ai</h1>
+            <h1 className="px-40 pt-20 pb-40 text-5xl font-mono">divulge your identity to the ai</h1>
             <img src={bladerunner} alt="bladerunner" className="fullScreenImage"/>
-            <a className="bottom-0 right-0 text-white" href="https://www.deviantart.com/elclon/art/Blade-Runner-2049-Joi-Vector-2-Wallpaper-701437880" target="_blank">background image source</a>
+            <a className="bottom-0 right-0 text-white" href="https://www.deviantart.com/elclon/art/Blade-Runner-2049-Joi-Vector-2-Wallpaper-701437880" target="_blank">background by elclon</a>
           </div>
           <div className="second">
-            <h1 className="pl-40 pr-40 pt-40  text-5xl font-mono">secure your complete identity</h1>
-            <h1 className="pl-40 pr-40 pb-40  text-5xl font-mono">& discover better content</h1>
-            <div className="flex flex-row pl-40 pr-40 pb-40">
+            <h1 className="pl-40 pr-40 pt-40  text-5xl font-mono">secure your likes, ratings, comments</h1>
+            <h1 className="pl-40 pr-40 pb-40  text-5xl font-mono">& discover people with similar tastes</h1>
+            <img src={identity} alt="identity" className="fullScreenImage"/>
+            {/*<div className="flex flex-row pl-40 pr-40 pb-40">
               <div className="w-2/6 flex flex-col items-center">
                 <img src={identitydude} alt="identity" />
               </div>
@@ -66,11 +68,11 @@ export default class App extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>*/}
           </div>
           <div className="third">
-            <h1 className="pl-40 pr-40 pt-40  text-5xl font-mono">for complete personalization</h1>
-            <h1 className="pl-40 pr-40 pb-40  text-5xl font-mono">anywhere</h1>
+            <h1 className="pl-40 pr-40 pt-40  text-5xl font-mono">authenticate with Filecoin or Ethereum</h1>
+            <h1 className="pl-40 pr-40 pb-40  text-5xl font-mono">for instant personalization</h1>
             <img src={twitter} alt="better twitter" className="fullScreenImage" />
           </div>
           <div className="fourth">
