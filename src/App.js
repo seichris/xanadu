@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Slider from './components/Slider'
+import UseCases from './components/UseCases'
 import bladerunner from './images/products/bladerunner.jpg';
 import identity from './images/products/identity.png';
 import twitter from './images/products/twitter.png';
@@ -14,29 +14,147 @@ import webappSketch from './images/sketches/discover-content-and-friends.png';
 import socialSketch from './images/sketches/better-social-media.png';
 import recommendsSketch from './images/sketches/better-movie-restaurant-recommendations.png';
 
-const images = [
-  'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80',
-  'https://images.unsplash.com/photo-1470341223622-1019832be824?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2288&q=80',
-  'https://images.unsplash.com/photo-1448630360428-65456885c650?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2094&q=80',
-  'https://images.unsplash.com/photo-1534161308652-fdfcf10f62c4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2174&q=80'
+const items=[
+  {
+    id: 1,
+    preHead: "What’s possible",
+    headline: "Discover new content and meet new friends.",
+    subHead: "Kontext provides superior recommendations.",
+    headImage: webappSketch,
+    features: [
+      {
+        id: 1,
+        featureHead: "Self-sovereign identity",
+        featureSub: "Import your history of likes, ratings, comments and save new bookmarks.",
+        featureImage: twitter
+      },
+      {
+        id: 2,
+        featureHead: "Content discovery",
+        featureSub: "Share your favorites safely, and discover new content.",
+        featureImage: twitter
+      },
+      {
+        id: 3,
+        featureHead: "Social context",
+        featureSub: "See what your followers like, and find people with similar tastes.",
+        featureImage: twitter
+      }
+    ]
+  },
+  {
+    id: 2,
+    preHead: "What’s possible",
+    headline: "Social Media, but without the toxicity and addictiveness.",
+    subHead: "Kontext provides relief from endless scrolling and painful discourse.",
+    headImage: socialSketch,
+    features: [
+      {
+        id: 1,
+        featureHead: "Tweets of the Week",
+        featureSub: "Top tweets of the week, similar to top posts on Reddit.",
+        featureImage: twitter
+      },
+      {
+        id: 2,
+        featureHead: "Similar Tweets",
+        featureSub: "Dive deeper into the rabbit hole, by discovering similar content.",
+        featureImage: twitter
+      },
+      {
+        id: 3,
+        featureHead: "Moderation of your choice",
+        featureSub: "Order comments yourself, instead of Twitter’s native algorithms.",
+        featureImage: twitter
+      }
+    ]
+  },
+  {
+    id: 3,
+    preHead: "What’s possible",
+    headline: "Better movie and restaurant recommendations.",
+    subHead: "Complete identity for superior recommendation.",
+    headImage: recommendsSketch,
+    features: [
+      {
+        id: 1,
+        featureHead1: "Google Maps",
+        featureSub1: "Discover friends’ favorites instead of fake reviews and anon ratings.",
+        featureImage1: twitter
+      },
+      {
+        id: 2,
+        featureHead2: "Netflix",
+        featureSub2: "Get new movie recommendations, based on your history from anywhere.",
+        featureImage2: twitter
+      },
+      {
+        id: 3,
+        featureHead3: "Anywhere",
+        featureSub3: "Our API allows developers to overlay web3 recommendations anywhere.",
+        featureImage3: twitter
+      }
+    ]
+  }
 ]
-
-{/*
-@function App
-
-const App = () => {
-*/}
-
+/*
+const itemsOld=[
+  {
+    id: 1,
+    preHead: "What’s possible",
+    headline: "Discover new content and meet new friends.",
+    subHead: "Kontext provides superior recommendations.",
+    headImage: webappSketch,
+    featureHead1: "Self-sovereign identity",
+    featureSub1: "Import your history of likes, ratings, comments and save new bookmarks.",
+    featureImage1: twitter,
+    featureHead2: "Content discovery",
+    featureSub2: "Share your favorites safely, and discover new content.",
+    featureImage2: twitter,
+    featureHead3: "Social context",
+    featureSub3: "See what your followers like, and find people with similar tastes.",
+    featureImage3: twitter
+  },
+  {
+    id: 2,
+    preHead: "What’s possible",
+    headline: "Social Media, but without the toxicity and addictiveness.",
+    subHead: "Kontext provides relief from endless scrolling and painful discourse.",
+    headImage: socialSketch,
+    featureHead1: "Tweets of the Week",
+    featureSub1: "Top tweets of the week, similar to top posts on Reddit.",
+    featureImage1: twitter,
+    featureHead2: "Similar Tweets",
+    featureSub2: "Dive deeper into the rabbit hole, by discovering similar content.",
+    featureImage2: twitter,
+    featureHead3: "Moderation of your choice",
+    featureSub3: "Order comments yourself, instead of Twitter’s native algorithms.",
+    featureImage3: twitter
+  },
+  {
+    id: 3,
+    preHead: "What’s possible",
+    headline: "Better movie and restaurant recommendations.",
+    subHead: "Complete identity for superior recommendation.",
+    headImage: recommendsSketch,
+    featureHead1: "Google Maps",
+    featureSub1: "Discover friends’ favorites instead of fake reviews and anon ratings.",
+    featureImage1: twitter,
+    featureHead2: "Netflix",
+    featureSub2: "Get new movie recommendations, based on your history from anywhere.",
+    featureImage2: twitter,
+    featureHead3: "Anywhere",
+    featureSub3: "Our API allows developers to overlay web3 recommendations anywhere.",
+    featureImage3: twitter
+  }
+]
+*/
 export default class App extends Component {
   render() {
     return (
       <div className="">
-
-{/*<Slider slides={images} />*/}
-
         <nav className="flex flex-row items-center justify-between sticky top-0 xl:pt-2 lg:pt-2 md:pt-12 sm:pt-0 bg-white">
           <div className="">
-            {/*<img src={logo} alt="twitter" className="h-12 px-4 py-2"/>*/}
             <img src={logo} alt="twitter" className="h-12 px-4 py-2"/>
           </div>
           <div className="flex flex-row items-center">
@@ -50,87 +168,7 @@ export default class App extends Component {
         </nav>
         <div className="xl:px-56 lg:px-56 md:px-8 sm:px-2">
 
-          <div className="section-wrapper about-socialmedia">
-            <div className="flex flex-row items-center justify-between">
-              <div className="section-header-text w-1/2">
-                <p className="upper-head text-lg ">What’s possible</p>
-                <h2 className="headline xl:text-6xl lg:text-6xl md:text-4xl sm:text-2xl text-xl leading-tight">
-                    Discover new content and meet new friends.
-                </h2>
-                <p className="sub-head text-lg ">
-                    Kontext provides superior recommendations.
-                </p>
-              </div>
-              <div className="section-header-image w-1/3">
-                <img src={webappSketch} alt="discover-content-and-friends" className="w-11/12 mx-auto"/>
-              </div>
-            </div>
-
-              <div className="carousel relative">
-                <div className="slider-tabs-head flex flex-row justify-between mt-20 mb-8">
-                    <div className="w-1/3 px-2" id="create-1" data-duration="6" data-next="create-2">
-                        <h3 className="pb-2">Self-sovereign identity</h3>
-                        <p className="item-content text-lg text-gray-500">
-                            Import your history of likes, ratings, comments and save new bookmarks.
-                        </p>
-                        <div className="item-timeline">
-                            <div className="item-timeline-progress w-0"></div>
-                        </div>
-
-                        <div className="carousel-item absolute opacity-0">
-                            <img src="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic1.jpg" alt=""/>
-                        </div>
-
-                    </div>
-                    <div className="w-1/3 px-2 current" id="create-2" data-next="create-3" data-duration="6">
-                        <h3 className="pb-2">Content discovery</h3>
-                        <p className="item-content text-lg text-gray-500">
-                            Share your favorites safely, and discover new content.
-                        </p>
-                        <div className="item-timeline">
-                            <div className="item-timeline-progress w-full"></div>
-                        </div>
-
-                        <div className="carousel-item absolute opacity-0">
-                            <img src="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic2.jpg" alt=""/>
-                        </div>
-                    </div>
-                    <div className="w-1/3 px-2" id="create-3" data-next="create-1" data-duration="9" data-video="video-visualize-process">
-                        <h3 className="pb-2">Social context</h3>
-                        <p className="item-content text-lg text-gray-500">
-                            See what your followers like, and find people with similar tastes.
-                        </p>
-                        <div className="item-timeline">
-                            <div className="item-timeline-progress w-0"></div>
-                        </div>
-
-                        <div className="carousel-item absolute opacity-0">
-                            <video loop="" muted="" playsinline="" autoplay="" poster="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic3.jpg" className="promo-video-wrap">
-                                <source src="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic3.mp4" type="video/mp4"/>
-                            </video>
-                        </div>
-                    </div>
-                </div>
-                <div className="slider-body">
-                    <div className="carousel-item" id="carousel-img-1">
-                        <img src="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic1.jpg" alt=""/>
-                    </div>
-
-                    <div className="carousel-item absolute opacity-0" id="carousel-img-2">
-                        <img src="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic2.jpg" alt=""/>
-                    </div>
-
-                    <div className="carousel-item absolute opacity-0" id="carousel-img-3">
-                        <video id="video-visualize-process" autoplay="" loop="" muted="" playsinline="" poster="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic3.jpg" className="promo-video-wrap">
-                            <source src="https://images.fibery.io/website/0.1.0-ci.0831.0069f78/img/case1-pic3.mp4" type="video/mp4"/>
-                        </video>
-                    </div>
-                </div>
-              </div>
-
-              {/*<Slider slides={images} />*/}
-
-          </div>
+          <UseCases items={items} />
 
 
 

@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import SliderContent from './SliderContent'
-import Slide from './Slide'
+//import SliderContent from './SliderContent'
+//import Slide from './Slide'
 
-/**
- * @function Slider
- */
-const Slider = props => {
+function Slider(props) {
+
   const getWidth = () => window.innerWidth
 
   const [state, setState] = useState({
@@ -15,19 +13,37 @@ const Slider = props => {
 
   const { translate, transition } = state
 
+  var divStyle = {
+    transform: 'translateX(-' + translate + 'px)',
+    transition: 'transform ease-out' + transition + 's',
+    width: getWidth() + 'px'
+  };
+
+  var imgStyle = {
+    backgroundImage: 'url(' + props.img1 + ')',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center'
+  };
+
   return (
     <div className="relative w-full h-full overflow-hidden m-auto">
-      <SliderContent
-        translate={translate}
-        transition={transition}
-        width={getWidth()}
+      <div
+        className="flex h-full"
+        style={divStyle}
       >
-        {props.slides.map((slide, i) => (
-          <Slide key={slide + i} content={slide} />
+        {props.items.map((item, i) => (
+          <div
+            className="h-full w-full"
+            style={imgStyle}
+          >
+            hey
+          </div>
         ))}
-      </SliderContent>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Slider
+export default Slider;
+  {/*<Slide key={slide + i} content={slide} />*/}

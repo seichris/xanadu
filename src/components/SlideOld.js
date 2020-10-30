@@ -1,15 +1,10 @@
 import React from 'react'
 
-var backgroundImage = {
-  backgroundImage: 'url(' + props.content + ')',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center'
-};
-
 const Slide = ({ content }) => (
-  <div className="h-full w-full">
-  hey yo waddup slide
+  <div
+    className="h-full w-full "
+  >
+  hey yo waddup
   </div>
 )
 {/*
