@@ -227,7 +227,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        'Ubuntu',
+        '"Source Sans Pro"',
         'Lato',
         'system-ui',
         '-apple-system',
@@ -243,10 +243,10 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ['Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
+      serif: ['Merriweather', 'Georgia', 'Cambria', '"Times New Roman"', 'Times', 'serif'],
       mono: ['"Ubuntu Mono"', 'Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
-      body: ['Lato'],
-      heading: ['Ubuntu'],
+      body: ['"Source Sans Pro"'],
+      heading: ['Merriweather'],
     },
     fontSize: {
       xs: '0.75rem',

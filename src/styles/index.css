@@ -3,5 +3,13 @@
 @tailwind utilities;
 
 body {
-  @apply bg-orange-100  ;
+  @apply bg-white;
+}
+
+h3 {
+  @apply font-sans text-2xl;
+}
+
+p {
+  @apply font-sans;
 }

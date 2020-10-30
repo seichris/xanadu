@@ -415,7 +415,7 @@ ul {
  */
 
 html {
-  font-family: Ubuntu, Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
+  font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 1 */
   line-height: 1.5; /* 2 */
 }
 
@@ -6050,11 +6050,11 @@ video {
 }
 
 .font-sans {
-  font-family: Ubuntu, Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .font-serif {
-  font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 .font-mono {
@@ -6062,11 +6062,11 @@ video {
 }
 
 .font-body {
-  font-family: Lato;
+  font-family: "Source Sans Pro";
 }
 
 .font-heading {
-  font-family: Ubuntu;
+  font-family: Merriweather;
 }
 
 .font-hairline {
@@ -17874,8 +17874,17 @@ video {
 
 body {
   --bg-opacity: 1;
-  background-color: #fffaf0;
-  background-color: rgba(255, 250, 240, var(--bg-opacity));
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, var(--bg-opacity));
+}
+
+h3 {
+  font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1.5rem;
+}
+
+p {
+  font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 @media (min-width: 640px) {
@@ -23310,11 +23319,11 @@ body {
   }
 
   .sm\:font-sans {
-    font-family: Ubuntu, Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .sm\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .sm\:font-mono {
@@ -23322,11 +23331,11 @@ body {
   }
 
   .sm\:font-body {
-    font-family: Lato;
+    font-family: "Source Sans Pro";
   }
 
   .sm\:font-heading {
-    font-family: Ubuntu;
+    font-family: Merriweather;
   }
 
   .sm\:font-hairline {
@@ -40565,11 +40574,11 @@ body {
   }
 
   .md\:font-sans {
-    font-family: Ubuntu, Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .md\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .md\:font-mono {
@@ -40577,11 +40586,11 @@ body {
   }
 
   .md\:font-body {
-    font-family: Lato;
+    font-family: "Source Sans Pro";
   }
 
   .md\:font-heading {
-    font-family: Ubuntu;
+    font-family: Merriweather;
   }
 
   .md\:font-hairline {
@@ -57820,11 +57829,11 @@ body {
   }
 
   .lg\:font-sans {
-    font-family: Ubuntu, Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .lg\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .lg\:font-mono {
@@ -57832,11 +57841,11 @@ body {
   }
 
   .lg\:font-body {
-    font-family: Lato;
+    font-family: "Source Sans Pro";
   }
 
   .lg\:font-heading {
-    font-family: Ubuntu;
+    font-family: Merriweather;
   }
 
   .lg\:font-hairline {
@@ -75075,11 +75084,11 @@ body {
   }
 
   .xl\:font-sans {
-    font-family: Ubuntu, Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Source Sans Pro", Lato, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   }
 
   .xl\:font-serif {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-family: Merriweather, Georgia, Cambria, "Times New Roman", Times, serif;
   }
 
   .xl\:font-mono {
@@ -75087,11 +75096,11 @@ body {
   }
 
   .xl\:font-body {
-    font-family: Lato;
+    font-family: "Source Sans Pro";
   }
 
   .xl\:font-heading {
-    font-family: Ubuntu;
+    font-family: Merriweather;
   }
 
   .xl\:font-hairline {
