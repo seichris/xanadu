@@ -16,83 +16,83 @@ import recommendsSketch from './images/sketches/better-movie-restaurant-recommen
 
 const items=[
   {
-    id: 1,
+    id: 0,
     preHead: "What’s possible",
     headline: "Discover new content and meet new friends.",
     subHead: "Kontext provides superior recommendations.",
     headImage: webappSketch,
     features: [
       {
-        id: 1,
+        id: 0,
         featureHead: "Self-sovereign identity",
         featureSub: "Import your history of likes, ratings, comments and save new bookmarks.",
         featureImage: twitter
       },
       {
-        id: 2,
+        id: 1,
         featureHead: "Content discovery",
         featureSub: "Share your favorites safely, and discover new content.",
-        featureImage: twitter
+        featureImage: googlemaps
       },
       {
-        id: 3,
+        id: 2,
         featureHead: "Social context",
         featureSub: "See what your followers like, and find people with similar tastes.",
-        featureImage: twitter
+        featureImage: airbnb
       }
     ]
   },
   {
-    id: 2,
+    id: 1,
     preHead: "What’s possible",
     headline: "Social Media, but without the toxicity and addictiveness.",
     subHead: "Kontext provides relief from endless scrolling and painful discourse.",
     headImage: socialSketch,
     features: [
       {
-        id: 1,
+        id: 0,
         featureHead: "Tweets of the Week",
         featureSub: "Top tweets of the week, similar to top posts on Reddit.",
         featureImage: twitter
       },
       {
-        id: 2,
+        id: 1,
         featureHead: "Similar Tweets",
         featureSub: "Dive deeper into the rabbit hole, by discovering similar content.",
-        featureImage: twitter
+        featureImage: googlemaps
       },
       {
-        id: 3,
+        id: 2,
         featureHead: "Moderation of your choice",
         featureSub: "Order comments yourself, instead of Twitter’s native algorithms.",
-        featureImage: twitter
+        featureImage: airbnb
       }
     ]
   },
   {
-    id: 3,
+    id: 2,
     preHead: "What’s possible",
     headline: "Better movie and restaurant recommendations.",
     subHead: "Complete identity for superior recommendation.",
     headImage: recommendsSketch,
     features: [
       {
-        id: 1,
+        id: 0,
         featureHead: "Google Maps",
         featureSub: "Discover friends’ favorites instead of fake reviews and anon ratings.",
         featureImage: twitter
       },
       {
-        id: 2,
+        id: 1,
         featureHead: "Netflix",
         featureSub: "Get new movie recommendations, based on your history from anywhere.",
-        featureImage: twitter
+        featureImage: googlemaps
       },
       {
-        id: 3,
+        id: 2,
         featureHead: "Anywhere",
         featureSub: "Our API allows developers to overlay web3 recommendations anywhere.",
-        featureImage: twitter
+        featureImage: airbnb
       }
     ]
   }
