@@ -78,77 +78,26 @@ const items=[
     features: [
       {
         id: 1,
-        featureHead1: "Google Maps",
-        featureSub1: "Discover friends’ favorites instead of fake reviews and anon ratings.",
-        featureImage1: twitter
+        featureHead: "Google Maps",
+        featureSub: "Discover friends’ favorites instead of fake reviews and anon ratings.",
+        featureImage: twitter
       },
       {
         id: 2,
-        featureHead2: "Netflix",
-        featureSub2: "Get new movie recommendations, based on your history from anywhere.",
-        featureImage2: twitter
+        featureHead: "Netflix",
+        featureSub: "Get new movie recommendations, based on your history from anywhere.",
+        featureImage: twitter
       },
       {
         id: 3,
-        featureHead3: "Anywhere",
-        featureSub3: "Our API allows developers to overlay web3 recommendations anywhere.",
-        featureImage3: twitter
+        featureHead: "Anywhere",
+        featureSub: "Our API allows developers to overlay web3 recommendations anywhere.",
+        featureImage: twitter
       }
     ]
   }
 ]
-/*
-const itemsOld=[
-  {
-    id: 1,
-    preHead: "What’s possible",
-    headline: "Discover new content and meet new friends.",
-    subHead: "Kontext provides superior recommendations.",
-    headImage: webappSketch,
-    featureHead1: "Self-sovereign identity",
-    featureSub1: "Import your history of likes, ratings, comments and save new bookmarks.",
-    featureImage1: twitter,
-    featureHead2: "Content discovery",
-    featureSub2: "Share your favorites safely, and discover new content.",
-    featureImage2: twitter,
-    featureHead3: "Social context",
-    featureSub3: "See what your followers like, and find people with similar tastes.",
-    featureImage3: twitter
-  },
-  {
-    id: 2,
-    preHead: "What’s possible",
-    headline: "Social Media, but without the toxicity and addictiveness.",
-    subHead: "Kontext provides relief from endless scrolling and painful discourse.",
-    headImage: socialSketch,
-    featureHead1: "Tweets of the Week",
-    featureSub1: "Top tweets of the week, similar to top posts on Reddit.",
-    featureImage1: twitter,
-    featureHead2: "Similar Tweets",
-    featureSub2: "Dive deeper into the rabbit hole, by discovering similar content.",
-    featureImage2: twitter,
-    featureHead3: "Moderation of your choice",
-    featureSub3: "Order comments yourself, instead of Twitter’s native algorithms.",
-    featureImage3: twitter
-  },
-  {
-    id: 3,
-    preHead: "What’s possible",
-    headline: "Better movie and restaurant recommendations.",
-    subHead: "Complete identity for superior recommendation.",
-    headImage: recommendsSketch,
-    featureHead1: "Google Maps",
-    featureSub1: "Discover friends’ favorites instead of fake reviews and anon ratings.",
-    featureImage1: twitter,
-    featureHead2: "Netflix",
-    featureSub2: "Get new movie recommendations, based on your history from anywhere.",
-    featureImage2: twitter,
-    featureHead3: "Anywhere",
-    featureSub3: "Our API allows developers to overlay web3 recommendations anywhere.",
-    featureImage3: twitter
-  }
-]
-*/
+
 export default class App extends Component {
   render() {
     return (

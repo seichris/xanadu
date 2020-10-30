@@ -1,7 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Slider from './Slider'
 
 function UseCases(props) {
+
+  const [state, setState] = useState({
+    translate: 0,
+    transition: 0.45,
+    active: 'hello'
+  })
+
+  const { translate, transition } = state
+
+  var divStyle = {
+    transform: 'translateX(-' + translate + 'px)',
+    transition: 'transform ease-out' + transition + 's'
+  };
+
   return (
     <>
       {props.items.map((item, index) => (
@@ -20,88 +34,51 @@ function UseCases(props) {
               <img src={item.headImage} alt="discover-content-and-friends" className="w-11/12 mx-auto"/>
             </div>
           </div>
-
-            <div className="carousel relative">
-              <div className="slider-tabs-head flex flex-row justify-between mt-20 mb-8">
-
-                {item.features.map((feature, i) => (
-                  <div className="w-1/3 px-2">
-                    <h3 className="pb-2">{feature.featureHead}</h3>
-                    <p className="item-content text-lg text-gray-500">
-                        {feature.featureSub}
-                    </p>
-                    <div className="item-timeline">
-                        <div className="item-timeline-progress w-0"></div>
-                    </div>
-
-                    <div className="carousel-item absolute opacity-0">
-                        <img src={feature.featureImage} alt=""/>
-                    </div>
+          <div className="carousel relative">
+            <div className="slider-tabs-head flex flex-row justify-between mt-20 mb-8">
+              {item.features.map((feature, i) => (
+                <div className="w-1/3 px-2 cursor-pointer">
+                  <h3 className="pb-2">{feature.featureHead}</h3>
+                  <p className="item-content text-lg text-gray-500">
+                      {feature.featureSub}
+                  </p>
+                  <div className="item-timeline">
+                      <div className="item-timeline-progress w-0"></div>
                   </div>
-                ))}
-
-                {/*<div className="w-1/3 px-2">
-                    <h3 className="pb-2">{item.featureHead1}</h3>
-                    <p className="item-content text-lg text-gray-500">
-                        {item.featureSub1}
-                    </p>
-                    <div className="item-timeline">
-                        <div className="item-timeline-progress w-0"></div>
-                    </div>
-
-                    <div className="carousel-item absolute opacity-0">
-                        <img src={item.featureImage1} alt=""/>
-                    </div>
-                  </div>
-                  <div className="w-1/3 px-2 current">
-                    <h3 className="pb-2">{item.featureHead2}</h3>
-                    <p className="item-content text-lg text-gray-500">
-                        {item.featureSub2}
-                    </p>
-                    <div className="item-timeline">
-                        <div className="item-timeline-progress w-full"></div>
-                    </div>
-
-                    <div className="carousel-item absolute opacity-0">
-                        <img src={item.featureImage2} alt=""/>
-                    </div>
-                  </div>
-                  <div className="w-1/3 px-2">
-                      <h3 className="pb-2">{item.featureHead3}</h3>
-                      <p className="item-content text-lg text-gray-500">
-                          {item.featureSub3}
-                      </p>
-                      <div className="item-timeline">
-                          <div className="item-timeline-progress w-0"></div>
-                      </div>
-
-                      <div className="carousel-item absolute opacity-0">
-                          <img src={item.featureImage3} alt=""/>
-                      </div>
-                  </div>*/}
+                </div>
+              ))}
+            </div>
 
 
 
+            <div className="relative w-full h-full overflow-hidden m-auto">
+              <div className="flex h-full" style={divStyle}>
 
-              </div>
-              <div className="slider-body">
-                  <div className="carousel-item" id="carousel-img-1">
-                      <img src={item.featureImage1} alt=""/>
-                  </div>
 
-                  <div className="carousel-item absolute opacity-0" id="carousel-img-2">
-                      <img src={item.featureImage2} alt=""/>
-                  </div>
+                  <div className="h-full w-full"><img src={item.features[0].featureImage} alt=""/>{/*
+                    { this.state.active == 0
+                      ? <img src={item.features[0].featureImage} alt=""/>
+                      : [
+                          ( this.state.active == 1
+                          ? <img src={item.features[1].featureImage} alt=""/>
+                          : [
+                              ( this.state.active == 2
+                              ? <img src={item.features[2].featureImage} alt=""/>
+                              : null
+                              )
+                            ]
+                          )
+                        ]
+                    }*/}
 
-                  <div className="carousel-item absolute opacity-0">
-                      <img src={item.featureImage3} alt=""/>
+
                   </div>
               </div>
             </div>
 
-            {/*<Slider slides={sliderImages} />*/}
-            <Slider img1={item.featureImage1} img2={item.featureImage1} img3={item.featureImage1} />
 
+
+          </div>
         </div>
       ))}
     </>
