@@ -1,36 +1,33 @@
 import React, { Component, useState } from "react";
-import Slider from './Slider'
 
 function UseCases(props) {
 
   const [state, setState] = useState({
-    translate: 0,
-    transition: 0.45,
     active: 0
   })
 
-  const { translate, transition, active } = state
+  const { active } = state
 
   var divStyle = {
-    transform: 'translateX(-' + translate + 'px)',
-    transition: 'transform ease-out' + transition + 's'
+    width: '100%',
+    transition: 'width 2s ease-out'
   };
 
   return (
     <>
       {props.items.map((item, index) => (
         <div className="section-wrapper feature-section">
-          <div className="flex flex-row items-center justify-between">
-            <div className="section-header-text w-1/2">
+          <div className="flex xl:flex-row lg:flex-row md:flex-row sm:flex-row flex-col items-center justify-between">
+            <div className="section-header-text xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 w-full xl:px-0 lg:px-0 md:px-0 sm:px-0 px-2">
               <p className="pre-head text-lg ">{item.preHead}</p>
-              <h2 className="headline xl:text-6xl lg:text-6xl md:text-4xl sm:text-2xl text-xl leading-tight">
+              <h2 className="headline xl:text-6xl lg:text-6xl md:text-4xl sm:text-5xl text-5xl leading-tight">
                   {item.headline}
               </h2>
               <p className="sub-head text-lg ">
                   {item.subHead}
               </p>
             </div>
-            <div className="section-header-image w-1/3">
+            <div className="section-header-image w-2/4 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0 pt-12">
               <img src={item.headImage} alt="discover-content-and-friends" className="w-11/12 mx-auto"/>
             </div>
           </div>
@@ -42,8 +39,11 @@ function UseCases(props) {
                   <p className="item-content text-lg text-gray-500">
                       {feature.featureSub}
                   </p>
-                  <div className="item-timeline">
-                      <div className="item-timeline-progress w-0"></div>
+                  <div className="item-timeline mt-4">
+                  { active == feature.id
+                    ? <div className="item-timeline-progress w-full" style={divStyle} ></div>
+                    : <div className="item-timeline-progress w-0"/>
+                  }
                   </div>
                 </div>
               ))}

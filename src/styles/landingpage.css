@@ -26,3 +26,13 @@ body h2, h3, p {
     padding-top: 10rem;
     padding-bottom: 10rem;
 }
+
+.item-timeline {
+  height: 2px;
+  background: #E9EDF4;
+}
+
+.item-timeline-progress {
+  height: 100%;
+  background: #242938;
+}
