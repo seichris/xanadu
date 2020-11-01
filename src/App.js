@@ -163,11 +163,11 @@ function App() {
           </div>
         </nav>
 
-        {/* hidden form to trigger netlify forms bot */}
+        {/* hidden form to trigger netlify forms bot
         <form name="contact" netlify netlify-honeypot="bot-field" hidden>
           <input type="email" name="email" />
           <textarea name="message"></textarea>
-        </form>
+        </form>*/}
 
         <div className="xl:px-56 lg:px-56 md:px-8 sm:px-2 header-section shadow-sm xl:px-0 lg:px-0 md:px-0 sm:px-0 px-2">
           <div className="section-wrapper ">
@@ -179,18 +179,15 @@ function App() {
                 <p className="sub-head text-lg ">
                     {headerItems.subHead}
                 </p>
-                <form className="w-full max-w-sm pt-4" name="contact">
+                {/*<form className="w-full max-w-sm pt-4" name="contact">
                   <div className="flex items-center border-b border-teal-500 py-2">
                     <input type="hidden" name="form-name" value="contact" />
                     <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="email" name="email" placeholder="Get our updates to your inbox" aria-label="Full name"/>
                     <button className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 border-4 text-white py-1 px-2 rounded" type="button">
                       Sign Up
                     </button>
-                    {/*<button className="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button">
-                      Cancel
-                    </button>*/}
                   </div>
-                </form>
+                </form>*/}
               </div>
               <div className="section-header-image w-2/4 xl:pt-0 lg:pt-0 md:pt-0 sm:pt-0 pt-12">
                 <img src={headerItems.headImage} alt="discover-content-and-friends" className="w-11/12 mx-auto"/>
