@@ -9,7 +9,20 @@ body h2, h3, p {
     padding-left: calc(50% - 560px);
 }
 
-.about-socialmedia {
-    padding-top: 30rem;
+.header-section {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    background: radial-gradient(100% 853.16% at 0% 2.64%, #C3F4E2 0%, #C3F4E2 6.67%, #C2F4E1 13.33%, #C1F4E1 20%, #BFF5E0 26.67%, #BCF5DE 33.33%, #BAF6DD 40%, #B6F7DB 46.67%, #B3F7D9 53.33%, #B0F8D7 60%, #ADF8D6 66.67%, #ABF9D4 73.33%, #A9F9D3 80%, #A7F9D2 86.67%, #A7FAD2 93.33%, #A6FAD2 100%);
+
+}
+
+.pitch-section {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+
+}
+
+.feature-section {
+    padding-top: 10rem;
     padding-bottom: 10rem;
 }

@@ -19,7 +19,7 @@ function UseCases(props) {
   return (
     <>
       {props.items.map((item, index) => (
-        <div className="section-wrapper about-socialmedia">
+        <div className="section-wrapper feature-section">
           <div className="flex flex-row items-center justify-between">
             <div className="section-header-text w-1/2">
               <p className="pre-head text-lg ">{item.preHead}</p>
@@ -36,11 +36,8 @@ function UseCases(props) {
           </div>
           <div className="carousel relative">
             <div className="slider-tabs-head flex flex-row justify-between mt-20 mb-8">
-
-            {/* setState doesnt work? */}
-
-              {item.features.map((feature, i) => (
-                <div onClick={() => setState(active == feature.id)} className="w-1/3 px-2 cursor-pointer">
+              {item.features.map((feature, id) => (
+                <div onClick={() => { setState({active: feature.id}); console.log(feature.id)}} className="w-1/3 mx-2 cursor-pointer">
                   <h3 className="pb-2">{feature.featureHead}</h3>
                   <p className="item-content text-lg text-gray-500">
                       {feature.featureSub}
@@ -51,7 +48,6 @@ function UseCases(props) {
                 </div>
               ))}
             </div>
-
             <div className="relative w-full h-full overflow-hidden m-auto">
               <div className="flex h-full" style={divStyle}>
 
